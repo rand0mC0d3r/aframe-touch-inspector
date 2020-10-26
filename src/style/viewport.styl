@@ -1,0 +1,70 @@
+@import './lib';
+
+#viewportBar
+  align-items center
+  background-color $bg
+  color $white
+  display flex
+  flex-grow 2
+  height 32px
+  font-size 14px
+  justify-content space-between
+  left 0
+  margin 0 auto
+  right 0
+  top 0
+
+.toolbarButtons
+  position relative
+
+  *
+    margin-left 0
+    padding 8px
+    vertical-align middle
+
+  a.button
+    margin 0 6px 0 0
+    &:not(.active):hover
+      background-color $grayhover
+
+  .active
+    background-color $primary
+    color #fff
+
+  .active:hover
+    color #fff !important
+
+.local-transform
+  padding-left 10px
+
+.local-transform label
+  color $lightgray
+  padding-left 5px
+
+.local-transform a.button
+  padding-top 0
+
+#cameraSelect
+  cursor pointer
+  width 110px
+  .select__dropdown-indicator
+    padding-left 3px
+    padding-right 3px
+
+#cameraToolbar
+  margin-left 5px
+  align-items center
+  display flex
+  a
+    margin-right 10px
+  .select__control
+    background none
+  .select__single-value
+    color $white
+    &:hover
+      color $primary
+
+#viewportHud
+  display none
+  +media--1024()
+    display block
