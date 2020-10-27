@@ -1,6 +1,6 @@
-var childProcess = require('child_process');
-var path = require('path');
-var webpack = require('webpack');
+const childProcess = require('child_process');
+const path = require('path');
+const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Add HMR for development environments only.
@@ -27,7 +27,7 @@ function getBuildTimestamp() {
 
 var commitHash = childProcess.execSync('git rev-parse HEAD').toString();
 
-// Minification.
+// Minimization.
 var plugins = [
   new webpack.DefinePlugin({
     'process.env': {

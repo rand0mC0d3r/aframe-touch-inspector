@@ -18,6 +18,7 @@
 #aframeInspector #viewportBar {
     align-items: center;
     display: flex;
+    pointer-events: all;
     height: 50px;
     font-size: 14px;
     justify-content: space-between;
