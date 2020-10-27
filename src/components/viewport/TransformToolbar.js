@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt, faRedo, faExpand } from '@fortawesome/free-solid-svg-icons';
+import IconButton from '@material-ui/core/IconButton';
 
 const Events = require('../../lib/Events.js');
 const transformButtons = [
@@ -30,13 +31,17 @@ export default () => {
   };
 
   return <div id="transformToolbar" className="toolbarButtons">
-    {transformButtons.map((option, i) => <FontAwesomeIcon
-      icon={option.icon}
+    {transformButtons.map((option, i) => <IconButton
       key={i}
-      size="lg"
       onClick={() => changeTransformMode(option.value)}
-      title={option.value}
-      active={option.value === selectedTransform ? true : false}
-   />)}
+      title={`Toggle ${option.value}`}
+    >
+      <FontAwesomeIcon
+        icon={option.icon}
+        size="sm"
+        fixedWidth
+        // active={option.value === selectedTransform ? true : false}
+    />
+   </IconButton>)}
   </div>;
 };
