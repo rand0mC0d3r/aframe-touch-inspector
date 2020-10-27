@@ -1,5 +1,5 @@
 import React from 'react';
-var Events = require('../../lib/Events.js');
+import Events from '../../lib/Events';
 import { printEntity } from '../../lib/entity';
 
 export default () => {

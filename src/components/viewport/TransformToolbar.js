@@ -4,8 +4,8 @@ import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import IconButton from '@material-ui/core/IconButton';
+import Events from '../../lib/Events';
 
-const Events = require('../../lib/Events.js');
 const transformButtons = [
   { value: 'translate', icon: faArrowsAlt },
   { value: 'rotate', icon: faRedo },

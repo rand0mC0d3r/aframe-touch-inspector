@@ -1,10 +1,9 @@
 import React from 'react';
-
-THREE.ImageUtils.crossOrigin = '';
-
-const Events = require('../lib/Events.js');
 import TransformToolbar from './viewport/TransformToolbar';
 import ViewportHUD from './viewport/ViewportHUD';
+import Events from '../lib/Events';
+
+THREE.ImageUtils.crossOrigin = '';
 
 export default () => {
   const [ entity, setEntity ] = React.useState(null);
