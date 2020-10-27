@@ -46,7 +46,6 @@ export default class Toolbar extends React.Component {
   }
 
   exportSceneToGLTF() {
-    ga('send', 'event', 'SceneGraph', 'exportGLTF');
     const sceneName = getSceneName(AFRAME.scenes[0]);
     const scene = AFRAME.scenes[0].object3D;
     filterHelpers(scene, false);

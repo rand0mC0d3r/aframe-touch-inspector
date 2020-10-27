@@ -32,7 +32,6 @@ export default class AddComponent extends React.Component {
 
     entity.setAttribute(componentName, '');
     Events.emit('componentadd', { entity: entity, component: componentName });
-    ga('send', 'event', 'Components', 'addComponent', componentName);
   };
 
   /**

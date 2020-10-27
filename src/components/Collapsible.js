@@ -23,7 +23,6 @@ export default class Collapsible extends React.Component {
 
   toggleVisibility = () => {
     this.setState({ collapsed: !this.state.collapsed });
-    ga('send', 'event', 'Components', 'collapse');
   };
 
   render () {

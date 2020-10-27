@@ -18,7 +18,9 @@
     "prettier": "prettier --single-quote es5 --write 'src/**/*.js'",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --progress --colors -d --host 0.0.0.0",
     "test": "jest --watch",
-    "test:ci": "jest"
+    "test:ci": "jest",
+    "explorer": " source-map-explorer ./dist/*.js",
+    "stats": " source-map-explorer ./dist/*.js --json"
   },
   "repository": "aframevr/aframe-inspector",
   "license": "MIT",
@@ -50,11 +52,11 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^1.15.3",
     "prop-types": "^15.6.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-file-reader-input": "^1.1.4",
     "react-select": "^2.1.2",
-    "react-test-renderer": "^15.3.2",
+    "react-test-renderer": "^17.0.1",
     "shx": "^0.1.2",
     "style-loader": "^0.13.1",
     "stylelint": "^8.0.0",
@@ -81,6 +83,7 @@
   ],
   "devDependencies": {
     "postcss-import": "^12.0.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "source-map-explorer": "^2.5.0"
   }
 }

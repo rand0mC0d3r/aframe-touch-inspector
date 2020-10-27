@@ -12,11 +12,14 @@ export default class ViewportHUD extends React.Component {
   }
 
   componentDidMount () {
+    console.log("ttttt");
     Events.on('raycastermouseenter', el => {
+      debugger;
       this.setState({ hoveredEntity: el });
     });
 
     Events.on('raycastermouseleave', el => {
+      debugger;
       this.setState({ hoveredEntity: el });
     });
   }

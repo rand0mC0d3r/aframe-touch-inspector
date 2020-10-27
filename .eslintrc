@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended", "standard"],
+  "extends": "eslint:recommended",
   "rules": {
     "react/jsx-indent-props": [2, 2],
     "semi": [2, "always"],
@@ -21,6 +21,7 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "classes": true,
+      "modules": true,
       "jsx": true,
       "experimentalObjectRestSpread": true
      }

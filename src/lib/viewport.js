@@ -228,7 +228,6 @@ function Viewport (inspector) {
           element.style.display = 'block';
         });
     }
-    ga('send', 'event', 'Viewport', 'toggleEditor', active);
   });
 }
 
