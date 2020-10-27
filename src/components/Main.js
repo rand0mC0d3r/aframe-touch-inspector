@@ -3,11 +3,11 @@ import React from 'react';
 THREE.ImageUtils.crossOrigin = '';
 
 const Events = require('../lib/Events.js');
-import ComponentsSidebar from './components/Sidebar';
-import ModalTextures from './modals/ModalTextures';
-import ModalHelp from './modals/ModalHelp';
-import SceneGraph from './scenegraph/SceneGraph';
-import CameraToolbar from './viewport/CameraToolbar';
+// import ComponentsSidebar from './components/Sidebar';
+// import ModalTextures from './modals/ModalTextures';
+// import ModalHelp from './modals/ModalHelp';
+// import SceneGraph from './scenegraph/SceneGraph';
+// import CameraToolbar from './viewport/CameraToolbar';
 import TransformToolbar from './viewport/TransformToolbar';
 import ViewportHUD from './viewport/ViewportHUD';
 import { injectCSS } from '../lib/utils';
@@ -16,7 +16,7 @@ import { injectCSS } from '../lib/utils';
 injectCSS('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 
 export default class Main extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -65,10 +65,10 @@ export default class Main extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentDidMount () {
     Events.on(
       'opentexturesmodal',
-      function(selectedTexture, textureOnClose) {
+      function (selectedTexture, textureOnClose) {
         this.setState({
           selectedTexture: selectedTexture,
           isModalTexturesOpen: true,
@@ -108,7 +108,7 @@ export default class Main extends React.Component {
     }
   };
 
-  renderComponentsToggle() {
+  renderComponentsToggle () {
     if (!this.state.entity || this.state.visible.attributes) {
       return null;
     }
@@ -126,7 +126,7 @@ export default class Main extends React.Component {
     );
   }
 
-  renderSceneGraphToggle() {
+  renderSceneGraphToggle () {
     if (this.state.visible.scenegraph) {
       return null;
     }
@@ -144,11 +144,11 @@ export default class Main extends React.Component {
     );
   }
 
-  render() {
-    const scene = this.state.sceneEl;
-    const toggleButtonText = this.state.inspectorEnabled
-      ? 'Back to Scene'
-      : 'Inspect Scene';
+  render () {
+    // const scene = this.state.sceneEl;
+    // const toggleButtonText = this.state.inspectorEnabled
+    //   ? 'Back to Scene'
+    //   : 'Inspect Scene';
 
     return (
       <div>
@@ -183,7 +183,7 @@ export default class Main extends React.Component {
           </div> */}
         </div>
 
-        <ModalHelp
+        {/* <ModalHelp
           isOpen={this.state.isHelpOpen}
           onClose={this.onCloseHelpModal}
         />
@@ -192,7 +192,7 @@ export default class Main extends React.Component {
           isOpen={this.state.isModalTexturesOpen}
           selectedTexture={this.state.selectedTexture}
           onClose={this.onModalTextureOnClose}
-        />
+        /> */}
       </div>
     );
   }

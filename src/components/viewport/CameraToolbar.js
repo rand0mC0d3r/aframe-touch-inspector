@@ -1,6 +1,6 @@
 var React = require('react');
 var Events = require('../../lib/Events.js');
-var classNames = require('classnames');
+// var classNames = require('classnames');
 import Select from 'react-select';
 
 const options = [
@@ -10,7 +10,7 @@ const options = [
   { value: 'orthotop', event: 'cameraorthographictoggle', payload: 'top', label: 'Top View' },
   { value: 'orthobottom', event: 'cameraorthographictoggle', payload: 'bottom', label: 'Bottom View' },
   { value: 'orthoback', event: 'cameraorthographictoggle', payload: 'back', label: 'Back View' },
-  { value: 'orthofront', event: 'cameraorthographictoggle', payload: 'front', label: 'Front View' },
+  { value: 'orthofront', event: 'cameraorthographictoggle', payload: 'front', label: 'Front View' }
 ];
 
 function getOption (value) {
@@ -18,7 +18,7 @@ function getOption (value) {
 }
 
 export default class CameraToolbar extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       selectedCamera: 'perspective'
@@ -26,7 +26,7 @@ export default class CameraToolbar extends React.Component {
     this.justChangedCamera = false;
   }
 
-  componentDidMount() {
+  componentDidMount () {
     Events.on('cameratoggle', data => {
       if (this.justChangedCamera) {
         // Prevent recursion.
@@ -37,14 +37,14 @@ export default class CameraToolbar extends React.Component {
     });
   }
 
-  onChange(option) {
+  onChange (option) {
     console.log(option);
     this.justChangedCamera = true;
     this.setState({selectedCamera: option.value});
     Events.emit(option.event, option.payload);
   }
 
-  render() {
+  render () {
     return (
       <div id="cameraToolbar">
         <Select
