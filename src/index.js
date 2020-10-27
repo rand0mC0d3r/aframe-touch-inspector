@@ -8,6 +8,9 @@ import Viewport from  './lib/viewport';
 import AssetsLoader from './lib/assetsLoader';
 import Shortcuts from './lib/shortcuts';
 
+import { create } from 'jss';
+import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
+
 import { createEntity } from './lib/entity';
 import { GLTFExporter } from '../vendor/GLTFExporter'; // eslint-disable-line no-unused-vars
 
@@ -43,6 +46,12 @@ function Inspector () {
   doInit();
 }
 
+  const generateClassName = createGenerateClassName({
+    productionPrefix: 'inspector',
+    seed: 'inspector',
+    disableGlobal: true
+  });
+
 Inspector.prototype = {
   init: function () {
     // Wait for camera.
@@ -73,7 +82,9 @@ Inspector.prototype = {
     div.id = 'aframeInspector';
     div.setAttribute('data-aframe-inspector', 'app');
     document.body.appendChild(div);
-    ReactDOM.render(<Main />, div);
+    ReactDOM.render( <StylesProvider generateClassName={generateClassName}>
+      <Main />
+    </StylesProvider>, div);
 
     this.scene = this.sceneEl.object3D;
     this.helpers = {};
