@@ -11,9 +11,7 @@ import { initCameras } from './lib/cameras';
 import { createEntity } from './lib/entity';
 import { GLTFExporter } from '../vendor/GLTFExporter'; // eslint-disable-line no-unused-vars
 
-require('./style/index.styl');
-
-// import './index.css'
+import './index.css'
 
 function Inspector () {
   this.assetsLoader = new AssetsLoader();

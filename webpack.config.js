@@ -79,29 +79,33 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader'
       },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.styl$/,
-        exclude: /(node_modules)/,
-        loaders: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: { url: false }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: loader => [require('autoprefixer')()]
-            }
-          },
-          'stylus-loader'
-        ]
-      }
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style-loader!css-loader!postcss-loader'
+      // },
+      // {
+      //   test: /\.styl$/,
+      //   exclude: /(node_modules)/,
+      //   loaders: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: { url: false }
+      //     },
+      //     {
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         ident: 'postcss',
+      //         plugins: loader => [require('autoprefixer')()]
+      //       }
+      //     },
+      //     'stylus-loader'
+      //   ]
+      // }
     ]
   },
   plugins: plugins,
