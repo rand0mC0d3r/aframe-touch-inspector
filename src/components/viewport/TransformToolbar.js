@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsAlt, faRedo, faExpand } from '@fortawesome/free-solid-svg-icons';
+import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
+import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
+import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import IconButton from '@material-ui/core/IconButton';
 
 const Events = require('../../lib/Events.js');
