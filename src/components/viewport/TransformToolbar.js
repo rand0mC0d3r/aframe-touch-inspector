@@ -33,6 +33,7 @@ export default () => {
     {transformButtons.map((option, i) => <FontAwesomeIcon
       icon={option.icon}
       key={i}
+      size="lg"
       onClick={() => changeTransformMode(option.value)}
       title={option.value}
       active={option.value === selectedTransform ? true : false}

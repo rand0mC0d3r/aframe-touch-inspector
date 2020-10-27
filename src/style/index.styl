@@ -216,14 +216,19 @@ body.aframe-inspector-opened
     justify-content flex-end
 
   #inspectorContainer
-    display flex
-    justify-content space-between
-    left 15px
-    bottom: 200px
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+
+    left 0px
+    right 0px
     pointer-events none
     position fixed
-    top 100px;
-    width 300px
+    bottom 15px;
     z-index 999999
 
   #scenegraph,
