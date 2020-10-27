@@ -281,7 +281,7 @@ export default class SceneGraph extends React.Component {
 
     return (
       <div id="scenegraph" className="scenegraph">
-        <div className="scenegraph-toolbar">
+        {/* <div className="scenegraph-toolbar">
           <Toolbar />
           <div className="search">
             <input
@@ -294,7 +294,7 @@ export default class SceneGraph extends React.Component {
             {clearFilter}
             {!this.state.filter && <span className="fa fa-search" />}
           </div>
-        </div>
+        </div> */}
         <div
           className="outliner"
           tabIndex="0"

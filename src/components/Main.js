@@ -152,9 +152,9 @@ export default class Main extends React.Component {
 
     return (
       <div>
-        <a className="toggle-edit" onClick={this.toggleEdit}>
+        {/* <a className="toggle-edit" onClick={this.toggleEdit}>
           {toggleButtonText}
-        </a>
+        </a> */}
 
         {this.renderSceneGraphToggle()}
         {this.renderComponentsToggle()}
@@ -163,24 +163,24 @@ export default class Main extends React.Component {
           id="inspectorContainer"
           className={this.state.inspectorEnabled ? '' : 'hidden'}
         >
-          <SceneGraph
+          {/* <SceneGraph
             scene={scene}
             selectedEntity={this.state.entity}
             visible={this.state.visible.scenegraph}
-          />
+          /> */}
 
           <div id="viewportBar">
-            <CameraToolbar />
+            {/* <CameraToolbar /> */}
             <ViewportHUD />
             <TransformToolbar />
           </div>
 
-          <div id="rightPanel">
+          {/* <div id="rightPanel">
             <ComponentsSidebar
               entity={this.state.entity}
               visible={this.state.visible.attributes}
             />
-          </div>
+          </div> */}
         </div>
 
         <ModalHelp
