@@ -48,7 +48,7 @@
     "jest": "^16.0.1",
     "lodash.debounce": "^4.0.6",
     "object-assign": "^4.1.0",
-    "open": "0.0.5",
+    "open": "6.0.0",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.15.3",
     "prop-types": "^15.6.0",
