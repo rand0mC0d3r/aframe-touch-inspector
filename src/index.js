@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './components/Main';
 import { initCameras } from './lib/cameras';
-import { injectCSS, injectJS } from './lib/utils';
+// import { injectCSS, injectJS } from './lib/utils';
 import { createEntity } from './lib/entity';
 import { GLTFExporter } from '../vendor/GLTFExporter'; // eslint-disable-line no-unused-vars
 
@@ -103,11 +103,11 @@ Inspector.prototype = {
   },
 
   addHelper: (function () {
-    const geometry = new THREE.SphereBufferGeometry(2, 4, 2);
-    const material = new THREE.MeshBasicMaterial({
-      color: 0xff0000,
-      visible: false
-    });
+    // const geometry = new THREE.SphereBufferGeometry(2, 4, 2);
+    // const material = new THREE.MeshBasicMaterial({
+    //   color: 0xff0000,
+    //   visible: false
+    // });
 
     return function (object) {
       let helper;

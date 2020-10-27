@@ -1,7 +1,7 @@
 const Events = require('./Events');
 const debounce = require('lodash.debounce');
 
-function initRaycaster(inspector) {
+function initRaycaster (inspector) {
   // Use cursor="rayOrigin: mouse".
   const mouseCursor = document.createElement('a-entity');
   mouseCursor.setAttribute('id', 'aframeInspectorMouseCursor');
@@ -33,7 +33,7 @@ function initRaycaster(inspector) {
 
   inspector.sceneEl.addEventListener(
     'child-attached',
-    debounce(function() {
+    debounce(function () {
       mouseCursor.components.raycaster.refreshObjects();
     }, 250)
   );
@@ -55,18 +55,18 @@ function initRaycaster(inspector) {
   const onUpPosition = new THREE.Vector2();
   const onDoubleClickPosition = new THREE.Vector2();
 
-  function onMouseEnter() {
+  function onMouseEnter () {
     Events.emit('raycastermouseenter', mouseCursor.components.cursor.intersectedEl);
   }
 
-  function onMouseLeave() {
+  function onMouseLeave () {
     Events.emit(
       'raycastermouseleave',
       mouseCursor.components.cursor.intersectedEl
     );
   }
 
-  function handleClick(evt) {
+  function handleClick (evt) {
     // Check to make sure not dragging.
     const DRAG_THRESHOLD = 0.03;
     if (onDownPosition.distanceTo(onUpPosition) >= DRAG_THRESHOLD) {
@@ -75,7 +75,7 @@ function initRaycaster(inspector) {
     inspector.selectEntity(evt.detail.intersectedEl);
   }
 
-  function onMouseDown(event) {
+  function onMouseDown (event) {
     if (event instanceof CustomEvent) {
       return;
     }
@@ -88,7 +88,7 @@ function initRaycaster(inspector) {
     onDownPosition.fromArray(array);
   }
 
-  function onMouseUp(event) {
+  function onMouseUp (event) {
     if (event instanceof CustomEvent) {
       return;
     }
@@ -101,7 +101,7 @@ function initRaycaster(inspector) {
     onUpPosition.fromArray(array);
   }
 
-  function onTouchStart(event) {
+  function onTouchStart (event) {
     const touch = event.changedTouches[0];
     const array = getMousePosition(
       inspector.container,
@@ -111,7 +111,7 @@ function initRaycaster(inspector) {
     onDownPosition.fromArray(array);
   }
 
-  function onTouchEnd(event) {
+  function onTouchEnd (event) {
     const touch = event.changedTouches[0];
     const array = getMousePosition(
       inspector.container,
@@ -124,7 +124,7 @@ function initRaycaster(inspector) {
   /**
    * Focus on double click.
    */
-  function onDoubleClick(event) {
+  function onDoubleClick (event) {
     const array = getMousePosition(
       inspector.container,
       event.clientX,
@@ -150,7 +150,7 @@ function initRaycaster(inspector) {
 }
 module.exports.initRaycaster = initRaycaster;
 
-function getMousePosition(dom, x, y) {
+function getMousePosition (dom, x, y) {
   const rect = dom.getBoundingClientRect();
   return [(x - rect.left) / rect.width, (y - rect.top) / rect.height];
 }

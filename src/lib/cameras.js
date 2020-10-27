@@ -78,7 +78,7 @@ export function initCameras (inspector) {
   });
 
   return inspector.cameras;
-};
+}
 
 function saveOrthoCamera (camera, dir) {
   if (camera.type !== 'OrthographicCamera') { return; }
@@ -100,4 +100,3 @@ function setOrthoCamera (camera, dir, ratio) {
   camera.position.copy(info.position);
   camera.rotation.copy(info.rotation);
 }
-
