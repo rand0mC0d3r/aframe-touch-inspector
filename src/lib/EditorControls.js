@@ -252,7 +252,7 @@ THREE.EditorControls = function (_object, domElement) {
     pointerOld.set(event.clientX, event.clientY);
   }
 
-  function onMouseUp (event) {
+  function onMouseUp () {
     domElement.removeEventListener('mousemove', onMouseMove, false);
     domElement.removeEventListener('mouseup', onMouseUp, false);
     domElement.removeEventListener('mouseout', onMouseUp, false);
@@ -305,16 +305,16 @@ THREE.EditorControls = function (_object, domElement) {
     if (scope.enabled === false) return;
 
     switch (event.touches.length) {
-      case 1:
-        touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
-        touches[1].set(event.touches[0].pageX, event.touches[0].pageY, 0);
-        break;
+    case 1:
+      touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
+      touches[1].set(event.touches[0].pageX, event.touches[0].pageY, 0);
+      break;
 
-      case 2:
-        touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
-        touches[1].set(event.touches[1].pageX, event.touches[1].pageY, 0);
-        prevDistance = touches[0].distanceTo(touches[1]);
-        break;
+    case 2:
+      touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
+      touches[1].set(event.touches[1].pageX, event.touches[1].pageY, 0);
+      prevDistance = touches[0].distanceTo(touches[1]);
+      break;
     }
 
     prevTouches[0].copy(touches[0]);
@@ -339,35 +339,35 @@ THREE.EditorControls = function (_object, domElement) {
     }
 
     switch (event.touches.length) {
-      case 1:
-        touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
-        touches[1].set(event.touches[0].pageX, event.touches[0].pageY, 0);
-        scope.rotate(
+    case 1:
+      touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
+      touches[1].set(event.touches[0].pageX, event.touches[0].pageY, 0);
+      scope.rotate(
           touches[0]
             .sub(getClosest(touches[0], prevTouches))
             .multiplyScalar(-scope.rotationSpeed)
         );
-        break;
+      break;
 
-      case 2:
-        touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
-        touches[1].set(event.touches[1].pageX, event.touches[1].pageY, 0);
-        var distance = touches[0].distanceTo(touches[1]);
-        scope.zoom(delta.set(0, 0, prevDistance - distance));
-        prevDistance = distance;
+    case 2:
+      touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
+      touches[1].set(event.touches[1].pageX, event.touches[1].pageY, 0);
+      var distance = touches[0].distanceTo(touches[1]);
+      scope.zoom(delta.set(0, 0, prevDistance - distance));
+      prevDistance = distance;
 
-        var offset0 = touches[0]
+      var offset0 = touches[0]
           .clone()
           .sub(getClosest(touches[0], prevTouches));
-        var offset1 = touches[1]
+      var offset1 = touches[1]
           .clone()
           .sub(getClosest(touches[1], prevTouches));
-        offset0.x = -offset0.x;
-        offset1.x = -offset1.x;
+      offset0.x = -offset0.x;
+      offset1.x = -offset1.x;
 
-        scope.pan(offset0.add(offset1).multiplyScalar(0.5));
+      scope.pan(offset0.add(offset1).multiplyScalar(0.5));
 
-        break;
+      break;
     }
 
     prevTouches[0].copy(touches[0]);

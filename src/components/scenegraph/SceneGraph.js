@@ -127,13 +127,13 @@ export default class SceneGraph extends React.Component {
 
   onKeyDown = event => {
     switch (event.keyCode) {
-      case 37: // left
-      case 38: // up
-      case 39: // right
-      case 40: // down
-        event.preventDefault();
-        event.stopPropagation();
-        break;
+    case 37: // left
+    case 38: // up
+    case 39: // right
+    case 40: // down
+      event.preventDefault();
+      event.stopPropagation();
+      break;
     }
   };
 
@@ -143,24 +143,24 @@ export default class SceneGraph extends React.Component {
     }
 
     switch (event.keyCode) {
-      case 37: // left
-        if (this.isExpanded(this.props.selectedEntity)) {
-          this.toggleExpandedCollapsed(this.props.selectedEntity);
-        }
-        break;
-      case 38: // up
-        this.selectIndex(
+    case 37: // left
+      if (this.isExpanded(this.props.selectedEntity)) {
+        this.toggleExpandedCollapsed(this.props.selectedEntity);
+      }
+      break;
+    case 38: // up
+      this.selectIndex(
           this.previousExpandedIndexTo(this.state.selectedIndex)
         );
-        break;
-      case 39: // right
-        if (!this.isExpanded(this.props.selectedEntity)) {
-          this.toggleExpandedCollapsed(this.props.selectedEntity);
-        }
-        break;
-      case 40: // down
-        this.selectIndex(this.nextExpandedIndexTo(this.state.selectedIndex));
-        break;
+      break;
+    case 39: // right
+      if (!this.isExpanded(this.props.selectedEntity)) {
+        this.toggleExpandedCollapsed(this.props.selectedEntity);
+      }
+      break;
+    case 40: // down
+      this.selectIndex(this.nextExpandedIndexTo(this.state.selectedIndex));
+      break;
     }
   };
 

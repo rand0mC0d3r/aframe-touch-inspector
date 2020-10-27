@@ -537,8 +537,6 @@ export function printEntity (entity, onDoubleClick) {
     return '';
   }
 
-debugger;
-
   // Icons.
   let icons = '';
   for (let objType in ICONS) {
@@ -559,11 +557,24 @@ debugger;
     type = 'mixin';
   }
 
-  console.log('--------------------------');
-
   return (
-
-    <span>{entityName}</span>
+  <span className="entityPrint" onDoubleClick={onDoubleClick}>
+      <span className="entityTagName">
+        {'<' + entity.tagName.toLowerCase()}
+      </span>
+      {entityName && (
+        <span className="entityName" data-entity-name-type={type}>
+          &nbsp;{entityName}
+        </span>
+      )}
+      {!!icons && (
+        <span
+          className="entityIcons"
+          dangerouslySetInnerHTML={{ __html: icons }}
+        />
+      )}
+      <span className="entityCloseTag">{'>'}</span>
+    </span>
 
   );
 }
