@@ -1,23 +1,19 @@
-/* global VERSION BUILD_TIMESTAMP COMMIT_HASH webFont */
-// require('../vendor/ga');
-
 var Events = require('./lib/Events');
 var Viewport = require('./lib/viewport');
 var AssetsLoader = require('./lib/assetsLoader');
 var Shortcuts = require('./lib/shortcuts');
-
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './components/Main';
 import { initCameras } from './lib/cameras';
 
-// import './font-awesome';
-// import { injectCSS, injectJS } from './lib/utils';
 import { createEntity } from './lib/entity';
 import { GLTFExporter } from '../vendor/GLTFExporter'; // eslint-disable-line no-unused-vars
 
 require('./style/index.styl');
+
+// import './index.css'
 
 function Inspector () {
   this.assetsLoader = new AssetsLoader();
