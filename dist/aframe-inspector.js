@@ -798,6 +798,8 @@ function printEntity(entity, onDoubleClick) {
     return '';
   }
 
+  debugger;
+
   // Icons.
   var icons = '';
   for (var objType in ICONS) {
@@ -818,29 +820,12 @@ function printEntity(entity, onDoubleClick) {
     type = 'mixin';
   }
 
+  console.log('--------------------------');
+
   return _react2.default.createElement(
     'span',
-    { className: 'entityPrint', onDoubleClick: onDoubleClick },
-    _react2.default.createElement(
-      'span',
-      { className: 'entityTagName' },
-      '<' + entity.tagName.toLowerCase()
-    ),
-    entityName && _react2.default.createElement(
-      'span',
-      { className: 'entityName', 'data-entity-name-type': type },
-      '\xA0',
-      entityName
-    ),
-    !!icons && _react2.default.createElement('span', {
-      className: 'entityIcons',
-      dangerouslySetInnerHTML: { __html: icons }
-    }),
-    _react2.default.createElement(
-      'span',
-      { className: 'entityCloseTag' },
-      '>'
-    )
+    null,
+    entityName
   );
 }
 
@@ -2345,17 +2330,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Events = __webpack_require__(0);
 var classNames = __webpack_require__(16);
-var TransformButtons = [{ value: 'translate', icon: 'fa-arrows-alt' }, { value: 'rotate', icon: 'fa-repeat' }, { value: 'scale', icon: 'fa-expand' }];
-
-// eslint-disable-next-line react/display-name
+var transformButtons = [{ value: 'translate', icon: 'fa-arrows-alt' }, { value: 'rotate', icon: 'fa-repeat' }, { value: 'scale', icon: 'fa-expand' }];
 
 exports.default = function () {
-  // constructor (props) {
-  //   super(props);
-  //   this.state = {
-  //     selectedTransform: 'translate',
-  //     localSpace: false
-  //   };
   var _React$useState = _react2.default.useState('translate'),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedTransform = _React$useState2[0],
@@ -2376,48 +2353,30 @@ exports.default = function () {
       setLocalSpace(!localSpace);
     });
   }, []);
-  // componentDidMount () {
-  //   Events.on('transformmodechange', mode => {
-  //     this.setState({ selectedTransform: mode });
-  //   });
-
-  //   Events.on('transformspacechange', () => {
-  //     Events.emit(
-  //       'transformspacechanged',
-  //       this.state.localSpace ? 'world' : 'local'
-  //     );
-  //     this.setState({ localSpace: !this.state.localSpace });
-  //   });
-  // }
 
   var changeTransformMode = function changeTransformMode(mode) {
     setSelectedTransform(mode);
     Events.emit('transformmodechange', mode);
   };
 
-  var onLocalChange = function onLocalChange(e) {
-    var local = e.target.checked;
-    setLocalSpace(local);
-    Events.emit('transformspacechanged', local ? 'local' : 'world');
-  };
-
   var renderTransformButtons = function renderTransformButtons() {
-    return TransformButtons.map(function (option, i) {
+    return transformButtons.map(function (option, i) {
       var _classNames;
 
-      var selected = option.value === this.state.selectedTransform;
       var classes = classNames((_classNames = {
         button: true,
         fa: true
-      }, _defineProperty(_classNames, option.icon, true), _defineProperty(_classNames, 'active', selected), _classNames));
+      }, _defineProperty(_classNames, option.icon, true), _defineProperty(_classNames, 'active', option.value === selectedTransform), _classNames));
 
       return _react2.default.createElement('a', {
         title: option.value,
         key: i,
-        onClick: this.changeTransformMode.bind(this, option.value),
+        onClick: function onClick() {
+          return changeTransformMode(option.value);
+        },
         className: classes
       });
-    }.bind(undefined));
+    });
   };
 
   return _react2.default.createElement(
@@ -4775,7 +4734,6 @@ function Viewport(inspector) {
         element.style.display = 'block';
       });
     }
-    ga('send', 'event', 'Viewport', 'toggleEditor', active);
   });
 }
 

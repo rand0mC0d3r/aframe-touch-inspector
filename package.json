@@ -25,6 +25,11 @@
   "repository": "aframevr/aframe-inspector",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "autoprefixer": "^9.4.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^6.1.0",

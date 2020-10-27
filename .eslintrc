@@ -1,32 +1,30 @@
 {
-  "extends": "eslint:recommended",
-  "rules": {
-    "react/jsx-indent-props": [2, 2],
-    "semi": [2, "always"],
-    "no-console": "off"
-  },
   "env": {
-    "es6": true,
     "browser": true,
-    "node": true
+    "es6": true,
+    "node": true,
+    "jest": true
   },
-  "globals": {
-    "AFRAME": true,
-    "ga": true,
-    "THREE": true
-  },
+  "extends": "eslint:recommended",
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 7,
-    "sourceType": "module",
     "ecmaFeatures": {
-      "classes": true,
-      "modules": true,
+      "experimentalObjectRestSpread": true,
       "jsx": true,
-      "experimentalObjectRestSpread": true
-     }
+      "modules": true
+    },
+    "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ]
+  "plugins": ["react"],
+  "rules": {
+    "comma-dangle": ["error", "only-multiline"],
+    "indent": ["error", 2],
+    "no-console": "off",
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2
+  }
 }

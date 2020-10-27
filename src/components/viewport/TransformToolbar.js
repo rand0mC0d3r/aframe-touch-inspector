@@ -1,11 +1,12 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowsAlt, faRedo, faExpand } from '@fortawesome/free-solid-svg-icons';
 
 const Events = require('../../lib/Events.js');
-const classNames = require('classnames');
 const transformButtons = [
-  { value: 'translate', icon: 'fa-arrows-alt' },
-  { value: 'rotate', icon: 'fa-repeat' },
-  { value: 'scale', icon: 'fa-expand' }
+  { value: 'translate', icon: faArrowsAlt },
+  { value: 'rotate', icon: faRedo },
+  { value: 'scale', icon: faExpand }
 ];
 
 export default () => {
@@ -28,28 +29,13 @@ export default () => {
     Events.emit('transformmodechange', mode);
   };
 
-  const renderTransformButtons = () => {
-    return transformButtons.map((option, i) => {
-        const classes = classNames({
-          button: true,
-          fa: true,
-          [option.icon]: true,
-          active: option.value === selectedTransform
-        });
-
-        return (
-          <a
-            title={option.value}
-            key={i}
-            onClick={() => changeTransformMode(option.value)}
-            className={classes}
-          />
-        );
-      }
-    );
-  };
-
   return <div id="transformToolbar" className="toolbarButtons">
-    {renderTransformButtons()}
+    {transformButtons.map((option, i) => <FontAwesomeIcon
+      icon={option.icon}
+      key={i}
+      onClick={() => changeTransformMode(option.value)}
+      title={option.value}
+      active={option.value === selectedTransform}
+   />)}
   </div>;
 };
