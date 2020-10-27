@@ -35,7 +35,7 @@ export default () => {
       key={i}
       onClick={() => changeTransformMode(option.value)}
       title={option.value}
-      active={option.value === selectedTransform}
+      active={option.value === selectedTransform ? true : false}
    />)}
   </div>;
 };

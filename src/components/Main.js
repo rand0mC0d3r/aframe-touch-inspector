@@ -1,21 +1,10 @@
 import React from 'react';
-// import '../font-awesome';
-
 
 THREE.ImageUtils.crossOrigin = '';
 
 const Events = require('../lib/Events.js');
-// import ComponentsSidebar from './components/Sidebar';
-// import ModalTextures from './modals/ModalTextures';
-// import ModalHelp from './modals/ModalHelp';
-// import SceneGraph from './scenegraph/SceneGraph';
-// import CameraToolbar from './viewport/CameraToolbar';
 import TransformToolbar from './viewport/TransformToolbar';
 import ViewportHUD from './viewport/ViewportHUD';
-// import { injectCSS } from '../lib/utils';
-
-// Megahack to include font-awesome.
-// injectCSS('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 
 export default class Main extends React.Component {
   constructor (props) {
@@ -91,7 +80,7 @@ export default class Main extends React.Component {
       this.setState({ isHelpOpen: true });
     });
   }
-  onCloseHelpModal = value => {
+  onCloseHelpModal = () => {
     this.setState({ isHelpOpen: false });
   };
 

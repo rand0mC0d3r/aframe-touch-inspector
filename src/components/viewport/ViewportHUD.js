@@ -1,31 +1,21 @@
-var React = require('react');
+import React from 'react';
 var Events = require('../../lib/Events.js');
 import { printEntity } from '../../lib/entity';
 
-export default class ViewportHUD extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      hoveredEntity: null,
-      selectedEntity: null
-    };
-  }
+export default () => {
+  const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
 
-  componentDidMount () {
+  React.useEffect(() => {
     Events.on('raycastermouseenter', el => {
-      this.setState({ hoveredEntity: el });
+      setHoveredEntity(el);
     });
 
     Events.on('raycastermouseleave', el => {
-      this.setState({ hoveredEntity: el });
+      setHoveredEntity(el);
     });
-  }
+  }, []);
 
-  render () {
-    return (
-      <div id="viewportHud">
-        <p>{printEntity(this.state.hoveredEntity)}</p>
-      </div>
-    );
-  }
-}
+  return <div id="viewportHud">
+    <p>{printEntity(hoveredEntity)}</p>
+  </div>;
+};
