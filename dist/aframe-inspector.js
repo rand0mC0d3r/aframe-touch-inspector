@@ -16949,7 +16949,7 @@ exports = module.exports = __webpack_require__(79)();
 
 
 // module
-exports.push([module.i, "\n#aframeInspector #inspectorContainer {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: center;\n    align-content: stretch;\n    align-items: center;\n\n    left: 0px;\n    right: 0px;\n    pointer-events: none;\n    position: fixed;\n    bottom: 15px;\n    z-index: 999999;\n}\n\n#aframeInspector #viewportBar {\n    align-items: center;\n    display: flex;\n    pointer-events: all;\n    height: 50px;\n    font-size: 14px;\n    justify-content: space-between;\n    margin: 0 auto;\n    background-color: #f1f3f4;\n    border-radius: 8px;\n    box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;\n}\n\n#aframeInspector #viewportHud {\n    width: 200px;\n}", ""]);
+exports.push([module.i, "\n#aframeInspector #inspectorContainer {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: center;\n    align-content: stretch;\n    align-items: center;\n\n    left: 0px;\n    right: 0px;\n    pointer-events: none;\n    position: fixed;\n    bottom: 15px;\n    z-index: 999;\n}\n\n#aframeInspector #viewportBar {\n    align-items: center;\n    display: flex;\n    pointer-events: all;\n    height: 50px;\n    font-size: 14px;\n    justify-content: space-between;\n    margin: 0 auto;\n    background-color: #f1f3f4;\n    border-radius: 8px;\n    box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;\n}\n\n#aframeInspector #viewportHud {\n    width: 200px;\n}", ""]);
 
 // exports
 

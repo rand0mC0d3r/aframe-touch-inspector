@@ -1,12 +1,20 @@
 import React from 'react';
 import TransformToolbar from './viewport/TransformToolbar';
 import ViewportHUD from './viewport/ViewportHUD';
+import Viewport from './viewport';
 import Events from '../lib/Events';
+import SceneGraph from './scenegraph/SceneGraph';
+
+import {
+  DetectionContainer,
+  InspectorContainer
+ } from './styles.jsx';
 
 THREE.ImageUtils.crossOrigin = '';
 
 export default () => {
   const [ entity, setEntity ] = React.useState(null);
+  const [ sceneEl, setSceneEl ] = React.useState(AFRAME.scenes[0]);
   const [ inspectorEnabled, setInspectorEnabled ] = React.useState(true);
   const [ visibleScenegraph, setVisibleScenegraph ] = React.useState(true);
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
@@ -39,10 +47,12 @@ export default () => {
     });
   }, []);
 
-  return <div id="inspectorContainer" className={inspectorEnabled ? '' : 'hidden'}>
-    <div id="viewportBar">
-      <ViewportHUD />
-      <TransformToolbar />
-    </div>
-  </div>;
+  return <InspectorContainer className={inspectorEnabled ? '' : 'hidden'}>
+   <SceneGraph
+      scene={sceneEl}
+      selectedEntity={entity}
+      visible={visibleScenegraph}
+    />
+    <Viewport />
+  </InspectorContainer>;
 }
