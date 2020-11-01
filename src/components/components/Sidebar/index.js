@@ -1,45 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ComponentsContainer from './ComponentsContainer';
-import Events from '../../lib/Events';
+import ComponentsContainer from './../ComponentsContainer';
+import Events from '../../../lib/Events';
 
-export default class Sidebar extends React.Component {
-  static propTypes = {
-    entity: PropTypes.object,
-    visible: PropTypes.bool
-  };
+export default ({
+    entity = {},
+    visible = false,
+  }) => {
+  const [ open, setOpen ] = React.useState(false);
 
-  constructor(props) {
-    super(props);
-    this.state = { open: false };
-  }
+  React.useEffect(() => {
 
-  componentDidMount() {
     Events.on('componentremove', event => {
-      this.forceUpdate();
+      forceUpdate();
     });
 
     Events.on('componentadd', event => {
-      this.forceUpdate();
+      forceUpdate();
     });
-  }
+  }, [])
 
-  handleToggle = () => {
-    this.setState({ open: !this.state.open });
-    ga('send', 'event', 'Components', 'toggleSidebar');
+  const handleToggle = () => {
+    setOpen(!open);
   };
 
-  render() {
-    const entity = this.props.entity;
-    const visible = this.props.visible;
-    if (entity && visible) {
-      return (
-        <div id="sidebar">
-          <ComponentsContainer entity={entity} />
-        </div>
-      );
-    } else {
-      return <div />;
-    }
-  }
+  return <React.Fragment>
+    {entity && visible && <div id="sidebar">
+      <ComponentsContainer entity={entity} />
+    </div>}
+  </React.Fragment>;
 }

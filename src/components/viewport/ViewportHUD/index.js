@@ -4,7 +4,7 @@ import { printEntity } from '../../../lib/entity';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton } from '@material-ui/core';
 
 import { Container } from './styles.jsx';
 

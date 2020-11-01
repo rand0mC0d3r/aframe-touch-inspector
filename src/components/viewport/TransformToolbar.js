@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton } from '@material-ui/core';
 import Events from '../../lib/Events';
 
 const transformButtons = [
