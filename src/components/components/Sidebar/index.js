@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ComponentsContainer from './../ComponentsContainer';
 import Events from '../../../lib/Events';
 
+import { Container } from './styles.jsx';
+
 export default ({
     entity = {},
     visible = false,
@@ -25,8 +27,8 @@ export default ({
   };
 
   return <React.Fragment>
-    {entity && visible && <div id="sidebar">
+    {entity && visible && <Container>
       <ComponentsContainer entity={entity} />
-    </div>}
+    </Container>}
   </React.Fragment>;
 }

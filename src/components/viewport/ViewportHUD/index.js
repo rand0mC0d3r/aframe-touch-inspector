@@ -1,6 +1,7 @@
 import React from 'react';
 import Events from '../../../lib/Events';
 import { printEntity } from '../../../lib/entity';
+import ComponentsSidebar from '../../components/Sidebar';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
@@ -8,7 +9,10 @@ import { IconButton } from '@material-ui/core';
 
 import { Container } from './styles.jsx';
 
-export default () => {
+export default ({
+    entity = {},
+    visible = false,
+  }) => {
   const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
 
   const addEntity = () => {
@@ -29,6 +33,11 @@ export default () => {
     <IconButton onClick={addEntity} title={`Add new Entity`} >
       <FontAwesomeIcon icon={faPlus} size="sm" />
    </IconButton>
+
+    <ComponentsSidebar
+      entity={entity}
+      visible={visible}
+    />
     <p>{printEntity(hoveredEntity)}</p>
   </Container>;
 };

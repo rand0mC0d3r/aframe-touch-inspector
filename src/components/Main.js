@@ -4,7 +4,6 @@ import ViewportHUD from './viewport/ViewportHUD';
 import Viewport from './viewport';
 import Events from '../lib/Events';
 import SceneGraph from './scenegraph/SceneGraph';
-import ComponentsSidebar from './components/Sidebar';
 
 import {
   DetectionContainer,
@@ -54,8 +53,7 @@ export default () => {
       selectedEntity={entity}
       visible={visibleScenegraph}
     />
-    <Viewport />
-    <ComponentsSidebar
+    <Viewport
       entity={entity}
       visible={visibleAttributes}
     />
