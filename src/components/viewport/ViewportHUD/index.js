@@ -1,7 +1,6 @@
 import React from 'react';
 import Events from '../../../lib/Events';
 import { printEntity } from '../../../lib/entity';
-import ComponentsSidebar from '../../components/Sidebar';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
@@ -33,11 +32,6 @@ export default ({
     <IconButton onClick={addEntity} title={`Add new Entity`} >
       <FontAwesomeIcon icon={faPlus} size="sm" />
    </IconButton>
-
-    <ComponentsSidebar
-      entity={entity}
-      visible={visible}
-    />
     <p>{printEntity(hoveredEntity)}</p>
   </Container>;
 };

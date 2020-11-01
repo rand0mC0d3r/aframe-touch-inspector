@@ -1,6 +1,7 @@
 import React from 'react';
 import TransformToolbar from './TransformToolbar';
 import ViewportHUD from './ViewportHUD';
+import ComponentsSidebar from '../components/Sidebar';
 
 import {
     DetectionContainer,
@@ -10,14 +11,17 @@ import {
 
 THREE.ImageUtils.crossOrigin = '';
 
-export default () => {
-  return <DetectionContainer>
-        <ToolsBar>
-        test
-        </ToolsBar>
-        <ViewportBar>
-            <ViewportHUD />
-            <TransformToolbar />
-        </ViewportBar>
-    </DetectionContainer>;
+export default ({
+    entity = {},
+    visible = false,
+}) => <DetectionContainer>
+    <ViewportBar>
+        <ComponentsSidebar
+            entity={entity}
+            visible={visible}
+        />
+        <ViewportHUD />
+        <TransformToolbar />
+    </ViewportBar>
+</DetectionContainer>;
 }
