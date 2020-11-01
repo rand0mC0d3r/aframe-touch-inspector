@@ -546,6 +546,12 @@ export function printEntity (entity, onDoubleClick) {
     icons += `&nbsp;<i class="fa ${ICONS[objType]}" title="${objType}"></i>`;
   }
 
+  let geometryName = '';
+  if(entity.components && Object.keys(entity.components).includes('geometry')) {
+      geometryName = entity.components.geometry.data.primitive;
+  }
+
+
   // Name.
   let entityName = entity.id;
   let type = 'id';
@@ -573,6 +579,7 @@ export function printEntity (entity, onDoubleClick) {
           dangerouslySetInnerHTML={{ __html: icons }}
         />
       )}
+      {geometryName}
       <span className="entityCloseTag">{'>'}</span>
     </span>
 

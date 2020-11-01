@@ -17,3 +17,9 @@ export const Container = styled.div`
     border-radius: 8px;
     box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;
 `;
+
+export const EntitiesList = styled.div`
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+`;

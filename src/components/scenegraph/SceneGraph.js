@@ -10,6 +10,7 @@ const Events = require('../../lib/Events.js');
 
 import {
   Container,
+  EntitiesList,
  } from './styles.jsx';
 
 export default class SceneGraph extends React.Component {
@@ -51,6 +52,7 @@ export default class SceneGraph extends React.Component {
     this.rebuildEntityOptions();
     Events.on('entityidchange', this.rebuildEntityOptions);
     Events.on('entitycreated', this.rebuildEntityOptions);
+    Events.on('entityclone', this.rebuildEntityOptions);
   }
 
   /**
@@ -252,6 +254,7 @@ export default class SceneGraph extends React.Component {
   };
 
   renderEntities = () => {
+    console.log('re-dender')
     return this.state.filteredEntities.map((entityOption, idx) => {
       if (
         !this.isVisibleInSceneGraph(entityOption.entity) &&
@@ -298,14 +301,14 @@ export default class SceneGraph extends React.Component {
             {!this.state.filter && <span className="fa fa-search" />}
           </div>
         </div>
-        <div
+        <EntitiesList
           className="outliner"
           tabIndex="0"
           onKeyDown={this.onKeyDown}
           onKeyUp={this.onKeyUp}
         >
           {this.renderEntities()}
-        </div>
+        </EntitiesList>
       </Container>;
   }
 }
