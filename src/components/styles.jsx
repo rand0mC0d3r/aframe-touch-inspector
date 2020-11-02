@@ -4,7 +4,7 @@ export const DetectionContainer = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
 `;
 
 export const InspectorContainer = styled.div`
@@ -21,6 +21,6 @@ export const InspectorContainer = styled.div`
     right: 0px;
     pointer-events: none;
     position: fixed;
-    bottom: 15px;
+    bottom: 0px;
     z-index: 999;
 `;

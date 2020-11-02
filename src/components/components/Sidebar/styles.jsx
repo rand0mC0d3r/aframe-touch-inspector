@@ -33,7 +33,7 @@ export const ContainerWrapper = styled.div`
     height: 220px;
 
     position: absolute;
-    bottom: 50px;
+    bottom: 46px;
     // padding: 15px;
 
 

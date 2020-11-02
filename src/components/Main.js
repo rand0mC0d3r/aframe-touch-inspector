@@ -47,19 +47,17 @@ export default () => {
     });
   }, []);
 
-  return <InspectorContainer className={inspectorEnabled ? '' : 'hidden'}>
-   <SceneGraph
-      scene={sceneEl}
-      selectedEntity={entity}
-      visible={visibleScenegraph}
-    />
-    <Viewport
-      entity={entity}
-      visible={visibleAttributes}
-    />
-    {/* <ComponentsSidebar
-      entity={entity}
-      visible={visibleAttributes}
-    /> */}
-  </InspectorContainer>;
+  return <React.Fragment>
+    {inspectorEnabled && <InspectorContainer>
+    <SceneGraph
+        scene={sceneEl}
+        selectedEntity={entity}
+        visible={visibleScenegraph}
+      />
+      <Viewport
+        entity={entity}
+        visible={visibleAttributes}
+      />
+    </InspectorContainer>}
+  </React.Fragment>;
 }

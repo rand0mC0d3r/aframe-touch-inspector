@@ -4,7 +4,8 @@ export const InputField = styled.input`
     width: 65px;
     text-align: center;
     padding: 5px;
-    border-radius: 8px;
-    border: 1px solid #888;
+    border-radius: 5px;
     box-sizing: unset;
+    border: 0px none;
+    margin-right: 5px;
 `;
