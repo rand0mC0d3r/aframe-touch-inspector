@@ -9,12 +9,14 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Emoji from './../components/atoms/Emoji';
 
 import Entity from './Entity';
+import EntityList from './EntityList';
 import Toolbar from './Toolbar';
 const Events = require('../../lib/Events.js');
 
 import {
   Container,
-  EntitiesList,
+  // EntitiesList,
+  BottomBar,
  } from './styles.jsx';
 
 export default class SceneGraph extends React.Component {
@@ -292,9 +294,8 @@ export default class SceneGraph extends React.Component {
 
     return <Container>
         <div className="scenegraph-toolbar">
-          {/* <Toolbar /> */}
-          <div className="search">
             <TextField
+              fullWidth
               label="Search..."
               variant="outlined"
               id="filter"
@@ -312,16 +313,13 @@ export default class SceneGraph extends React.Component {
             />
             {clearFilter}
             {!this.state.filter && <span className="fa fa-search" />}
-          </div>
         </div>
-        <EntitiesList
-          className="outliner"
-          tabIndex="0"
+        <EntityList
           onKeyDown={this.onKeyDown}
           onKeyUp={this.onKeyUp}
-        >
-          {this.renderEntities()}
-        </EntitiesList>
+          items={this.renderEntities()}
+        />
+
       </Container>;
   }
 }

@@ -19,8 +19,13 @@ export const Container = styled.div`
     box-shadow: rgb(0 0 0) 0px 0px 10px -9px, rgb(0 0 0) 0px 0px 10px -9px, rgb(0 0 0) 0px 0px 10px -9px;
 `;
 
+export const BottomBar = styled.div`
+
+`;
+
 export const EntitiesList = styled.div`
     height: 300px;
     overflow-x: hidden;
     overflow-y: auto;
+    outline: none;
 `;

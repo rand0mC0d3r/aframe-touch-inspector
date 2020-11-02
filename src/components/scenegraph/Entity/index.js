@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { printEntity, removeEntity, cloneEntity } from '../../../lib/entity';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
@@ -10,7 +9,10 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 
 import Events from '../../../lib/Events';
 
-import { Container } from './styles.jsx';
+import {
+  Container,
+  VisibleIcon
+} from './styles.jsx';
 
 export default ({
     depth = 0,
@@ -47,26 +49,19 @@ export default ({
     } else {
       collapse = <span className="collapsespace" />;
     }
-    // Class name.
-    const className = classnames({
-      active: isSelected,
-      entity: true,
-      // novisible: !visible,
-      option: true
-    });
 
     return (
-      <Container active={isSelected} className={className} onClick={onClick}>
+      <Container active={isSelected} onClick={onClick}>
         <span>
 
-      <FontAwesomeIcon
-        title="Toggle entity visibility"
-        onClick={toggleVisibility}
-            icon={(tagName === 'a-scene' ?
-              entity.object3D.visible :
-              entity.getAttribute('visible')) ?
-                faEye :
-                faEyeSlash}
+        <VisibleIcon
+          title="Toggle entity visibility"
+          onClick={toggleVisibility}
+          icon={(tagName === 'a-scene' ?
+            entity.object3D.visible :
+            entity.getAttribute('visible')) ?
+              faEye :
+              faEyeSlash}
         />
 
 
