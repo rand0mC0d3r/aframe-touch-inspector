@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import debounce from 'lodash.debounce';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+import Emoji from './../components/atoms/Emoji';
 
 import Entity from './Entity';
 import Toolbar from './Toolbar';
@@ -288,14 +292,23 @@ export default class SceneGraph extends React.Component {
 
     return <Container>
         <div className="scenegraph-toolbar">
-          <Toolbar />
+          {/* <Toolbar /> */}
           <div className="search">
-            <input
+            <TextField
+              label="Search..."
+              variant="outlined"
               id="filter"
               placeholder="Search..."
               onChange={this.onChangeFilter}
               onKeyUp={this.onFilterKeyUp}
               value={this.state.filter}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Emoji symbol="🔍" label="Search" />
+                  </InputAdornment>
+                ),
+              }}
             />
             {clearFilter}
             {!this.state.filter && <span className="fa fa-search" />}

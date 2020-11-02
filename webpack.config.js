@@ -43,11 +43,11 @@ var plugins = [
 const minimizers = [];
 
 if (process.env.MINIFY === 'true') {
-  minimizers.push(
-    new UglifyJsPlugin({
-      sourceMap: true
-    })
-  );
+  // minimizers.push(
+  //   new UglifyJsPlugin({
+  //     sourceMap: true
+  //   })
+  // );
 }
 
 // dist/
