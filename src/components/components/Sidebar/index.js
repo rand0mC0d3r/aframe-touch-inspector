@@ -12,6 +12,7 @@ import Popover from '@material-ui/core/Popover';
 import {
   Container,
   Wrapper,
+  ContainerWrapper,
   EntityContainer
 } from './styles.jsx';
 
@@ -57,15 +58,19 @@ export default ({
 
   return <Wrapper>
 
-      {entity && visible && <Container>
-      <ComponentsContainer entity={entity} />
-      </Container>}
+      {entity && visible &&
+        <ContainerWrapper>
+          <Container>
+            <ComponentsContainer entity={entity} />
+          </Container>
+        </ContainerWrapper>
+      }
 
-    <EntityContainer>
+    {/* <EntityContainer> */}
       <div>{printEntity(hoveredEntity)}</div>
-      <IconButton onClick={() => setVisible(!visible)} title={`Add new Entity`} >
+      <IconButton onClick={() => setVisible(!visible)}>
         <FontAwesomeIcon icon={faSlidersH} size="sm" />
       </IconButton>
-    </EntityContainer>
+    {/* </EntityContainer> */}
   </Wrapper>;
 }
