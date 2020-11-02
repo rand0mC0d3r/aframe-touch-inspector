@@ -3,19 +3,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import debounce from 'lodash.debounce';
+import { removeEntity, cloneEntity } from '../../lib/entity';
 import TextField from '@material-ui/core/TextField';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 import Emoji from './../components/atoms/Emoji';
 
 import Entity from './Entity';
-import EntityList from './EntityList';
+// import EntityList from './EntityList';
 import Toolbar from './Toolbar';
 const Events = require('../../lib/Events.js');
 
 import {
   Container,
-  // EntitiesList,
+  EntitiesList,
   BottomBar,
  } from './styles.jsx';
 
@@ -314,12 +318,33 @@ export default class SceneGraph extends React.Component {
             {clearFilter}
             {!this.state.filter && <span className="fa fa-search" />}
         </div>
-        <EntityList
+        <EntitiesList
+          className="outliner"
+          tabIndex="0"
           onKeyDown={this.onKeyDown}
           onKeyUp={this.onKeyUp}
-          items={this.renderEntities()}
-        />
+        >
+          {this.renderEntities()}
+        </EntitiesList>
+        <div>
+          create
+          {this.props.selectedEntity && <React.Fragment>
+            <FontAwesomeIcon
+              onClick={() => cloneEntity(this.props.selectedEntity)}
+              icon={faClone}
+            />}
 
+            <FontAwesomeIcon
+              onClick={event => {
+                  event.stopPropagation();
+                  removeEntity(this.props.selectedEntity);
+              }}
+              title="Remove entity"
+              icon={faTrash}
+            />
+          </React.Fragment>}
+
+        </div>
       </Container>;
   }
 }

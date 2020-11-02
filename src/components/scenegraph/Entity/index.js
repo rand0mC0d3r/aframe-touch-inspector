@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { printEntity, removeEntity, cloneEntity } from '../../../lib/entity';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
-import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 
@@ -53,7 +50,6 @@ export default ({
     return (
       <Container active={isSelected} onClick={onClick}>
         <span>
-
         <VisibleIcon
           title="Toggle entity visibility"
           onClick={toggleVisibility}
@@ -63,33 +59,12 @@ export default ({
               faEye :
               faEyeSlash}
         />
-
-
-
           <span
             className="entityChildPadding"
             dangerouslySetInnerHTML={{ __html: pad }}
           />
           {collapse}
           {printEntity(entity, onDoubleClick)}
-        </span>
-        <span className="entityActions">
-
-          {isSelected && <React.Fragment>
-            {tagName !== 'a-scene' && <FontAwesomeIcon
-              onClick={() => cloneEntity(entity)}
-              icon={faClone}
-            />}
-
-            {tagName !== 'a-scene' &&  <FontAwesomeIcon
-              onClick={event => {
-                  event.stopPropagation();
-                  removeEntity(entity);
-              }}
-              title="Remove entity"
-              icon={faTrash}
-            />}
-          </React.Fragment>}
         </span>
       </Container>
     );
