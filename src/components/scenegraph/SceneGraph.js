@@ -8,9 +8,12 @@ import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { IconButton } from '@material-ui/core';
 
-import Emoji from './../components/atoms/Emoji';
+import Emoji from './../atoms/Emoji';
+import AddEntity from './../atoms/AddEntity';
 
 import Entity from './Entity';
 // import EntityList from './EntityList';
@@ -19,7 +22,11 @@ const Events = require('../../lib/Events.js');
 
 import {
   Container,
+  HeaderIcon,
+  SearchField,
   EntitiesList,
+  HeaderLabel,
+  HeaderContainer,
   BottomBar,
  } from './styles.jsx';
 
@@ -297,11 +304,15 @@ export default class SceneGraph extends React.Component {
     ) : null;
 
     return <Container>
-        <div className="scenegraph-toolbar">
-            <TextField
+        <HeaderContainer>
+          <HeaderLabel>Layers</HeaderLabel>
+          <HeaderIcon icon={faLayerGroup} />
+        </HeaderContainer>
+            <SearchField
               fullWidth
+              size="small"
               label="Search..."
-              variant="outlined"
+              variant="filled"
               id="filter"
               placeholder="Search..."
               onChange={this.onChangeFilter}
@@ -315,9 +326,6 @@ export default class SceneGraph extends React.Component {
                 ),
               }}
             />
-            {clearFilter}
-            {!this.state.filter && <span className="fa fa-search" />}
-        </div>
         <EntitiesList
           className="outliner"
           tabIndex="0"
@@ -327,21 +335,24 @@ export default class SceneGraph extends React.Component {
           {this.renderEntities()}
         </EntitiesList>
         <div>
-          create
+          <AddEntity />
           {this.props.selectedEntity && <React.Fragment>
-            <FontAwesomeIcon
-              onClick={() => cloneEntity(this.props.selectedEntity)}
-              icon={faClone}
-            />}
+          <IconButton
+            onClick={() => cloneEntity(this.props.selectedEntity)}
+            title="Clone Entity"
+          >
+            <FontAwesomeIcon size="xs" icon={faClone}/>
+          </IconButton>
 
-            <FontAwesomeIcon
-              onClick={event => {
+          <IconButton
+            onClick={event => {
                   event.stopPropagation();
                   removeEntity(this.props.selectedEntity);
-              }}
-              title="Remove entity"
-              icon={faTrash}
-            />
+            }}
+            title="Remove entity"
+          >
+            <FontAwesomeIcon size="xs" icon={faTrash} />
+            </IconButton>
           </React.Fragment>}
 
         </div>

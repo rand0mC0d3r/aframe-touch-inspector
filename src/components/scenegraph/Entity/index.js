@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { printEntity, removeEntity, cloneEntity } from '../../../lib/entity';
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons/faCaretRight';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 
 import Events from '../../../lib/Events';
 
 import {
   Container,
+  ExpandIcon,
   VisibleIcon
 } from './styles.jsx';
 
@@ -63,7 +66,10 @@ export default ({
             className="entityChildPadding"
             dangerouslySetInnerHTML={{ __html: pad }}
           />
-          {collapse}
+          {entity.children.length > 0 && !isFiltering && <ExpandIcon
+            onClick={() => toggleExpandedCollapsed(entity)}
+            icon={isExpanded ? faCaretDown : faCaretRight}
+          />}
           {printEntity(entity, onDoubleClick)}
         </span>
       </Container>

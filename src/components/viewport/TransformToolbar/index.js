@@ -4,7 +4,9 @@ import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import { IconButton } from '@material-ui/core';
-import Events from '../../lib/Events';
+import Events from '../../../lib/Events';
+
+import { TransformationIcon } from './styles.jsx';
 
 const transformButtons = [
   { value: 'translate', icon: faArrowsAlt },
@@ -35,14 +37,15 @@ export default () => {
   return <div id="transformToolbar" className="toolbarButtons">
     {transformButtons.map((option, i) => <IconButton
       key={i}
+      color={option.value === selectedTransform ? 'primary' : 'default'}
       onClick={() => changeTransformMode(option.value)}
       title={`Toggle ${option.value}`}
     >
-      <FontAwesomeIcon
+      <TransformationIcon
         icon={option.icon}
+        active={option.value === selectedTransform ? 1 : 0}
         size="sm"
         fixedWidth
-        // active={option.value === selectedTransform ? true : false}
     />
    </IconButton>)}
   </div>;

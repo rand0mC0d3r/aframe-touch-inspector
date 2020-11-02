@@ -1,6 +1,5 @@
 import React from 'react';
 import TransformToolbar from './viewport/TransformToolbar';
-import ViewportHUD from './viewport/ViewportHUD';
 import Viewport from './viewport';
 import Events from '../lib/Events';
 import SceneGraph from './scenegraph/SceneGraph';
