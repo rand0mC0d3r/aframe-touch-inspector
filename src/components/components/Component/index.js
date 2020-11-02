@@ -1,11 +1,13 @@
 /* global AFRAME */
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropertyRow from './PropertyRow';
-import Collapsible from '../Collapsible';
+import PropertyRow from './../PropertyRow';
+import Collapsible from '../../Collapsible';
 import Clipboard from 'clipboard';
-import { getComponentClipboardRepresentation } from '../../lib/entity';
-import Events from '../../lib/Events';
+import { getComponentClipboardRepresentation } from '../../../lib/entity';
+import Events from '../../../lib/Events';
+
+import { ComponentTitle } from './styles.jsx';
 
 const isSingleProperty = AFRAME.schema.isSingleProperty;
 
@@ -137,11 +139,9 @@ export default class Component extends React.Component {
     return (
       <Collapsible collapsed={this.props.isCollapsed}>
         <div className="componentHeader collapsible-header">
-          <span
-            className="componentTitle"
-            title={subComponentName || componentName}>
+          <ComponentTitle title={subComponentName || componentName}>
             <span>{subComponentName || componentName}</span>
-          </span>
+          </ComponentTitle>
           <div className="componentHeaderActions">
             <a
               title="Copy to clipboard"

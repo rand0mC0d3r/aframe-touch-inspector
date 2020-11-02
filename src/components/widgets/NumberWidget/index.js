@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { InputField } from './styles.jsx';
+
 export default class NumberWidget extends React.Component {
   static propTypes = {
     componentname: PropTypes.string,
@@ -154,7 +156,7 @@ export default class NumberWidget extends React.Component {
 
   render() {
     return (
-      <input
+      <InputField
         ref="input"
         className="number"
         type="text"

@@ -2,18 +2,20 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
-import Events from '../../lib/Events';
+import Events from '../../../lib/Events';
 
-import BooleanWidget from '../widgets/BooleanWidget';
-import ColorWidget from '../widgets/ColorWidget';
-import InputWidget from '../widgets/InputWidget';
-import NumberWidget from '../widgets/NumberWidget';
-import SelectWidget from '../widgets/SelectWidget';
-import TextureWidget from '../widgets/TextureWidget';
-import Vec4Widget from '../widgets/Vec4Widget';
-import Vec3Widget from '../widgets/Vec3Widget';
-import Vec2Widget from '../widgets/Vec2Widget';
-import { updateEntity } from '../../lib/entity';
+import BooleanWidget from '../../widgets/BooleanWidget';
+import ColorWidget from '../../widgets/ColorWidget';
+import InputWidget from '../../widgets/InputWidget';
+import NumberWidget from '../../widgets/NumberWidget';
+import SelectWidget from '../../widgets/SelectWidget';
+import TextureWidget from '../../widgets/TextureWidget';
+import Vec4Widget from '../../widgets/Vec4Widget';
+import Vec3Widget from '../../widgets/Vec3Widget';
+import Vec2Widget from '../../widgets/Vec2Widget';
+import { updateEntity } from '../../../lib/entity';
+
+import { PropertyContainer, PropertyLabel } from './styles.jsx';
 
 export default class PropertyRow extends React.Component {
   static propTypes = {
@@ -129,12 +131,12 @@ export default class PropertyRow extends React.Component {
     });
 
     return (
-      <div className={className}>
-        <label htmlFor={this.id} className="text" title={title}>
+      <PropertyContainer className={className}>
+        <PropertyLabel htmlFor={this.id} className="text" title={title}>
           {props.name}
-        </label>
+        </PropertyLabel>
         {this.getWidget(props.schema.type)}
-      </div>
+      </PropertyContainer>
     );
   }
 }

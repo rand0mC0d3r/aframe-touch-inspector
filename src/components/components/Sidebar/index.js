@@ -67,7 +67,11 @@ export default ({
       }
 
     {/* <EntityContainer> */}
-      <EntityPreview entity={hoveredEntity} />
+
+      {entity && visible ?
+        <EntityPreview entity={entity} /> :
+        <EntityPreview entity={hoveredEntity} />
+      }
       <IconButton onClick={() => setVisible(!visible)}>
         <FontAwesomeIcon icon={faSort} size="sm" />
       </IconButton>
