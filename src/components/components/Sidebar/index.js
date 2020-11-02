@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ComponentsContainer from './../ComponentsContainer';
+import EntityPreview from './../EntityPreview';
 import Events from '../../../lib/Events';
-import { printEntity } from '../../../lib/entity';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
+import { faSort } from '@fortawesome/free-solid-svg-icons/faSort';
 import { IconButton } from '@material-ui/core';
 
 import Popover from '@material-ui/core/Popover';
@@ -67,9 +67,9 @@ export default ({
       }
 
     {/* <EntityContainer> */}
-      <div>{printEntity(hoveredEntity)}</div>
+      <EntityPreview entity={hoveredEntity} />
       <IconButton onClick={() => setVisible(!visible)}>
-        <FontAwesomeIcon icon={faSlidersH} size="sm" />
+        <FontAwesomeIcon icon={faSort} size="sm" />
       </IconButton>
     {/* </EntityContainer> */}
   </Wrapper>;
