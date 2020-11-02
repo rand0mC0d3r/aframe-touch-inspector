@@ -107,7 +107,7 @@ export default class CommonComponents extends React.Component {
             this.exportToGLTF();
             event.stopPropagation();
           }} >
-          <img src={process.env.NODE_ENV === 'production' ? 'https://aframe.io/aframe-inspector/assets/gltf.svg' : '../assets/gltf.svg'} />
+          export to
         </a>
         <a
           href="#"

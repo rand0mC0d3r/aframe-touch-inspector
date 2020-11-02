@@ -1,7 +1,7 @@
 import React from 'react';
 import TransformToolbar from './TransformToolbar';
 import ViewportHUD from './ViewportHUD';
-import ComponentsSidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar';
 
 import {
     DetectionContainer,
@@ -16,12 +16,11 @@ export default ({
     visible = false,
 }) => <DetectionContainer>
     <ViewportBar>
-        <ComponentsSidebar
+        <ViewportHUD />
+        <Sidebar
             entity={entity}
             visible={visible}
         />
-        <ViewportHUD />
         <TransformToolbar />
     </ViewportBar>
 </DetectionContainer>;
-}

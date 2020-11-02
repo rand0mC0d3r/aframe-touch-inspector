@@ -12,26 +12,11 @@ export default ({
     entity = {},
     visible = false,
   }) => {
-  const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
-
   const addEntity = () => {
     Events.emit('entitycreate', { element: 'a-entity', components: {} });
   }
 
-  React.useEffect(() => {
-    Events.on('raycastermouseenter', el => {
-      setHoveredEntity(el);
-    });
-
-    Events.on('raycastermouseleave', el => {
-      setHoveredEntity(el);
-    });
-  }, []);
-
-  return <Container>
-    <IconButton onClick={addEntity} title={`Add new Entity`} >
+  return <IconButton onClick={addEntity} title={`Add new Entity`} >
       <FontAwesomeIcon icon={faPlus} size="sm" />
-   </IconButton>
-    <p>{printEntity(hoveredEntity)}</p>
-  </Container>;
+   </IconButton>;
 };

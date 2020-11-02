@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddComponent from './AddComponent';
-import Component from './Component';
-import CommonComponents from './CommonComponents';
-import DEFAULT_COMPONENTS from './DefaultComponents';
+import AddComponent from '../AddComponent';
+import Component from '../Component';
+import CommonComponents from '../CommonComponents';
+import DEFAULT_COMPONENTS from '../DefaultComponents';
+
+import { Container } from './styles.jsx';
 
 export default class ComponentsContainer extends React.Component {
   static propTypes = {
@@ -33,12 +35,10 @@ export default class ComponentsContainer extends React.Component {
       );
     });
 
-    return (
-      <div className="components">
+    return <Container>
         <CommonComponents entity={entity} />
         <AddComponent entity={entity} />
         {renderedComponents}
-      </div>
-    );
+      </Container>;
   }
 }
