@@ -47275,7 +47275,7 @@ const DetectionContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* def
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
 `;
 
 /***/ }),

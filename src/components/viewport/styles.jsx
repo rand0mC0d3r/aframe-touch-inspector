@@ -28,5 +28,5 @@ export const DetectionContainer = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
 `;
