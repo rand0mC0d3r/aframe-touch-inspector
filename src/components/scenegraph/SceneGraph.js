@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { IconButton } from '@material-ui/core';
@@ -103,6 +104,7 @@ export default class SceneGraph extends React.Component {
   };
 
   rebuildEntityOptions = () => {
+    console.log("Re-processing entries")
     const entities = [{ depth: 0, entity: this.props.scene }];
 
     function treeIterate(element, depth) {
@@ -312,9 +314,8 @@ export default class SceneGraph extends React.Component {
               fullWidth
               size="small"
               label="Search..."
-              variant="filled"
+              variant="outlined"
               id="filter"
-              placeholder="Search..."
               onChange={this.onChangeFilter}
               onKeyUp={this.onFilterKeyUp}
               value={this.state.filter}
@@ -335,6 +336,12 @@ export default class SceneGraph extends React.Component {
           {this.renderEntities()}
         </EntitiesList>
         <div>
+          <IconButton
+            onClick={this.rebuildEntityOptions}
+            title="Rebuild Index"
+          >
+            <FontAwesomeIcon size="xs" icon={faRedo} />
+            </IconButton>
           <AddEntity />
           {this.props.selectedEntity && <React.Fragment>
           <IconButton

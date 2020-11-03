@@ -57,4 +57,6 @@ export const EntitiesList = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
     outline: none;
+    flex: 1 1 auto;
+    align-self: stretch;
 `;

@@ -58,6 +58,7 @@ if (process.env.AFRAME_DIST) {
 
 module.exports = {
   devServer: {
+    host: '0.0.0.0',
     disableHostCheck: true,
     port: 3333
   },

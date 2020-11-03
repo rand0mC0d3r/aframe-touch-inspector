@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const VisibleIcon = styled(FontAwesomeIcon)`
     margin-right: 10px;
+    margin-left: 3px;
 `;
 
 export const ExpandIcon = styled(FontAwesomeIcon)`
