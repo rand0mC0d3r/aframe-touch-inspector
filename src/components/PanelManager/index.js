@@ -3,6 +3,7 @@ import Scenegraph from './../Scenegraph';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import PanelHeader from '../atoms/PanelHeader';
+import EditPanel from '../components/EditPanel';
 import ToggleInspectorButton from '../atoms/ToggleInspectorButton';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 
@@ -22,22 +23,23 @@ import {
 
 export default ({
   scene = {},
-  selectedEntity = {},
-  visible = false
+  entity = {},
+  visibleScenegraph = false,
+  visibleAttributes = false
 }) => {
-  const noPanelIndex = false;
+  const noPanelIndex = 1;
   const [ value, setValue ] = React.useState(noPanelIndex);
 
   const panels = [
     {
       title: 'Layers',
       icon: faLayerGroup,
-      component: <Scenegraph {...{scene, selectedEntity, visible}}/>,
+      component: <Scenegraph {...{scene, entity, visibleScenegraph}}/>,
     },
     {
       title: 'Settings',
       icon: faSlidersH,
-      component: <Scenegraph />,
+      component: <EditPanel {...{entity, visibleAttributes}} />,
     }
   ];
 

@@ -36,12 +36,12 @@ export default class SceneGraph extends React.Component {
     id: PropTypes.string,
     onChange: PropTypes.func,
     scene: PropTypes.object,
-    selectedEntity: PropTypes.object,
-    visible: PropTypes.bool
+    entity: PropTypes.object,
+    visibleScenegraph: PropTypes.bool
   };
 
   static defaultProps = {
-    selectedEntity: '',
+    entity: '',
     index: -1,
     id: 'left-sidebar'
   };
@@ -77,8 +77,8 @@ export default class SceneGraph extends React.Component {
    * Selected entity updated from somewhere else in the app.
    */
   componentDidUpdate(prevProps) {
-    if (prevProps.selectedEntity !== this.props.selectedEntity) {
-      this.selectEntity(this.props.selectedEntity);
+    if (prevProps.entity !== this.props.entity) {
+      this.selectEntity(this.props.entity);
     }
   }
 
@@ -87,7 +87,7 @@ export default class SceneGraph extends React.Component {
     for (let i = 0; i < this.state.filteredEntities.length; i++) {
       const entityOption = this.state.filteredEntities[i];
       if (entityOption.entity === entity) {
-        this.setState({ selectedEntity: entity, selectedIndex: i });
+        this.setState({ entity: entity, selectedIndex: i });
         // Make sure selected value is visible in scenegraph
         this.expandToRoot(entity);
         if (this.props.onChange) {
@@ -99,7 +99,7 @@ export default class SceneGraph extends React.Component {
     }
 
     if (!found) {
-      this.setState({ selectedEntity: null, selectedIndex: -1 });
+      this.setState({ entity: null, selectedIndex: -1 });
     }
   };
 
@@ -163,14 +163,14 @@ export default class SceneGraph extends React.Component {
   };
 
   onKeyUp = event => {
-    if (this.props.selectedEntity === null) {
+    if (this.props.entity === null) {
       return;
     }
 
     switch (event.keyCode) {
       case 37: // left
-        if (this.isExpanded(this.props.selectedEntity)) {
-          this.toggleExpandedCollapsed(this.props.selectedEntity);
+        if (this.isExpanded(this.props.entity)) {
+          this.toggleExpandedCollapsed(this.props.entity);
         }
         break;
       case 38: // up
@@ -179,8 +179,8 @@ export default class SceneGraph extends React.Component {
         );
         break;
       case 39: // right
-        if (!this.isExpanded(this.props.selectedEntity)) {
-          this.toggleExpandedCollapsed(this.props.selectedEntity);
+        if (!this.isExpanded(this.props.entity)) {
+          this.toggleExpandedCollapsed(this.props.entity);
         }
         break;
       case 40: // down
@@ -287,7 +287,7 @@ export default class SceneGraph extends React.Component {
           key={idx}
           isFiltering={!!this.state.filter}
           isExpanded={this.isExpanded(entityOption.entity)}
-          isSelected={this.props.selectedEntity === entityOption.entity}
+          isSelected={this.props.entity === entityOption.entity}
           selectEntity={this.selectEntity}
           toggleExpandedCollapsed={this.toggleExpandedCollapsed}
         />
@@ -297,7 +297,7 @@ export default class SceneGraph extends React.Component {
 
   render() {
     // To hide the SceneGraph we have to hide its parent too (#left-sidebar).
-    if (!this.props.visible) {
+    if (!this.props.visibleScenegraph) {
       return null;
     }
 
@@ -343,9 +343,9 @@ export default class SceneGraph extends React.Component {
             <FontAwesomeIcon size="xs" icon={faRedo} />
             </IconButton>
           <AddEntity />
-          {this.props.selectedEntity && <React.Fragment>
+          {this.props.entity && <React.Fragment>
           <IconButton
-            onClick={() => cloneEntity(this.props.selectedEntity)}
+            onClick={() => cloneEntity(this.props.entity)}
             title="Clone Entity"
           >
             <FontAwesomeIcon size="xs" icon={faClone}/>
@@ -354,7 +354,7 @@ export default class SceneGraph extends React.Component {
           <IconButton
             onClick={event => {
                   event.stopPropagation();
-                  removeEntity(this.props.selectedEntity);
+                  removeEntity(this.props.entity);
             }}
             title="Remove entity"
           >

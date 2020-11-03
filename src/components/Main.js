@@ -15,7 +15,7 @@ THREE.ImageUtils.crossOrigin = '';
 
 export default () => {
   const [ entity, setEntity ] = React.useState(null);
-  const [ sceneEl, setSceneEl ] = React.useState(AFRAME.scenes[0]);
+  const [ scene, setScene ] = React.useState(AFRAME.scenes[0]);
   const [ inspectorEnabled, setInspectorEnabled ] = React.useState(true);
   const [ visibleScenegraph, setVisibleScenegraph ] = React.useState(true);
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
@@ -52,9 +52,8 @@ export default () => {
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>
       <PanelManger
-        scene={sceneEl}
-        selectedEntity={entity}
-        visible={visibleScenegraph} />
+        {...{scene, entity, visibleScenegraph, visibleAttributes}}
+      />
       {/* <SceneGraph
         scene={sceneEl}
         selectedEntity={entity}
