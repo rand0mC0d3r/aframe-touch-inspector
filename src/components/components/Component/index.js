@@ -136,8 +136,7 @@ export default class Component extends React.Component {
       componentName = componentName.substr(0, componentName.indexOf('__'));
     }
 
-    return (
-      <Collapsible collapsed={this.props.isCollapsed}>
+    return (<React.Fragment>
         <div className="componentHeader collapsible-header">
           <ComponentTitle title={subComponentName || componentName}>
             <span>{subComponentName || componentName}</span>
@@ -157,8 +156,10 @@ export default class Component extends React.Component {
             />
           </div>
         </div>
-        <div className="collapsible-content">{this.renderPropertyRows()}</div>
-      </Collapsible>
+        <div className="collapsible-content">
+          {this.renderPropertyRows()}
+        </div>
+      </React.Fragment>
     );
   }
 }

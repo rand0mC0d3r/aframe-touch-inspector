@@ -1,44 +1,94 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AddComponent from '../AddComponent';
 import Component from '../Component';
 import CommonComponents from '../CommonComponents';
 import DEFAULT_COMPONENTS from '../DefaultComponents';
 
-import { Container } from './styles.jsx';
+import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default class ComponentsContainer extends React.Component {
-  static propTypes = {
-    entity: PropTypes.object
-  };
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
-  refresh = () => {
+import {
+  Container,
+  TabIcon,
+  TabItem,
+  TabsContainer,
+  PanelBar,
+  PanelWrapper,
+  ResizeContainer,
+  MenuContainer,
+  WhiteLayer,
+  ResizeWrapper,
+  TabsListWrapper,
+  TabListItem
+} from './styles.jsx';
+
+export default ({ entity = {} }) => {
+  const noPanelIndex = 1;
+  const [ value, setValue ] = React.useState(noPanelIndex);
+  const components = entity ? entity.components : {};
+  const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
+
+  const refresh = () => {
+    console.log('refresh')
     this.forceUpdate();
   };
 
-  render() {
-    const entity = this.props.entity;
-    const components = entity ? entity.components : {};
-    const definedComponents = Object.keys(components).filter(function(key) {
-      return DEFAULT_COMPONENTS.indexOf(key) === -1;
-    });
 
-    const renderedComponents = definedComponents.sort().map(function(key) {
-      return (
-        <Component
-          isCollapsed={definedComponents.length > 2}
-          component={components[key]}
-          entity={entity}
+  const handleChange = (event, newValue) => {
+    console.log('ffff')
+    setValue(value === newValue ? false : newValue);
+  };
+
+  return <PanelWrapper>
+    {/* <CommonComponents entity={entity} />
+    <AddComponent entity={entity} />
+    {definedComponents.sort().map((key) =>  <Component
+      isCollapsed={definedComponents.length > 2}
+      component={components[key]}
+      entity={entity}
+      key={key}
+      name={key}
+    />)} */}
+
+    {definedComponents.length > 0 &&
+     <TabsContainer
+        value={value}
+        variant="scrollable"
+        scrollButtons="off"
+        textColor="primary"
+        indicatorColor="primary"
+        onChange={handleChange}
+      >
+        {definedComponents.map(key => <TabItem
           key={key}
-          name={key}
-        />
-      );
-    });
+          title={key}
+          icon={<TabIcon size="sm" icon={faSlidersH}/>}
+        />)}
+      </TabsContainer>
+    }
 
-    return <Container>
-        <CommonComponents entity={entity} />
-        <AddComponent entity={entity} />
-        {renderedComponents}
-      </Container>;
-  }
+
+      {value !== false ? (
+        <React.Fragment>
+          <ResizeWrapper>
+            <ResizeContainer>
+              {definedComponents
+                .filter((panel, i) => i === value)
+                .map((key) =>  <Component
+                  isCollapsed={definedComponents.length > 2}
+                  component={components[key]}
+                  entity={entity}
+                  key={key}
+                  name={key}
+              />)}
+               {value}
+            </ResizeContainer>
+          </ResizeWrapper>
+        </React.Fragment>
+      ) : null}
+
+  </PanelWrapper>;
 }
