@@ -40,14 +40,10 @@ var plugins = [
   new webpack.EnvironmentPlugin(['NODE_ENV'])
 ];
 
-const minimizers = [];
+let minimize = false;
 
 if (process.env.MINIFY === 'true') {
-  // minimizers.push(
-  //   new UglifyJsPlugin({
-  //     sourceMap: true
-  //   })
-  // );
+  minimize = true;
 }
 
 // dist/
@@ -87,7 +83,7 @@ module.exports = {
   },
   plugins: plugins,
   optimization: {
-    minimizer: minimizers
+    minimize
   },
   resolve: {
     modules: [path.join(__dirname, 'node_modules')]
