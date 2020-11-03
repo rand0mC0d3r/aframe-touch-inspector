@@ -16,11 +16,13 @@ export default ({
     visible = false,
 }) => <DetectionContainer>
     <ViewportBar>
+        <TransformToolbar />
+|
         <AddEntity />
         <Sidebar
             entity={entity}
             visible={visible}
         />
-        <TransformToolbar />
+
     </ViewportBar>
 </DetectionContainer>;

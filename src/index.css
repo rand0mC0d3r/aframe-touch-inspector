@@ -1,3 +1,36 @@
 html {
     font-family: 'Roboto', sans-serif !important;
   }
+
+:root {
+  --default-base-color: #747474;
+  --background-intense: #eee;
+  --image-mix: multiply;
+  --background-paper: #fdfdfd;
+  --background-reversed: #515151;
+  --background-reversed-translucent: rgba(50,50,50,0.6);
+  --background-reversed-light: #b1b1b1;
+  --background-paper-translucent: hsla(0,0%,86.3%,0.85);
+  --background-paper-translucent-light: hsla(0,0%,88.6%,0.5);
+  --background-default: #fafafa;
+  --border-default: #d2d2d2;
+  --shadow-primary: #eee;
+  --shadow-primary-hover: #d8d8d8;
+  --text-primary: rgba(0,0,0,0.92);
+  --text-primary-reversed: hsla(0,0%,100%,0.92);
+  --text-secondary: rgba(0,0,0,0.7);
+  --text-secondary-reversed: hsla(0,0%,100%,0.7);
+  --text-disabled: rgba(0,0,0,0.5);
+  --text-muted: rgba(0,0,0,0.35);
+  --text-muted-reversed: hsla(0,0%,100%,0.35);
+  --background-image: linear-gradient(139deg,rgb(251 98 0/92%),rgb(129 33 1/69%),rgb(215 6 4/69%),rgb(187 67 137/88%));
+  --shadow-floating: 0px 0px 10px -9px #000,0px 0px 10px -9px #000,0px 0px 10px -9px #000;
+  --background-image-rainbow: linear-gradient(139deg,#e2ae1b,#3f85f8,#d52f21,#2ba04a);
+  --border-image: var(--background-image-rainbow) 1;
+  --border-image-vertical: linear-gradient(180deg,rgb(251 98 0/92%),rgb(129 33 1/69%),rgb(215 6 4/69%),rgb(187 67 137/88%)) 1;
+  --backdrop-filter: blur(25px) saturate(0) contrast(2) brightness(3);
+  --spacing-s: 5px;
+  --spacing-m: 10px;
+  --spacing-l: 15px;
+  --page-normal-width: 100%;
+}

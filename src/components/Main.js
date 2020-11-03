@@ -2,8 +2,9 @@ import React from 'react';
 import TransformToolbar from './viewport/TransformToolbar';
 import Viewport from './viewport';
 import Events from '../lib/Events';
-import SceneGraph from './scenegraph/SceneGraph';
+import SceneGraph from './Scenegraph';
 import ComponentsSidebar from './components/Sidebar';
+import PanelManger from './PanelManager';
 
 import {
   DetectionContainer,
@@ -50,11 +51,14 @@ export default () => {
 
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>
-    <SceneGraph
+      <PanelManger
         scene={sceneEl}
         selectedEntity={entity}
-        visible={visibleScenegraph}
-      />
+        visible={visibleScenegraph} />
+      {/* <SceneGraph
+        scene={sceneEl}
+        selectedEntity={entity}
+        visible={visibleScenegraph}/> */}
       <Viewport
         entity={entity}
         visible={visibleAttributes}

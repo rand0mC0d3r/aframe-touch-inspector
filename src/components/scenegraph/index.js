@@ -58,11 +58,11 @@ export default class SceneGraph extends React.Component {
 
     this.rebuildEntityOptions = debounce(
       this.rebuildEntityOptions.bind(this),
-      1000
+      100
     );
     this.updateFilteredEntities = debounce(
       this.updateFilteredEntities.bind(this),
-      500
+      250
     );
   }
 
@@ -306,10 +306,10 @@ export default class SceneGraph extends React.Component {
     ) : null;
 
     return <Container>
-        <HeaderContainer>
+        {/* <HeaderContainer>
           <HeaderLabel>Layers</HeaderLabel>
           <HeaderIcon icon={faLayerGroup} />
-        </HeaderContainer>
+        </HeaderContainer> */}
             <SearchField
               fullWidth
               size="small"
