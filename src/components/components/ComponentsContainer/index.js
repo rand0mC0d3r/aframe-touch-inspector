@@ -7,7 +7,9 @@ import DEFAULT_COMPONENTS from '../DefaultComponents';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
 import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
+import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
 import { faLightBulb } from '@fortawesome/free-solid-svg-icons/faLightBulb';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Tabs from "@material-ui/core/Tabs";
@@ -29,7 +31,7 @@ import {
 } from './styles.jsx';
 
 export default ({ entity = {} }) => {
-  const noPanelIndex = 1;
+  const noPanelIndex = 0;
   const [ value, setValue ] = React.useState(noPanelIndex);
   const components = entity ? entity.components : {};
   const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
@@ -38,6 +40,7 @@ export default ({ entity = {} }) => {
     'geometry': faDrawPolygon,
     'material': faPaintRoller,
     'light': faLightBulb,
+    'animation': faRoute,
   }
 
   const refresh = () => {
@@ -52,15 +55,7 @@ export default ({ entity = {} }) => {
   };
 
   return <PanelWrapper>
-    {/* <CommonComponents entity={entity} />
     <AddComponent entity={entity} />
-    {definedComponents.sort().map((key) =>  <Component
-      isCollapsed={definedComponents.length > 2}
-      component={components[key]}
-      entity={entity}
-      key={key}
-      name={key}
-    />)} */}
 
     {definedComponents.length > 0 &&
      <TabsContainer
@@ -71,6 +66,11 @@ export default ({ entity = {} }) => {
         indicatorColor="primary"
         onChange={handleChange}
       >
+        <TabItem
+          key="common"
+          title='Common Properties'
+          icon={<TabIcon size="sm" icon={faInfoCircle}/>}
+        />
         {definedComponents.sort().map(key => <TabItem
           key={key}
           title={key}
@@ -81,8 +81,9 @@ export default ({ entity = {} }) => {
     {value !== false ? <React.Fragment>
       <ResizeWrapper>
         <ResizeContainer>
+          {value === 0 && <CommonComponents entity={entity} />}
           {definedComponents
-            .filter((panel, i) => i === value)
+            .filter((key, i) => i + 1 === value)
             .map((key) =>  <Component
               isCollapsed={definedComponents.length > 2}
               component={components[key]}
@@ -90,10 +91,8 @@ export default ({ entity = {} }) => {
               key={key}
               name={key}
           />)}
-            {value}
         </ResizeContainer>
       </ResizeWrapper>
     </React.Fragment> : null}
-
   </PanelWrapper>;
 }

@@ -1,6 +1,8 @@
 var React = require('react');
 import PropTypes from 'prop-types';
 
+import { InputField } from './styles.jsx';
+
 export default class InputWidget extends React.Component {
   static propTypes = {
     componentname: PropTypes.string,
@@ -31,7 +33,7 @@ export default class InputWidget extends React.Component {
 
   render() {
     return (
-      <input
+      <InputField
         type="text"
         className="string"
         value={this.state.value || ''}

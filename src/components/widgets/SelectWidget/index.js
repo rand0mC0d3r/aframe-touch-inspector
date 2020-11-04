@@ -2,6 +2,8 @@ var React = require('react');
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
+import { StyledSelect } from './styles.jsx';
+
 export default class SelectWidget extends React.Component {
   static propTypes = {
     componentname: PropTypes.string.isRequired,
@@ -39,7 +41,7 @@ export default class SelectWidget extends React.Component {
     });
 
     return (
-      <Select
+      <StyledSelect
         className="select-widget"
         classNamePrefix="select"
         options={options}

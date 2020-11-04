@@ -51,7 +51,8 @@ export default class AddComponent extends React.Component {
       .map(function(value) {
         return { value: value, label: value, origin: 'loaded' };
       });
-
+    console.log('options');
+    console.log(commonOptions);
     this.options = commonOptions;
     this.options = this.options.sort(function(a, b) {
       return a.label === b.label ? 0 : a.label < b.label ? -1 : 1;
@@ -79,7 +80,8 @@ export default class AddComponent extends React.Component {
 
     return (
       <div id="addComponentContainer">
-        <p id="addComponentHeader">COMPONENTS</p>
+      {this.options.map(option => <React.Fragment>{option.label}</React.Fragment>)}
+        {/* <p id="addComponentHeader">COMPONENTS</p> */}
         <Select
           id="addComponent"
           className="addComponent"

@@ -31,7 +31,8 @@ export const MenuContainer = styled.div`
 `;
 
 export const TabItem = styled(Tab)`
-
+    min-width: 60px !important;
+    width: 60px;
 `;
 
 export const TabIcon = styled(FontAwesomeIcon)`
@@ -91,7 +92,7 @@ export const ResizeContainer = styled.div`
 export const ResizeWrapper = styled.div`
     position: relative;
     width: 100%;
-    flex: 0 0 100%;
+    flex: 0 1 auto;
     pointer-events: all;
     overflow: hidden auto;
 `;

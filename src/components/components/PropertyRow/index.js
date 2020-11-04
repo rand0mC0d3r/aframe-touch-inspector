@@ -133,7 +133,7 @@ export default class PropertyRow extends React.Component {
     return (
       <PropertyContainer className={className}>
         <PropertyLabel htmlFor={this.id} className="text" title={title}>
-          {props.name}
+          {props.name.split(/(?=[A-Z])/).join(" ")}
         </PropertyLabel>
         {this.getWidget(props.schema.type)}
       </PropertyContainer>

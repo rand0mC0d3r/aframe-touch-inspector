@@ -38,13 +38,6 @@ export default class Component extends React.Component {
           var componentName = trigger
             .getAttribute('data-component')
             .toLowerCase();
-          ga(
-            'send',
-            'event',
-            'Components',
-            'copyComponentToClipboard',
-            componentName
-          );
           return getComponentClipboardRepresentation(
             this.state.entity,
             componentName
@@ -87,7 +80,6 @@ export default class Component extends React.Component {
         entity: this.props.entity,
         component: componentName
       });
-      ga('send', 'event', 'Components', 'removeComponent', componentName);
     }
   };
 
@@ -136,11 +128,11 @@ export default class Component extends React.Component {
       componentName = componentName.substr(0, componentName.indexOf('__'));
     }
 
-    return (<React.Fragment>
+    return <React.Fragment>
         <div className="componentHeader collapsible-header">
-          <ComponentTitle title={subComponentName || componentName}>
+          {/* <ComponentTitle title={subComponentName || componentName}>
             <span>{subComponentName || componentName}</span>
-          </ComponentTitle>
+          </ComponentTitle> */}
           <div className="componentHeaderActions">
             <a
               title="Copy to clipboard"
@@ -159,7 +151,6 @@ export default class Component extends React.Component {
         <div className="collapsible-content">
           {this.renderPropertyRows()}
         </div>
-      </React.Fragment>
-    );
+      </React.Fragment>;
   }
 }

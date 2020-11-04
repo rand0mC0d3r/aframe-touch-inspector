@@ -1,6 +1,12 @@
 var React = require('react');
 import PropTypes from 'prop-types';
 
+import {
+  InputField,
+  ColorContainer,
+  ColorPreview
+} from './styles.jsx';
+
 export default class ColorWidget extends React.Component {
   static propTypes = {
     componentname: PropTypes.string.isRequired,
@@ -67,23 +73,21 @@ export default class ColorWidget extends React.Component {
   };
 
   render() {
-    return (
-      <span className="color-widget">
-        <input
+    return <ColorContainer>
+        <ColorPreview
           type="color"
           className="color"
           value={this.state.pickerValue}
           title={this.state.value}
           onChange={this.onChange}
         />
-        <input
+        <InputField
           type="text"
           className="color_value"
           value={this.state.value}
           onKeyUp={this.onKeyUp}
           onChange={this.onChangeText}
         />
-      </span>
-    );
+      </ColorContainer>;
   }
 }

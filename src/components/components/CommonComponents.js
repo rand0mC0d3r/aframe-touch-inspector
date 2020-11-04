@@ -98,32 +98,32 @@ export default class CommonComponents extends React.Component {
     if (!entity) {
       return <div />;
     }
-    const entityButtons = (
-      <div>
-        <a
-          title="Export entity to GLTF"
-          className="gltfIcon"
-          onClick={event => {
-            this.exportToGLTF();
-            event.stopPropagation();
-          }} >
-          export to
-        </a>
-        <a
-          href="#"
-          title="Copy entity HTML to clipboard"
-          data-action="copy-entity-to-clipboard"
-          className="button fa fa-clipboard"
-          onClick={event => event.stopPropagation()}
-        />
-      </div>
-    );
+    // const entityButtons = (
+    //   <div>
+    //     <a
+    //       title="Export entity to GLTF"
+    //       className="gltfIcon"
+    //       onClick={event => {
+    //         this.exportToGLTF();
+    //         event.stopPropagation();
+    //       }} >
+    //       export to
+    //     </a>
+    //     <a
+    //       href="#"
+    //       title="Copy entity HTML to clipboard"
+    //       data-action="copy-entity-to-clipboard"
+    //       className="button fa fa-clipboard"
+    //       onClick={event => event.stopPropagation()}
+    //     />
+    //   </div>
+    // );
 
     return (
       <Collapsible id="componentEntityHeader" className="commonComponents">
         <div className="collapsible-header">
           {printEntity(entity)}
-          {entityButtons}
+          {/* {entityButtons} */}
         </div>
         <div className="collapsible-content">
           <div className="propertyRow">
@@ -142,7 +142,7 @@ export default class CommonComponents extends React.Component {
             <span>{entity.getAttribute('class')}</span>
           </div>
           {this.renderCommonAttributes()}
-          <Mixins entity={entity} />
+          {/* <Mixins entity={entity} /> */}
         </div>
       </Collapsible>
     );
