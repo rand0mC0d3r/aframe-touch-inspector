@@ -8,7 +8,8 @@ import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
 import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
 import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
-import { faLightBulb } from '@fortawesome/free-solid-svg-icons/faLightBulb';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
+import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -39,8 +40,9 @@ export default ({ entity = {} }) => {
   const iconsMap = {
     'geometry': faDrawPolygon,
     'material': faPaintRoller,
-    'light': faLightBulb,
+    'light': faLightbulb,
     'animation': faRoute,
+    'camera': faCamera,
   }
 
   const refresh = () => {
@@ -50,8 +52,7 @@ export default ({ entity = {} }) => {
 
 
   const handleChange = (event, newValue) => {
-    console.log('ffff')
-    setValue(value === newValue ? false : newValue);
+    setValue(newValue);
   };
 
   return <PanelWrapper>
