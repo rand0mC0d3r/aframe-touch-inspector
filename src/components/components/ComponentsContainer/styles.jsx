@@ -72,12 +72,7 @@ export const PanelWrapper = styled.div`
     flex-wrap: nowrap;
     align-content: flex-start;
     align-items: flex-start;
-
-    & .PrivateTabIndicator-root-1 {
-        background-color: ${props => props.accent ? props.accent : 'var(--default-base-color)'};
-        width: 3px;
-        border-radius: 5px 0px 0px 5px;
-    }
+    height: 100%;
 `;
 
 export const TabsListWrapper = styled.div`
@@ -96,7 +91,9 @@ export const ResizeContainer = styled.div`
 export const ResizeWrapper = styled.div`
     position: relative;
     width: 100%;
+    flex: 0 0 100%;
     pointer-events: all;
+    overflow: hidden auto;
 `;
 
 export const WhiteLayer = styled.div`
@@ -126,4 +123,8 @@ export const TabListItem = styled.div`
 
     position: relative;
     border-radius: 8px;
+`;
+
+export const TabsItemWrapper = styled.div`
+
 `;

@@ -78,26 +78,22 @@ export default ({ entity = {} }) => {
         />)}
       </TabsContainer>
     }
-
-
-      {value !== false ? (
-        <React.Fragment>
-          <ResizeWrapper>
-            <ResizeContainer>
-              {definedComponents
-                .filter((panel, i) => i === value)
-                .map((key) =>  <Component
-                  isCollapsed={definedComponents.length > 2}
-                  component={components[key]}
-                  entity={entity}
-                  key={key}
-                  name={key}
-              />)}
-               {value}
-            </ResizeContainer>
-          </ResizeWrapper>
-        </React.Fragment>
-      ) : null}
+    {value !== false ? <React.Fragment>
+      <ResizeWrapper>
+        <ResizeContainer>
+          {definedComponents
+            .filter((panel, i) => i === value)
+            .map((key) =>  <Component
+              isCollapsed={definedComponents.length > 2}
+              component={components[key]}
+              entity={entity}
+              key={key}
+              name={key}
+          />)}
+            {value}
+        </ResizeContainer>
+      </ResizeWrapper>
+    </React.Fragment> : null}
 
   </PanelWrapper>;
 }

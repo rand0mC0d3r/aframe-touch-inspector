@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     width: 380px;
     height: 300px;
 
-    overflow: hidden auto;
+    overflow: hidden;
 
     position: relative;
     align-self: stretch;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ContainerWrapper = styled.div`
-
+    height: 100%;
 `;
 
 export const EntityContainer = styled.div`
