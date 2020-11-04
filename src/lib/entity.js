@@ -539,12 +539,12 @@ export function printEntity (entity, onDoubleClick) {
 
   // Icons.
   let icons = '';
-  for (let objType in ICONS) {
-    if (!entity.getObject3D(objType)) {
-      continue;
-    }
-    icons += `&nbsp;<i class="fa ${ICONS[objType]}" title="${objType}"></i>`;
-  }
+  // for (let objType in ICONS) {
+  //   if (!entity.getObject3D(objType)) {
+  //     continue;
+  //   }
+  //   icons += `&nbsp;<i class="fa ${ICONS[objType]}" title="${objType}"></i>`;
+  // }
 
   let geometryName = '';
   if(entity.components && Object.keys(entity.components).includes('geometry')) {

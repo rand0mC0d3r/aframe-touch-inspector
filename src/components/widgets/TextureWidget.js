@@ -93,9 +93,18 @@ export default class TextureWidget extends React.Component {
     if (!component) {
       return;
     }
-    var newValue = component.attrValue[this.props.name];
+    var newValue;
+    // console.log("1");
+    // console.log(component);
+    // console.log(this.props.name);
+    if(component && component.attrValue) {
+
+      newValue = component.attrValue[this.props.name];
+    }
+
 
     // This will be triggered typically when the element is changed directly with element.setAttribute
+    // console.log('2')
     if (newValue && newValue !== this.state.value) {
       this.setValue(newValue);
     }

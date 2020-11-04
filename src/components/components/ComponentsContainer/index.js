@@ -5,6 +5,9 @@ import CommonComponents from '../CommonComponents';
 import DEFAULT_COMPONENTS from '../DefaultComponents';
 
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
+import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
+import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
+import { faLightBulb } from '@fortawesome/free-solid-svg-icons/faLightBulb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Tabs from "@material-ui/core/Tabs";
@@ -30,6 +33,12 @@ export default ({ entity = {} }) => {
   const [ value, setValue ] = React.useState(noPanelIndex);
   const components = entity ? entity.components : {};
   const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
+
+  const iconsMap = {
+    'geometry': faDrawPolygon,
+    'material': faPaintRoller,
+    'light': faLightBulb,
+  }
 
   const refresh = () => {
     console.log('refresh')
@@ -62,10 +71,10 @@ export default ({ entity = {} }) => {
         indicatorColor="primary"
         onChange={handleChange}
       >
-        {definedComponents.map(key => <TabItem
+        {definedComponents.sort().map(key => <TabItem
           key={key}
           title={key}
-          icon={<TabIcon size="sm" icon={faSlidersH}/>}
+          icon={<TabIcon size="sm" icon={iconsMap[key]}/>}
         />)}
       </TabsContainer>
     }
