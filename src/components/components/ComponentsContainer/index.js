@@ -3,15 +3,21 @@ import AddComponent from '../AddComponent';
 import Component from '../Component';
 import CommonComponents from '../CommonComponents';
 import DEFAULT_COMPONENTS from '../DefaultComponents';
+import ComponentIcon from './../../atoms/ComponentIcon';
 
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
 import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
 import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
+import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
 import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera';
+import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+
 
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -25,6 +31,7 @@ import {
   PanelWrapper,
   ResizeContainer,
   MenuContainer,
+  TabsBar,
   WhiteLayer,
   ResizeWrapper,
   TabsListWrapper,
@@ -37,14 +44,6 @@ export default ({ entity = {} }) => {
   const components = entity ? entity.components : {};
   const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
 
-  const iconsMap = {
-    'geometry': faDrawPolygon,
-    'material': faPaintRoller,
-    'light': faLightbulb,
-    'animation': faRoute,
-    'camera': faCamera,
-  }
-
   const refresh = () => {
     console.log('refresh')
     this.forceUpdate();
@@ -56,29 +55,31 @@ export default ({ entity = {} }) => {
   };
 
   return <PanelWrapper>
-    <AddComponent entity={entity} />
+    <TabsBar>
+      <AddComponent entity={entity} />
 
-    {definedComponents.length > 0 &&
-     <TabsContainer
-        value={value}
-        variant="scrollable"
-        scrollButtons="off"
-        textColor="primary"
-        indicatorColor="primary"
-        onChange={handleChange}
-      >
-        <TabItem
-          key="common"
-          title='Common Properties'
-          icon={<TabIcon size="sm" icon={faInfoCircle}/>}
-        />
-        {definedComponents.sort().map(key => <TabItem
-          key={key}
-          title={key}
-          icon={<TabIcon size="sm" icon={iconsMap[key]}/>}
-        />)}
-      </TabsContainer>
-    }
+      {definedComponents.length > 0 &&
+        <TabsContainer
+          value={value}
+          variant="scrollable"
+          scrollButtons="auto"
+          textColor="primary"
+          indicatorColor="primary"
+          onChange={handleChange}
+        >
+          <TabItem
+            key="common"
+            title='Common Properties'
+            icon={<TabIcon size="sm" icon={faInfoCircle}/>}
+          />
+          {definedComponents.sort().map(key => <TabItem
+            key={key}
+            title={key}
+            icon={<ComponentIcon componentName={key}/>}
+          />)}
+        </TabsContainer>
+      }
+    </TabsBar>
     {value !== false ? <React.Fragment>
       <ResizeWrapper>
         <ResizeContainer>

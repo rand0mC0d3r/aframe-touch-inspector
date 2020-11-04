@@ -7,7 +7,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 // import Select from '@material-ui/core/Select';
 
-import { StyledSelect } from './styles.jsx';
+import ComponentIcon from './../../atoms/ComponentIcon';
+
+import { StyledSelect, StyledMenuItem } from './styles.jsx';
 
 var DELIMITER = ' ';
 
@@ -70,13 +72,17 @@ export default ({
 
   return <div>
     {options && <React.Fragment>
-      <StyledSelect
-        id="addComponent"
-        onChange={handleChange}
-        value={selection}
-      >
-        {options.map((option, i) => <MenuItem key={i} value={option}>{option.label}</MenuItem>)}
-      </StyledSelect>
+      <FormControl variant="outlined">
+        <StyledSelect
+          id="addComponent"
+          onChange={handleChange}
+          value={selection}
+        >
+          {options.map((option, i) => <StyledMenuItem key={i} value={option}>
+            <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
+          </StyledMenuItem>)}
+        </StyledSelect>
+      </FormControl>
     </React.Fragment>}
   </div>;
 }

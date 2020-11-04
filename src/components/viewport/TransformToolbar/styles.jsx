@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+export const Container = styled.div`
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #CCC;
+`;
+
 export const TransformationIcon = styled(FontAwesomeIcon)`
     ${props => props.active ? `
         // background-color: white;

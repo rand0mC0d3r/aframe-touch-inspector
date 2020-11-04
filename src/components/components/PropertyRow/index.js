@@ -15,7 +15,7 @@ import Vec3Widget from '../../widgets/Vec3Widget';
 import Vec2Widget from '../../widgets/Vec2Widget';
 import { updateEntity } from '../../../lib/entity';
 
-import { PropertyContainer, PropertyLabel } from './styles.jsx';
+import { PropertyContainer, PropertyLabel, PropertyWidget } from './styles.jsx';
 
 export default class PropertyRow extends React.Component {
   static propTypes = {
@@ -135,7 +135,9 @@ export default class PropertyRow extends React.Component {
         <PropertyLabel htmlFor={this.id} className="text" title={title}>
           {props.name.split(/(?=[A-Z])/).join(" ")}
         </PropertyLabel>
+        <PropertyWidget>
         {this.getWidget(props.schema.type)}
+        </PropertyWidget>
       </PropertyContainer>
     );
   }

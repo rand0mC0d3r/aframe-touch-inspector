@@ -6,7 +6,7 @@ import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import { IconButton } from '@material-ui/core';
 import Events from '../../../lib/Events';
 
-import { TransformationIcon } from './styles.jsx';
+import { TransformationIcon, Container } from './styles.jsx';
 
 const transformButtons = [
   { value: 'translate', icon: faArrowsAlt },
@@ -34,7 +34,7 @@ export default () => {
     Events.emit('transformmodechange', mode);
   };
 
-  return <div id="transformToolbar" className="toolbarButtons">
+  return <Container>
     {transformButtons.map((option, i) => <IconButton
       key={i}
       color={option.value === selectedTransform ? 'primary' : 'default'}
@@ -46,7 +46,7 @@ export default () => {
         active={option.value === selectedTransform ? 1 : 0}
         size="sm"
         fixedWidth
-    />
-   </IconButton>)}
-  </div>;
+      />
+    </IconButton>)}
+  </Container>;
 };

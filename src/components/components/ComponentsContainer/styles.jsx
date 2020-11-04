@@ -95,6 +95,7 @@ export const ResizeWrapper = styled.div`
     flex: 0 1 auto;
     pointer-events: all;
     overflow: hidden auto;
+    box-shadow: inset 0px 10px 16px -19px #000;
 `;
 
 export const WhiteLayer = styled.div`
@@ -128,4 +129,12 @@ export const TabListItem = styled.div`
 
 export const TabsItemWrapper = styled.div`
 
+`;
+
+export const TabsBar = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
 `;

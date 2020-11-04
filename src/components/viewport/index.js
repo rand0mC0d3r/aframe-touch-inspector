@@ -17,7 +17,6 @@ export default ({
 }) => <DetectionContainer>
     <ViewportBar>
         <TransformToolbar />
-|
         <AddEntity />
         <Sidebar
             entity={entity}

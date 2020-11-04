@@ -122,7 +122,7 @@ export default class CommonComponents extends React.Component {
     return (
       <Collapsible id="componentEntityHeader" className="commonComponents">
         <div className="collapsible-header">
-          {printEntity(entity)}
+          {/* {printEntity(entity)} */}
           {/* {entityButtons} */}
         </div>
         <div className="collapsible-content">

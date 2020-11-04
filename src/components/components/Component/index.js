@@ -145,7 +145,9 @@ export default class Component extends React.Component {
               title="Remove component"
               className="button fa fa-trash-o"
               onClick={this.removeComponent}
-            />
+            >
+              Remove
+            </a>
           </div>
         </div>
         <div className="collapsible-content">

@@ -7,5 +7,4 @@ export const InputField = styled.input`
     border-radius: 3px;
     box-sizing: unset;
     border: 0px none;
-    margin-right: 5px;
 `;
