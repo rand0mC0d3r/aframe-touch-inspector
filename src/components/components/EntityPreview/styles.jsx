@@ -46,3 +46,12 @@ export const EntityContainer = styled.div`
     align-content: stretch;
     align-items: center;
 `;
+
+
+export const Chip = styled.div`
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 7px;
+    margin: 0px 3px;
+`;

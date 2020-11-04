@@ -40,13 +40,11 @@ export default class Vec4Widget extends React.Component {
       onChange: this.onChange
     };
 
-    return (
-      <div className="vec4">
+    return <React.Fragment>
         <NumberWidget name="x" value={this.state.x} {...widgetProps} />
         <NumberWidget name="y" value={this.state.y} {...widgetProps} />
         <NumberWidget name="z" value={this.state.z} {...widgetProps} />
         <NumberWidget name="w" value={this.state.w} {...widgetProps} />
-      </div>
-    );
+      </React.Fragment>;
   }
 }

@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    width: 500px;
+    width: 400px;
     position: relative;
     // margin-right: 25px;
     align-self: stretch;

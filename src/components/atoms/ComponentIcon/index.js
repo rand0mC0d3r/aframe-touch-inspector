@@ -9,6 +9,11 @@ import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
 import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera';
 import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
+import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
+import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
+import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
+import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const items = {
@@ -19,6 +24,11 @@ const items = {
   'camera': faCamera,
   'gltf-model': faPuzzlePiece,
   'fog': faSmog,
+  'position': faArrowsAlt,
+  'scale': faExpand,
+  'rotation': faRedo,
+  'visible': faEye,
+  'shadow': faEyeSlash,
 };
 
 export default ({
@@ -27,7 +37,7 @@ export default ({
   returnNull = false
 }) => <React.Fragment>
   {items[componentName] ?
-  <FontAwesomeIcon size={size} icon={items[componentName]}/> :
+  <FontAwesomeIcon size={size} fixedWidth icon={items[componentName]}/> :
   (<React.Fragment>
     {!returnNull && <div>{componentName}</div>}
   </React.Fragment>)}

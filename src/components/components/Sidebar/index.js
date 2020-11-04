@@ -70,7 +70,7 @@ export default ({
 
       {entity && visible ?
         <EntityPreview entity={entity} /> :
-        <EntityPreview entity={hoveredEntity} />
+        <EntityPreview entity={entity} />
       }
       {/* <IconButton onClick={() => setVisible(!visible)}>
         <FontAwesomeIcon icon={faSort} size="sm" />

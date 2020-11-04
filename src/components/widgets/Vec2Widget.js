@@ -38,11 +38,9 @@ export default class Vec2Widget extends React.Component {
       onChange: this.onChange
     };
 
-    return (
-      <div className="vec2">
-        <NumberWidget name="x" value={this.state.x} {...widgetProps} />
-        <NumberWidget name="y" value={this.state.y} {...widgetProps} />
-      </div>
-    );
+    return <React.Fragment>
+      <NumberWidget name="x" value={this.state.x} {...widgetProps} />
+      <NumberWidget name="y" value={this.state.y} {...widgetProps} />
+    </React.Fragment>;
   }
 }
