@@ -65,7 +65,7 @@ export default ({
     const cummulatedOptions = [...commonOptions, ...options.sort(function(a, b) {
       return a.label === b.label ? 0 : a.label < b.label ? -1 : 1;
     })];
-    console.log(cummulatedOptions);
+    // console.log(cummulatedOptions);
     setOptions(cummulatedOptions);
   }
 

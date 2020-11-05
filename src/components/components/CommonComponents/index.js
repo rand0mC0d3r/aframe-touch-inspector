@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputWidget } from '../widgets';
-import DEFAULT_COMPONENTS from './DefaultComponents';
-import PropertyRow from './PropertyRow';
-import Collapsible from '../Collapsible';
-import Mixins from './Mixins';
+import { InputWidget } from '../../widgets';
+import DEFAULT_COMPONENTS from './../DefaultComponents';
+import PropertyRow from './../PropertyRow';
+import Collapsible from '../../Collapsible';
+import Mixins from './../Mixins';
 import {
   updateEntity,
   getEntityClipboardRepresentation,
   printEntity
-} from '../../lib/entity';
-import Events from '../../lib/Events';
+} from '../../../lib/entity';
+import Events from '../../../lib/Events';
 import Clipboard from 'clipboard';
-import { saveBlob } from '../../lib/utils';
+import { saveBlob } from '../../../lib/utils';
+import TextField from '@material-ui/core/TextField';
+
+import { NameContainer } from './styles.jsx';
 
 // @todo Take this out and use updateEntity?
 function changeId(componentName, value) {
@@ -98,51 +101,34 @@ export default class CommonComponents extends React.Component {
     if (!entity) {
       return <div />;
     }
-    // const entityButtons = (
-    //   <div>
-    //     <a
-    //       title="Export entity to GLTF"
-    //       className="gltfIcon"
-    //       onClick={event => {
-    //         this.exportToGLTF();
-    //         event.stopPropagation();
-    //       }} >
-    //       export to
-    //     </a>
-    //     <a
-    //       href="#"
-    //       title="Copy entity HTML to clipboard"
-    //       data-action="copy-entity-to-clipboard"
-    //       className="button fa fa-clipboard"
-    //       onClick={event => event.stopPropagation()}
-    //     />
-    //   </div>
-    // );
 
     return (
       <Collapsible id="componentEntityHeader" className="commonComponents">
         <div className="collapsible-header">
-          {/* {printEntity(entity)} */}
-          {/* {entityButtons} */}
         </div>
         <div className="collapsible-content">
-          <div className="propertyRow">
-            <label htmlFor="id" className="text">
-              ID
-            </label>
+          <NameContainer>
             <InputWidget
               onChange={changeId}
               entity={entity}
               name="id"
               value={entity.id}
+
+
             />
-          </div>
+            <TextField
+              fullWidth
+              name="id"
+              label="Outlined"
+              variant="outlined"
+            />
+          </NameContainer>
+
           <div className="propertyRow">
             <label className="text">class</label>
             <span>{entity.getAttribute('class')}</span>
           </div>
           {this.renderCommonAttributes()}
-          {/* <Mixins entity={entity} /> */}
         </div>
       </Collapsible>
     );

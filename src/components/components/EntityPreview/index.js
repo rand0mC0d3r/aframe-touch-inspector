@@ -22,20 +22,29 @@ import {
 
 export default ({ entity = {} }) => {
   const [ components, setComponents ] = React.useState([]);
-  let entityName = '';
+  const [ geometryName, setGeometryName ] = React.useState('');
+  const [ entityName, setEntityName ] = React.useState('');
   let type = 'id';
 
-
-  const geometryName = () => {
+  const getGeometryName = () => {
     if(entity.components && Object.keys(entity.components).includes('geometry')) {
-        return <span>{entity.components.geometry.data.primitive}</span>;
+        setGeometryName(entity.components.geometry.data.primitive);
     }
+  }
+
+  const getEntityName = () => {
+    let result = entity.id;
+    if (!entity.isScene && !entityName && entity.getAttribute('class')) {
+      result = entity.getAttribute('class').split(' ')[0];
+    } else if (!entity.isScene && !entityName && entity.getAttribute('mixin')) {
+      result = entity.getAttribute('mixin').split(' ')[0];
+    }
+    setEntityName(result);
   }
 
   React.useEffect(() => {
     let list = [];
     if(entity && entity.components) {
-      // debugger;
       Object.keys(entity.components).map(component => {
         if(!list[component]) {
           list.push({
@@ -47,9 +56,10 @@ export default ({ entity = {} }) => {
         }
       })
       setComponents(list);
+      getGeometryName();
+      getEntityName();
     }
   }, [entity])
-
 
   return (
   <span className="entityPrint">
@@ -63,7 +73,7 @@ export default ({ entity = {} }) => {
           </span>
         )}
 
-        {geometryName()}
+        {/* {geometryName()} */}
 
         {components.map(component => <Chip key={component.value}>
             <ComponentIcon componentName={component.value} />
