@@ -34,3 +34,16 @@ html {
   --spacing-l: 15px;
   --page-normal-width: 100%;
 }
+
+.inspector-MuiDialog-paper {
+  background-color: unset !important;
+}
+
+.inspector-MuiExpansionPanelDetails-root {
+  padding: 5px 15px 10px 10px !important
+}
+
+.inspector-MuiBackdrop-root {
+  background-color: rgba(0,0,0,0.2) !important;
+  backdrop-filter: blur(2px);
+}

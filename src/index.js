@@ -49,7 +49,7 @@ function Inspector () {
   const generateClassName = createGenerateClassName({
     productionPrefix: 'inspector',
     seed: 'inspector',
-    disableGlobal: true
+    // disableGlobal: true
   });
 
 Inspector.prototype = {

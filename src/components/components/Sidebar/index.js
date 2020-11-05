@@ -27,11 +27,11 @@ export default ({
   React.useEffect(() => {
 
     Events.on('componentremove', event => {
-      forceUpdate();
+      // forceUpdate();
     });
 
     Events.on('componentadd', event => {
-      forceUpdate();
+      // forceUpdate();
     });
 
     Events.on('raycastermouseenter', el => {

@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 
 export const StyledDialog = styled(Dialog)`
-    & .MuiDialog-paper {
+    & .inspector-MuiDialog-paper {
         overflow: visible !important;
     }
 `;
 
 export const Container = styled.div`
     cursor: default;
-    padding: 10px 15px;
+    padding: ${props => props.padded ? '10px 15px' : '0px'};
     background: var(--background-paper-translucent);
     border-radius: 8px 8px 0px 0px;
 

@@ -12,7 +12,12 @@ import Dialog from './../../atoms/Dialog';
 
 import ComponentIcon from './../../atoms/ComponentIcon';
 
-import { StyledSelect, StyledButton, StyledMenuItem } from './styles.jsx';
+import {
+  StyledSelect,
+  StyledButton,
+  Container,
+  StyledMenuItem
+} from './styles.jsx';
 
 var DELIMITER = ' ';
 
@@ -33,10 +38,9 @@ export default ({
     setOpen(false);
   };
 
-  const handleChange = (event) => {
-    const componentObject = event.target.value;
-    setSelection(componentObject);
-    addComponent(componentObject);
+  const handleChange = (object) => {
+    setSelection(object);
+    addComponent(object);
   };
 
   const addComponent = value => {
@@ -65,7 +69,6 @@ export default ({
     const cummulatedOptions = [...commonOptions, ...options.sort(function(a, b) {
       return a.label === b.label ? 0 : a.label < b.label ? -1 : 1;
     })];
-    // console.log(cummulatedOptions);
     setOptions(cummulatedOptions);
   }
 
@@ -86,29 +89,32 @@ export default ({
 
   return <div>
     {options && <React.Fragment>
-      {/* <FormControl variant="outlined">
-        <StyledSelect
-          id="addComponent"
-          onChange={handleChange}
-          value={selection}
-        >
-          {options.map((option, i) => <StyledMenuItem key={i} value={option}>
-            <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
-          </StyledMenuItem>)}
-        </StyledSelect>
-      </FormControl> */}
-
-
-       <StyledButton onClick={handleClickOpen}>+</StyledButton>
+      <StyledButton onClick={handleClickOpen}>+</StyledButton>
       <Dialog
-      maxWidth="md"
-      fullWidth={true}
-      open={open}
-      onClose={handleClose}
-      actions={<DialogBottom {...{handleClose}} />}
-    >
-        dd
-    </Dialog>
+        maxWidth="sm"
+        fullWidth={true}
+        open={open}
+        onClose={handleClose}
+        actions={<DialogBottom {...{handleClose}} />}
+      >
+        <Container>
+        {/* <FormControl variant="outlined"> */}
+          {/* <StyledSelect
+            id="addComponent"
+            onChange={handleChange}
+            value={selection}
+          > */}
+            {options.map((option, i) => <StyledMenuItem
+              onClick={() => handleChange(option)}
+              key={i}
+              value={option}
+              >
+                <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
+            </StyledMenuItem>)}
+          {/* </StyledSelect> */}
+        {/* </FormControl> */}
+        </Container>
+      </Dialog>
     </React.Fragment>}
   </div>;
 }
