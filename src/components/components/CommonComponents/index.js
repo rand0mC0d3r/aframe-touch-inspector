@@ -112,15 +112,9 @@ export default class CommonComponents extends React.Component {
               onChange={changeId}
               entity={entity}
               name="id"
+              placeholder="Entity name..."
+              fullWidth={true}
               value={entity.id}
-
-
-            />
-            <TextField
-              fullWidth
-              name="id"
-              label="Outlined"
-              variant="outlined"
             />
           </NameContainer>
 

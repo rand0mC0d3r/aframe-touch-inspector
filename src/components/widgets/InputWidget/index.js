@@ -1,44 +1,24 @@
-var React = require('react');
-import PropTypes from 'prop-types';
-
+import React from 'react';
 import { InputField } from './styles.jsx';
 
-export default class InputWidget extends React.Component {
-  static propTypes = {
-    componentname: PropTypes.string,
-    entity: PropTypes.object,
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    value: PropTypes.any
-  };
+export default ({
+    componentname = '', entity = [],
+    name = null, onChange = () => {},
+    value, fullWidth = false,
+    placeholder = ''
+}) => {
+  const [ internalValue, setInternalValue ] = React.useState('');
+  const onInternalChange = newValue => { setInternalValue(newValue); onChange(name, newValue) };
 
-  constructor(props) {
-    super(props);
-    this.state = { value: this.props.value || '' };
-  }
+  React.useEffect(() => {
+    if (internalValue !== value) setInternalValue(value);
+  }, [value])
 
-  onChange = e => {
-    var value = e.target.value;
-    this.setState({ value: value });
-    if (this.props.onChange) {
-      this.props.onChange(this.props.name, value);
-    }
-  };
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.value !== this.state.value) {
-      this.setState({ value: newProps.value });
-    }
-  }
-
-  render() {
-    return (
-      <InputField
-        type="text"
-        className="string"
-        value={this.state.value || ''}
-        onChange={this.onChange}
-      />
-    );
-  }
+  return <InputField
+      {...{ fullWidth, placeholder }}
+      type="text"
+      className="string"
+      value={internalValue || ''}
+      onChange={(e) => onInternalChange(e.target.value)}
+    />;
 }
