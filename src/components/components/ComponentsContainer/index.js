@@ -74,7 +74,7 @@ export default ({ entity = {} }) => {
           />
           {definedComponents.sort().map(key => <TabItem
             key={key}
-            title={key}
+            title={`Configure ${key.toUpperCase()}`}
             icon={<ComponentIcon componentName={key}/>}
           />)}
         </TabsContainer>

@@ -31,8 +31,9 @@ export const MenuContainer = styled.div`
 `;
 
 export const TabItem = styled(Tab)`
-    min-width: 60px !important;
-    width: 60px;
+    min-width: 50px !important;
+    width: 50px;
+    padding: 0px !important;
 `;
 
 export const TabIcon = styled(FontAwesomeIcon)`
@@ -95,7 +96,7 @@ export const ResizeWrapper = styled.div`
     flex: 0 1 auto;
     pointer-events: all;
     overflow: hidden auto;
-    box-shadow: inset 0px 10px 16px -19px #000;
+    border-top: 1px solid #AAA;
 `;
 
 export const WhiteLayer = styled.div`

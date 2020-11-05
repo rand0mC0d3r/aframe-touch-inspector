@@ -8,6 +8,7 @@ import { getComponentClipboardRepresentation } from '../../../lib/entity';
 import Events from '../../../lib/Events';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt';
 import { IconButton } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -15,11 +16,51 @@ import {
   ComponentTitle,
   TitleContainer,
   DocumentationContainer,
-  ButtonsContainer
+  ButtonsContainer,
+  DocuLabel,
+  DocuIcon,
 } from './styles.jsx';
 
 const isSingleProperty = AFRAME.schema.isSingleProperty;
 
+const documentation = [
+  {
+    key: "geometry",
+    links: [
+      {
+        title: 'A-Frame Geometry',
+        url: 'https://aframe.io/docs/1.0.0/components/geometry.html',
+      }
+    ]
+  },
+  {
+    key: "animation",
+    links: [
+      {
+        title: 'A-Frame Animation',
+        url: 'https://aframe.io/docs/1.0.0/components/animation.html',
+      }
+    ]
+  },
+  {
+    key: "material",
+    links: [
+      {
+        title: 'A-Frame Material',
+        url: 'https://aframe.io/docs/1.0.0/components/material.html',
+      }
+    ]
+  },
+  {
+    key: "light",
+    links: [
+      {
+        title: 'A-Frame Material',
+        url: 'https://aframe.io/docs/1.0.0/components/light.html',
+      }
+    ]
+  }
+]
 /**
  * Single component.
  */
@@ -144,14 +185,21 @@ export default class Component extends React.Component {
               <span>{subComponentName || componentName}</span>
             </ComponentTitle>
             <DocumentationContainer>
-              DOCU A B
+              {documentation.filter(d => d.key === this.props.name).map(d => <React.Fragment>
+                <DocuLabel>DOCS</DocuLabel>
+                {d.links.map(link => <React.Fragment>
+                  <a href={link.url} target="_blank" title={link.title}>
+                    <DocuIcon size="sm" icon={faExternalLinkAlt}/>
+                  </a>
+                </React.Fragment>)}
+              </React.Fragment>)}
             </DocumentationContainer>
             <ButtonsContainer>
               <IconButton
                 onClick={this.removeComponent}
                 title="Remove component"
               >
-                <FontAwesomeIcon size="sm" icon={faTrash}/>
+                <FontAwesomeIcon size="xs" icon={faTrash}/>
               </IconButton>
             </ButtonsContainer>
           </TitleContainer>
