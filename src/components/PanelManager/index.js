@@ -5,6 +5,7 @@ import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import PanelHeader from '../atoms/PanelHeader';
 import EditPanel from '../components/EditPanel';
 import ToggleInspectorButton from '../atoms/ToggleInspectorButton';
+import DeselectEntity from '../atoms/DeselectEntity';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 
 import {
@@ -12,6 +13,7 @@ import {
   TabItem,
   TabsContainer,
   PanelBar,
+  UpperMenuContainer,
   PanelWrapper,
   ResizeContainer,
   MenuContainer,
@@ -74,6 +76,9 @@ export default ({
       </React.Fragment>
     ) : null}
     <PanelBar>
+      <UpperMenuContainer>
+        <DeselectEntity {...{entity}} />
+      </UpperMenuContainer>
       <TabsContainer
         orientation="vertical"
         variant="scrollable"

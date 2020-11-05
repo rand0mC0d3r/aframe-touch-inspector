@@ -19,6 +19,12 @@ export const ToolboxSection = styled.div`
     align-items: center;
 `;
 
+export const UpperMenuContainer = styled.div`
+    border-bottom: 1px solid var(--border-default);
+    margin: 5px 0px 0px 0px;
+    align-self: center;
+    padding-bottom: 5px;
+`;
 export const MenuContainer = styled.div`
     border-top: 1px solid var(--border-default);
     margin: 0px 0px 5px 0px;

@@ -43,6 +43,10 @@ export default () => {
       setEntity(entity);
     });
 
+    Events.on('entitydeselect', entity => {
+      setEntity(null);
+    });
+
     Events.on('inspectortoggle', enabled => {
       console.log('inspectortoggle', enabled)
       setInspectorEnabled(enabled);
@@ -54,10 +58,6 @@ export default () => {
       <PanelManger
         {...{scene, entity, visibleScenegraph, visibleAttributes}}
       />
-      {/* <SceneGraph
-        scene={sceneEl}
-        selectedEntity={entity}
-        visible={visibleScenegraph}/> */}
       <Viewport
         entity={entity}
         visible={visibleAttributes}

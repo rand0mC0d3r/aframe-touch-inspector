@@ -194,6 +194,9 @@ Inspector.prototype = {
     Events.on('entityselect', entity => {
       this.selectEntity(entity, false);
     });
+    Events.on('entitydeselect', () => {
+      this.deselect();
+    });
 
     Events.on('inspectortoggle', active => {
       this.inspectorActive = active;
