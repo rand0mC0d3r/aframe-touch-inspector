@@ -4,7 +4,7 @@ import AddEntity from './../atoms/AddEntity';
 import Sidebar from '../components/Sidebar';
 
 import {
-    DetectionContainer,
+    Container,
     ToolsBar,
     ViewportBar
  } from './styles.jsx';
@@ -14,9 +14,11 @@ THREE.ImageUtils.crossOrigin = '';
 export default ({
     entity = {},
     visible = false,
-}) => <DetectionContainer>
-    <ViewportBar>
+}) => <Container>
+    <ToolsBar>
         <TransformToolbar />
+    </ToolsBar>
+    <ViewportBar>
         <AddEntity />
         <Sidebar
             entity={entity}
@@ -24,4 +26,4 @@ export default ({
         />
 
     </ViewportBar>
-</DetectionContainer>;
+</Container>;

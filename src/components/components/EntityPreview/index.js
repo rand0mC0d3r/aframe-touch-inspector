@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 
 import { IconButton } from '@material-ui/core';
-// import Chip from '@material-ui/core/Chip';
 import Popover from '@material-ui/core/Popover';
 
 import {
@@ -17,7 +16,11 @@ import {
   Wrapper,
   Chip,
   ContainerWrapper,
-  EntityContainer
+  ComponentsListContainer,
+  EntityContainer,
+  EntityMetaContainer,
+  EntityTagLabel,
+  EntityNameLabel,
 } from './styles.jsx';
 
 export default ({ entity = {} }) => {
@@ -61,28 +64,21 @@ export default ({ entity = {} }) => {
     }
   }, [entity])
 
-  return (
-  <span className="entityPrint">
-      {entity && <React.Fragment>
-        <span className="entityTagName">
-          {entity.tagName.toLowerCase()}
-        </span>
+  return <Container>
+    {entity && <React.Fragment>
+      <EntityMetaContainer>
+        <EntityTagLabel>{entity.tagName.toLowerCase()}</EntityTagLabel>
         {entityName && (
-          <span className="entityName" data-entity-name-type={type}>
-            &nbsp;{entityName}
-          </span>
+          <EntityNameLabel>{entityName}</EntityNameLabel>
         )}
+      </EntityMetaContainer>
 
-        {/* {geometryName()} */}
-
+      <ComponentsListContainer>
         {components.map(component => <Chip key={component.value}>
-            <ComponentIcon componentName={component.value} />
-            {component.occurence > 1 ? `${component.occurence} times` : ''}
-          </Chip>)}
-        {/* <span className="entityCloseTag">{'>'}</span> */}
-      </React.Fragment>}
-
-    </span>
-
-  );
+          <ComponentIcon componentName={component.value} />
+          {component.occurence > 1 ? `${component.occurence} times` : ''}
+        </Chip>)}
+      </ComponentsListContainer>
+    </React.Fragment>}
+  </Container>;
 }

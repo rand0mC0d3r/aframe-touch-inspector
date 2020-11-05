@@ -13,9 +13,11 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    width: 400px;
+    border-left: 1px solid #CCC;
+    padding-left: 10px;
+
+    width: 337px;
     position: relative;
-    // margin-right: 25px;
     align-self: stretch;
 
     display: flex;

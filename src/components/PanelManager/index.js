@@ -27,7 +27,7 @@ export default ({
   visibleScenegraph = false,
   visibleAttributes = false
 }) => {
-  const noPanelIndex = 1;
+  const noPanelIndex = false;
   const [ value, setValue ] = React.useState(noPanelIndex);
 
   const panels = [
@@ -63,12 +63,10 @@ export default ({
                       role="tabpanel"
                       id={`vertical-tabpanel-${i}`}
                     >
-
                       <PanelHeader
                         icon={panel.icon}
                         title={panel.title}/>
                       {panel.component}
-
                     </TabListItem>
                   </React.Fragment>)}
               </TabsListWrapper>

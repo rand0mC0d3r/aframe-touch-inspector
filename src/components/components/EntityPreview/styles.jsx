@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    padding: 15px;
-    overflow-x: hidden;
-    overflow-y: auto;
-`;
+// export const Container = styled.div`
+//     padding: 15px;
+//     overflow-x: hidden;
+//     overflow-y: auto;
+// `;
 
 export const Wrapper = styled.div`
     width: 500px;
@@ -45,6 +45,35 @@ export const EntityContainer = styled.div`
     justify-content: space-between;
     align-content: stretch;
     align-items: center;
+`;
+
+export const Container = styled.div`
+    display: flex;
+    width: 100%;
+`;
+
+export const ComponentsListContainer = styled.div`
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row-reverse;
+`;
+
+export const EntityMetaContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 160px;
+`;
+
+export const EntityTagLabel = styled.div`
+    color: #555;
+    text-decoration: uppercase;
+    font-size: 14px;
+`;
+
+export const EntityNameLabel = styled.div`
+    color: #777;
+    text-decoration: capitalize;
+    font-size: 12px;
 `;
 
 
