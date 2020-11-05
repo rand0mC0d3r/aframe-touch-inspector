@@ -5,10 +5,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
+
+import DialogBottom from './../../atoms/DialogBottom';
+import Dialog from './../../atoms/Dialog';
 
 import ComponentIcon from './../../atoms/ComponentIcon';
 
-import { StyledSelect, StyledMenuItem } from './styles.jsx';
+import { StyledSelect, StyledButton, StyledMenuItem } from './styles.jsx';
 
 var DELIMITER = ' ';
 
@@ -17,6 +21,17 @@ export default ({
 }) => {
   const [ options, setOptions ] = React.useState([]);
   const [ selection, setSelection ] = React.useState('');
+
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (event) => {
     const componentObject = event.target.value;
@@ -71,7 +86,7 @@ export default ({
 
   return <div>
     {options && <React.Fragment>
-      <FormControl variant="outlined">
+      {/* <FormControl variant="outlined">
         <StyledSelect
           id="addComponent"
           onChange={handleChange}
@@ -81,15 +96,23 @@ export default ({
             <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
           </StyledMenuItem>)}
         </StyledSelect>
-      </FormControl>
+      </FormControl> */}
+
+
+       <StyledButton onClick={handleClickOpen}>+</StyledButton>
+      <Dialog
+      maxWidth="md"
+      fullWidth={true}
+      open={open}
+      onClose={handleClose}
+      actions={<DialogBottom {...{handleClose}} />}
+    >
+        dd
+    </Dialog>
     </React.Fragment>}
   </div>;
 }
 
-/* eslint-disable no-unused-vars */
-/**
- * Check if component has multiplicity.
- */
 function isComponentInstanced(entity, componentName) {
   for (var component in entity.components) {
     if (component.substr(0, component.indexOf('__')) === componentName) {
