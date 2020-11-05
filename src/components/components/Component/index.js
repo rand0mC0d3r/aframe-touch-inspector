@@ -7,7 +7,16 @@ import Clipboard from 'clipboard';
 import { getComponentClipboardRepresentation } from '../../../lib/entity';
 import Events from '../../../lib/Events';
 
-import { ComponentTitle } from './styles.jsx';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { IconButton } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import {
+  ComponentTitle,
+  TitleContainer,
+  DocumentationContainer,
+  ButtonsContainer
+} from './styles.jsx';
 
 const isSingleProperty = AFRAME.schema.isSingleProperty;
 
@@ -130,25 +139,32 @@ export default class Component extends React.Component {
 
     return <React.Fragment>
         <div className="componentHeader collapsible-header">
-          {/* <ComponentTitle title={subComponentName || componentName}>
-            <span>{subComponentName || componentName}</span>
-          </ComponentTitle> */}
-          <div className="componentHeaderActions">
+          <TitleContainer>
+            <ComponentTitle title={subComponentName || componentName}>
+              <span>{subComponentName || componentName}</span>
+            </ComponentTitle>
+            <DocumentationContainer>
+              DOCU A B
+            </DocumentationContainer>
+            <ButtonsContainer>
+              <IconButton
+                onClick={this.removeComponent}
+                title="Remove component"
+              >
+                <FontAwesomeIcon size="sm" icon={faTrash}/>
+              </IconButton>
+            </ButtonsContainer>
+          </TitleContainer>
+          {/* <div className="componentHeaderActions">
             <a
               title="Copy to clipboard"
               data-action="copy-component-to-clipboard"
               data-component={subComponentName || componentName}
               className="button fa fa-clipboard"
               href="#"
-            />
-            <a
-              title="Remove component"
-              className="button fa fa-trash-o"
-              onClick={this.removeComponent}
-            >
-              Remove
-            </a>
-          </div>
+            /> */}
+
+          {/* </div> */}
         </div>
         <div className="collapsible-content">
           {this.renderPropertyRows()}

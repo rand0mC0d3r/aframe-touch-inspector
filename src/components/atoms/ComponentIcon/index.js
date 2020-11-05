@@ -1,19 +1,26 @@
 import React from 'react';
 
-import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
-import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
-import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
-import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
-import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
-import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera';
-import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
-import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
-import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
+import { faBug } from '@fortawesome/free-solid-svg-icons/faBug';
+import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera';
+import { faChartArea } from '@fortawesome/free-solid-svg-icons/faChartArea';
+import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
+import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
-import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
+import { faGhost } from '@fortawesome/free-solid-svg-icons/faGhost';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
+import { faKeyboard } from '@fortawesome/free-solid-svg-icons/faKeyboard';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons/faMobileAlt';
+import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
+import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
+import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
+import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
+import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
+import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
+import { faBlind } from '@fortawesome/free-solid-svg-icons/faBlind';
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons/faUserSecret';
+import { faVrCardboard } from '@fortawesome/free-solid-svg-icons/faVrCardboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const items = {
@@ -28,7 +35,15 @@ const items = {
   'scale': faExpand,
   'rotation': faRedo,
   'visible': faEye,
-  'shadow': faEyeSlash,
+  'shadow': faGhost,
+  'debug': faBug,
+  'screenshot': faCamera,
+  'inspector': faUserSecret,
+  'vr-mode-ui': faVrCardboard,
+  'stats': faChartArea,
+  'keyboard-shortcuts': faKeyboard,
+  'device-orientation-permission-ui': faMobileAlt,
+  'laser-controls': faBlind,
 };
 
 export default ({
