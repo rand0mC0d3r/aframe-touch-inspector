@@ -117,11 +117,10 @@ export default class CommonComponents extends React.Component {
               value={entity.id}
             />
           </NameContainer>
-
-          <div className="propertyRow">
+          {/* <div className="propertyRow">
             <label className="text">class</label>
             <span>{entity.getAttribute('class')}</span>
-          </div>
+          </div> */}
           {this.renderCommonAttributes()}
         </div>
       </Collapsible>

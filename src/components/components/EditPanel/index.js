@@ -12,37 +12,22 @@ import Popover from '@material-ui/core/Popover';
 import {
   Container,
   Wrapper,
+  EmptyContainer,
   ContainerWrapper,
   EntityContainer
 } from './styles.jsx';
 
-export default ({
-    entity = {},
-    // visible = false,
-  }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [visible, setVisible] = React.useState(true);
+export default ({ entity = {} }) => {
+  const [ anchorEl, setAnchorEl ] = React.useState(null);
+  const [ visible, setVisible ] = React.useState(true);
   const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
 
   React.useEffect(() => {
-
-    Events.on('componentremove', event => {
-      forceUpdate();
-    });
-
-    Events.on('componentadd', event => {
-      forceUpdate();
-    });
-
-    Events.on('raycastermouseenter', el => {
-      setHoveredEntity(el);
-    });
-
-    Events.on('raycastermouseleave', el => {
-      setHoveredEntity(el);
-    });
+    Events.on('componentremove', event => forceUpdate());
+    Events.on('componentadd', event => forceUpdate());
+    Events.on('raycastermouseenter', el => setHoveredEntity(el));
+    Events.on('raycastermouseleave', el => setHoveredEntity(el));
   }, [])
-
 
   const handleToggle = () => {
     setOpen(!open);
@@ -57,10 +42,12 @@ export default ({
   };
 
   return <Wrapper>
-      {entity && visible &&
-        <ContainerWrapper>
-            <ComponentsContainer entity={entity} />
-        </ContainerWrapper>
-      }
+    {entity ? <React.Fragment>
+      {visible && <ContainerWrapper>
+          <ComponentsContainer entity={entity} />
+      </ContainerWrapper>}
+    </React.Fragment> : <EmptyContainer>
+      No Entity. Please select something from the scene.
+    </EmptyContainer>}
   </Wrapper>;
 }

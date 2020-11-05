@@ -41,3 +41,17 @@ export const EntityContainer = styled.div`
     align-content: stretch;
     align-items: center;
 `;
+
+export const EmptyContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    height: 100%;
+    padding: 75px;
+    font-size: 13px;
+    color: #777;
+    line-height: 17px;
+`;

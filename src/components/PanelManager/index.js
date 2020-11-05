@@ -52,7 +52,6 @@ export default ({
       <React.Fragment>
         <ResizeWrapper>
           <ResizeContainer>
-
               <TabsListWrapper>
                 {panels
                   .filter((panel, i) => i === value)
