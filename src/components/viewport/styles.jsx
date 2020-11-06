@@ -13,6 +13,7 @@ export const ViewportBar = styled.div`
     background-color: #fdfdfd;
     border-radius: 8px;
     box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;
+    border-bottom: 2px solid ${props => props.accent || 'transparent'};
 `;
 
 export const Container = styled.div`

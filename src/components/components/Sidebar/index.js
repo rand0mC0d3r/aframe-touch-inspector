@@ -18,22 +18,12 @@ import {
 
 export default ({
     entity = {},
-    // visible = false,
   }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [visible, setVisible] = React.useState(false);
   const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
 
   React.useEffect(() => {
-
-    Events.on('componentremove', event => {
-      // forceUpdate();
-    });
-
-    Events.on('componentadd', event => {
-      // forceUpdate();
-    });
-
     Events.on('raycastermouseenter', el => {
       setHoveredEntity(el);
     });
@@ -57,24 +47,8 @@ export default ({
   };
 
   return <Wrapper>
-
-      {entity && visible &&
-        <ContainerWrapper>
-          <Container>
-            <ComponentsContainer entity={entity} />
-          </Container>
-        </ContainerWrapper>
-      }
-
-    {/* <EntityContainer> */}
-
-      {entity && visible ?
+      {entity ?
         <EntityPreview entity={entity} /> :
-        <EntityPreview entity={hoveredEntity} />
-      }
-      {/* <IconButton onClick={() => setVisible(!visible)}>
-        <FontAwesomeIcon icon={faSort} size="sm" />
-      </IconButton> */}
-    {/* </EntityContainer> */}
+        <EntityPreview entity={hoveredEntity} />}
   </Wrapper>;
 }

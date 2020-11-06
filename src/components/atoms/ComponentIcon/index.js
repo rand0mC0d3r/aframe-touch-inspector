@@ -21,6 +21,7 @@ import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
 import { faBlind } from '@fortawesome/free-solid-svg-icons/faBlind';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons/faUserSecret';
 import { faVrCardboard } from '@fortawesome/free-solid-svg-icons/faVrCardboard';
+import { faMountain } from '@fortawesome/free-solid-svg-icons/faMountain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const items = {
@@ -44,6 +45,7 @@ const items = {
   'keyboard-shortcuts': faKeyboard,
   'device-orientation-permission-ui': faMobileAlt,
   'laser-controls': faBlind,
+  'background': faMountain,
 };
 
 export default ({
@@ -52,8 +54,8 @@ export default ({
   returnNull = false
 }) => <React.Fragment>
   {items[componentName] ?
-  <FontAwesomeIcon size={size} fixedWidth icon={items[componentName]}/> :
+  <FontAwesomeIcon title={componentName} size={size} fixedWidth icon={items[componentName]}/> :
   (<React.Fragment>
-    {!returnNull && <div>{componentName}</div>}
+    {!returnNull && <div title={componentName}>{componentName.substr(0,1).toUpperCase()}</div>}
   </React.Fragment>)}
 </React.Fragment>;

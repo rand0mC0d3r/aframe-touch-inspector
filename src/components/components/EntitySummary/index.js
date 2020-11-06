@@ -23,7 +23,10 @@ import {
   EntityNameLabel,
 } from './styles.jsx';
 
-export default ({ entity = {} }) => {
+export default ({
+  entity = {},
+  onDoubleClick = () => {},
+}) => {
   const [ components, setComponents ] = React.useState([]);
   const [ geometryName, setGeometryName ] = React.useState('');
   const [ entityName, setEntityName ] = React.useState('');
@@ -64,21 +67,10 @@ export default ({ entity = {} }) => {
     }
   }, [entity])
 
-  return <Container>
-    {entity && <React.Fragment>
-      <EntityMetaContainer>
-        <EntityTagLabel>{entity.tagName.toLowerCase()}</EntityTagLabel>
-        {entityName && (
-          <EntityNameLabel>#{entityName}</EntityNameLabel>
-        )}
-      </EntityMetaContainer>
-
-      <ComponentsListContainer>
-        {components.map(component => <Chip key={component.value}>
-          <ComponentIcon componentName={component.value} />
-          {component.occurence > 1 ? `${component.occurence} times` : ''}
-        </Chip>)}
-      </ComponentsListContainer>
-    </React.Fragment>}
-  </Container>;
+  return <React.Fragment>
+    {entity && <EntityMetaContainer {...{onDoubleClick}}>
+      <EntityTagLabel>{entity.tagName.toLowerCase()}</EntityTagLabel>
+      {entityName && <EntityNameLabel>#{entityName}</EntityNameLabel>}
+    </EntityMetaContainer>}
+  </React.Fragment>;
 }

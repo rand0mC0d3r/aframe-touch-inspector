@@ -50,9 +50,6 @@ export const EntityContainer = styled.div`
 export const Container = styled.div`
     display: flex;
     width: 100%;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
 `;
 
 export const ComponentsListContainer = styled.div`
@@ -63,9 +60,11 @@ export const ComponentsListContainer = styled.div`
 
 export const EntityMetaContainer = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 0 0 160px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex: 1 1 auto;
 `;
 
 export const EntityTagLabel = styled.div`

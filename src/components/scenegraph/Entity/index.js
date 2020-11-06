@@ -6,6 +6,8 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons/faCaretRight';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 
+import EntitySummary from './../../components/EntitySummary';
+
 import Events from '../../../lib/Events';
 
 import {
@@ -52,16 +54,15 @@ export default ({
 
     return (
       <Container active={isSelected} onClick={onClick}>
-        <span>
-        <VisibleIcon
-          title="Toggle entity visibility"
-          onClick={toggleVisibility}
-          icon={(tagName === 'a-scene' ?
-            entity.object3D.visible :
-            entity.getAttribute('visible')) ?
-              faEye :
-              faEyeSlash}
-        />
+          <VisibleIcon
+            title="Toggle entity visibility"
+            onClick={toggleVisibility}
+            icon={(tagName === 'a-scene' ?
+              entity.object3D.visible :
+              entity.getAttribute('visible')) ?
+                faEye :
+                faEyeSlash}
+          />
           <span
             className="entityChildPadding"
             dangerouslySetInnerHTML={{ __html: pad }}
@@ -70,8 +71,8 @@ export default ({
             onClick={() => toggleExpandedCollapsed(entity)}
             icon={isExpanded ? faCaretDown : faCaretRight}
           />}
-          {printEntity(entity, onDoubleClick)}
-        </span>
+          <EntitySummary {...{entity, onDoubleClick}} />
+          {/* {printEntity(entity, onDoubleClick)} */}
       </Container>
     );
 }

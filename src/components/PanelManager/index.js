@@ -25,11 +25,12 @@ import {
 
 export default ({
   scene = {},
+  accent,
   entity = {},
   visibleScenegraph = false,
   visibleAttributes = false
 }) => {
-  const noPanelIndex = false;
+  const noPanelIndex = 0;
   const [ value, setValue ] = React.useState(noPanelIndex);
 
   const panels = [
@@ -49,7 +50,13 @@ export default ({
     setValue(value === newValue ? false : newValue);
   };
 
-  return <PanelWrapper>
+  const closePanels = () => {
+    if(value === 1) {
+      setValue(false);
+    }
+  };
+
+  return <PanelWrapper {...{accent}}>
     {value !== false ? (
       <React.Fragment>
         <ResizeWrapper>
@@ -77,7 +84,7 @@ export default ({
     ) : null}
     <PanelBar>
       <UpperMenuContainer>
-        <DeselectEntity {...{entity}} />
+        <DeselectEntity {...{entity, closePanels}} />
       </UpperMenuContainer>
       <TabsContainer
         orientation="vertical"
@@ -88,15 +95,15 @@ export default ({
         indicatorColor="primary"
         onChange={handleChange}
       >
-        {panels.map((panel) => <TabItem
+        {panels.map((panel) => <TabItem {...{accent}}
           key={panel.title}
           title={panel.title}
           icon={<TabIcon size="1x" icon={panel.icon}/>}
         />)}
       </TabsContainer>
-       <MenuContainer>
-        <ToggleInspectorButton />
-      </MenuContainer>
+       {/* <MenuContainer>
+         <ToggleInspectorButton />
+      </MenuContainer> */}
     </PanelBar>
   </PanelWrapper>;
 };

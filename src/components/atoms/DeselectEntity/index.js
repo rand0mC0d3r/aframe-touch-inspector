@@ -6,11 +6,15 @@ import { faMousePointer } from '@fortawesome/free-solid-svg-icons/faMousePointer
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons/faHandPointer';
 import { IconButton } from '@material-ui/core';
 
-export default ({ entity }) => {
+export default ({
+  entity,
+  closePanels = () => {}
+}) => {
   const [ isSelected, setIsSelected ] = React.useState(false);
 
   const deselectEntity = () => {
     Events.emit('entitydeselect');
+    closePanels();
     setIsSelected(false);
   }
 
@@ -20,14 +24,13 @@ export default ({ entity }) => {
     }
   }, [entity])
 
-  return <IconButton
-  disabled={!isSelected}
-  onClick={deselectEntity} title={`Deselect Entity`}
+return <IconButton
+    disabled={!isSelected}
+    onClick={deselectEntity} title={`Deselect Entity`}
   >
     {isSelected ?
       <FontAwesomeIcon icon={faHandPointer} size="sm" /> :
       <FontAwesomeIcon icon={faMousePointer} size="sm" />
-
     }
   </IconButton>;
 };

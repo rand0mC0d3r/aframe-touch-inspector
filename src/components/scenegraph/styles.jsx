@@ -15,6 +15,7 @@ export const Container = styled.div`
     font-size: 14px;
     justify-content: space-between;
     margin: 0 auto;
+    width: 380px;
 `;
 
 export const HeaderContainer = styled.div`

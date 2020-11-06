@@ -50685,11 +50685,6 @@ exports.default = function (_ref) {
             icon: _react2.default.createElement(_styles.TabIcon, { size: '1x', icon: panel.icon })
           });
         })
-      ),
-      _react2.default.createElement(
-        _styles.MenuContainer,
-        null,
-        _react2.default.createElement(_ToggleInspectorButton2.default, null)
       )
     )
   );
@@ -51250,7 +51245,7 @@ const PanelWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default *
     cursor: default;
     position:absolute;
     right: 10px;
-    bottom: 10px;
+    bottom: 70px;
 
     display: flex;
     flex-direction: row;

@@ -6,6 +6,7 @@ import SceneGraph from './Scenegraph';
 import ComponentsSidebar from './components/Sidebar';
 import PanelManger from './PanelManager';
 
+import borderColor from '../utils/borderColor';
 import {
   DetectionContainer,
   InspectorContainer
@@ -13,12 +14,42 @@ import {
 
 THREE.ImageUtils.crossOrigin = '';
 
+const useReactPath = () => {
+  const [path, setPath] = React.useState(window.location.pathname);
+  const listenToPopstate = () => {
+    const winPath = window.location.pathname;
+    setPath(winPath);
+  };
+  React.useEffect(() => {
+    console.log('run effect')
+    window.addEventListener("popstate", listenToPopstate);
+    return () => {
+      window.removeEventListener("popstate", listenToPopstate);
+    };
+  }, []);
+  return path;
+};
+
 export default () => {
   const [ entity, setEntity ] = React.useState(null);
+  const [ accent, setAccent ] = React.useState(null);
   const [ scene, setScene ] = React.useState(AFRAME.scenes[0]);
   const [ inspectorEnabled, setInspectorEnabled ] = React.useState(true);
   const [ visibleScenegraph, setVisibleScenegraph ] = React.useState(true);
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
+  const path = useReactPath();
+
+  // React.useEffect(() => {
+  //     console.log("updated URL")
+  // }, [path])
+
+  // React.useEffect(() => {
+  //   console.log('path updated')
+  //   const gDriveDocument = window.location.pathname.replace('/designer/','');
+  //   if(gDriveDocument.length > 10) {
+  //     setAccent(borderColor(gDriveDocument));
+  //   }
+  // }, [window.location])
 
   React.useEffect(() => {
     Events.on('togglesidebar', event => {
@@ -55,13 +86,8 @@ export default () => {
 
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>
-      <PanelManger
-        {...{scene, entity, visibleScenegraph, visibleAttributes}}
-      />
-      <Viewport
-        entity={entity}
-        visible={visibleAttributes}
-      />
+      <PanelManger {...{scene, accent, entity, visibleScenegraph, visibleAttributes}} />
+      <Viewport {...{entity, accent }} />
     </InspectorContainer>}
   </React.Fragment>;
 }

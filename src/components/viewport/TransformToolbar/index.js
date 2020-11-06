@@ -14,7 +14,7 @@ const transformButtons = [
   { value: 'scale', icon: faExpand }
 ];
 
-export default () => {
+export default ({ accent }) => {
   const [ selectedTransform, setSelectedTransform ] = React.useState('translate');
   const [ localSpace, setLocalSpace ] = React.useState(false);
 
@@ -45,6 +45,7 @@ export default () => {
         icon={option.icon}
         active={option.value === selectedTransform ? 1 : 0}
         size="sm"
+        accent={accent}
         fixedWidth
       />
     </IconButton>)}

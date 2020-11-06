@@ -13,17 +13,13 @@ THREE.ImageUtils.crossOrigin = '';
 
 export default ({
     entity = {},
-    visible = false,
+    accent,
 }) => <Container>
     <ToolsBar>
-        <TransformToolbar />
+        <TransformToolbar {...{accent}} />
     </ToolsBar>
-    <ViewportBar>
+    <ViewportBar {...{accent}}>
         <AddEntity />
-        <Sidebar
-            entity={entity}
-            visible={visible}
-        />
-
+        <Sidebar {...{entity}}/>
     </ViewportBar>
 </Container>;

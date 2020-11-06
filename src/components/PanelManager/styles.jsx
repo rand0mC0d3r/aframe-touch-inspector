@@ -38,8 +38,8 @@ export const TabItem = styled(Tab)`
     font-size: 20px !important;
     padding: 10px 0px !important;
 
-    &.MuiTab-textColorPrimary.Mui-selected {
-        color: ${props => props.accent ? props.accent : 'var(--default-base-color)'};
+    &.inspector-MuiTab-textColorPrimary.Mui-selected {
+        color: ${props => props.accent ? props.accent : '#747474'};
     }
 `;
 
@@ -76,7 +76,7 @@ export const PanelWrapper = styled.div`
     cursor: default;
     position:absolute;
     right: 10px;
-    bottom: 10px;
+    bottom: 70px;
 
     display: flex;
     flex-direction: row;
@@ -85,8 +85,8 @@ export const PanelWrapper = styled.div`
     align-content: flex-start;
     align-items: flex-end;
 
-    & .PrivateTabIndicator-root-1 {
-        background-color: ${props => props.accent ? props.accent : 'var(--default-base-color)'};
+    & .inspector-PrivateTabIndicator-root-5 {
+        background-color: ${props => props.accent ? props.accent : '#747474'};
         width: 3px;
         border-radius: 5px 0px 0px 5px;
     }
@@ -109,7 +109,7 @@ export const ResizeWrapper = styled.div`
     position: relative;
     margin: 0px 10px;
     pointer-events: all;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
 `;
 
 export const WhiteLayer = styled.div`
