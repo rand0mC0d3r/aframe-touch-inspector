@@ -185,9 +185,9 @@ export default class Component extends React.Component {
               <span>{subComponentName || componentName}</span>
             </ComponentTitle>
             <DocumentationContainer>
-              {documentation.filter(d => d.key === this.props.name).map(d => <React.Fragment>
+              {documentation.filter(d => d.key === this.props.name).map((d, i) => <React.Fragment key={i}>
                 <DocuLabel>DOCS</DocuLabel>
-                {d.links.map(link => <React.Fragment>
+                {d.links.map((link, i) => <React.Fragment key={i}>
                   <a href={link.url} target="_blank" title={link.title}>
                     <DocuIcon size="sm" icon={faExternalLinkAlt}/>
                   </a>

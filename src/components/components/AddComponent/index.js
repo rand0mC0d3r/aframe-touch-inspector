@@ -39,6 +39,7 @@ export default ({
   };
 
   const handleChange = (object) => {
+    // console.log("fffff")
     setSelection(object);
     addComponent(object);
   };

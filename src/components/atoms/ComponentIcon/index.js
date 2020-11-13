@@ -21,6 +21,7 @@ import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
 import { faBlind } from '@fortawesome/free-solid-svg-icons/faBlind';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons/faUserSecret';
 import { faVrCardboard } from '@fortawesome/free-solid-svg-icons/faVrCardboard';
+import { faBinoculars } from '@fortawesome/free-solid-svg-icons/faBinoculars';
 import { faMountain } from '@fortawesome/free-solid-svg-icons/faMountain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -46,6 +47,8 @@ const items = {
   'device-orientation-permission-ui': faMobileAlt,
   'laser-controls': faBlind,
   'background': faMountain,
+  'wasd-controls': faKeyboard,
+  'look-controls': faBinoculars,
 };
 
 export default ({

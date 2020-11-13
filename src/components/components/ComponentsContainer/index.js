@@ -86,11 +86,11 @@ export default ({ entity = {} }) => {
           {value === 0 && <CommonComponents entity={entity} />}
           {definedComponents
             .filter((key, i) => i + 1 === value)
-            .map((key) =>  <Component
+            .map((key, i) =>  <Component
               isCollapsed={definedComponents.length > 2}
               component={components[key]}
               entity={entity}
-              key={key}
+              key={`${key}_${i}`}
               name={key}
           />)}
         </ResizeContainer>

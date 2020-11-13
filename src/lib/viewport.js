@@ -103,7 +103,7 @@ function Viewport (inspector) {
 
   Events.on('entityupdate', detail => {
     if (inspector.selectedEntity.object3DMap['mesh']) {
-      selectionBox.update(inspector.selected);
+      selectionBox.update();
     }
   });
 

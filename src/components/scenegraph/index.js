@@ -15,6 +15,7 @@ import { IconButton } from '@material-ui/core';
 
 import Emoji from './../atoms/Emoji';
 import AddEntity from './../atoms/AddEntity';
+import RenderPayload from './../atoms/RenderPayload';
 
 import Entity from './Entity';
 // import EntityList from './EntityList';
@@ -341,8 +342,13 @@ export default class SceneGraph extends React.Component {
             title="Rebuild Index"
           >
             <FontAwesomeIcon size="xs" icon={faRedo} />
-            </IconButton>
+          </IconButton>
           <AddEntity />
+          <RenderPayload />
+
+
+
+
           {this.props.entity && <React.Fragment>
           <IconButton
             onClick={() => cloneEntity(this.props.entity)}
