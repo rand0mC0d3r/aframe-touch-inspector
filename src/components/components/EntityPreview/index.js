@@ -76,7 +76,6 @@ export default ({ entity = {} }) => {
       <ComponentsListContainer>
         {components.map(component => <Chip key={component.value}>
           <ComponentIcon componentName={component.value} />
-          {component.occurence > 1 ? `${component.occurence} times` : ''}
         </Chip>)}
       </ComponentsListContainer>
     </React.Fragment>}

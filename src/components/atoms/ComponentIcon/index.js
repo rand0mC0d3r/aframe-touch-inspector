@@ -23,7 +23,10 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons/faUserSecret';
 import { faVrCardboard } from '@fortawesome/free-solid-svg-icons/faVrCardboard';
 import { faBinoculars } from '@fortawesome/free-solid-svg-icons/faBinoculars';
 import { faMountain } from '@fortawesome/free-solid-svg-icons/faMountain';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { EntityIcon } from './styles.jsx';
 
 const items = {
   'geometry': faDrawPolygon,
@@ -57,7 +60,11 @@ export default ({
   returnNull = false
 }) => <React.Fragment>
   {items[componentName] ?
-  <FontAwesomeIcon title={componentName} size={size} fixedWidth icon={items[componentName]}/> :
+  <EntityIcon
+    title={componentName}
+    size={size}
+    fixedWidth
+    icon={items[componentName]}/> :
   (<React.Fragment>
     {!returnNull && <div title={componentName}>{componentName.substr(0,1).toUpperCase()}</div>}
   </React.Fragment>)}
