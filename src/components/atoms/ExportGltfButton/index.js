@@ -45,7 +45,7 @@ export default () => {
       );
    }
 
-  return <IconButton onClick={exportSceneToGLTF} title="Save as .glb" >
+  return <IconButton onClick={exportSceneToGLTF} title="Save as .glb file" >
       <FontAwesomeIcon icon={faDownload} size="sm" />
    </IconButton>;
 };

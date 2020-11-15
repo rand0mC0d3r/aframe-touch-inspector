@@ -7,5 +7,5 @@ export const Container = styled.div`
 export const TransformationIcon = styled(FontAwesomeIcon)`
     opacity: ${props => props.active ? '1' : '0.35'};
     transform: scale(${props => props.active ? '1.2' : '0.85'});
-    color: ${props => props.accent ? props.accent : '#747474'};
+    ${props => props.accent ? `color: ${props.accent}` : ''};
 `;

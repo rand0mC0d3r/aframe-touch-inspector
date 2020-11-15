@@ -11,10 +11,7 @@ import {
 
 THREE.ImageUtils.crossOrigin = '';
 
-export default ({
-    entity = {},
-    accent,
-}) => <Container>
+export default ({ entity = {}, accent }) => <Container>
     <ToolsBar>
         <TransformToolbar {...{accent}} />
     </ToolsBar>

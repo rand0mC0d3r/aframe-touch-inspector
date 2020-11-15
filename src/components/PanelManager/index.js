@@ -64,8 +64,11 @@ export default ({
     Events.on('objectfocus', object => {
       setValue(1);
     });
-  }, [])
 
+    Events.on('entityupdate', object => {
+      setValue(1);
+    });
+  }, [])
 
   return <PanelWrapper {...{accent}}>
     {value !== false ? (
