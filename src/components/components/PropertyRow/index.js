@@ -17,7 +17,7 @@ import { updateEntity } from '../../../lib/entity';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { PropertyContainer, PropertyLabel, PropertyWidget } from './styles.jsx';
+import { PropertyContainer, PropertyIcon, PropertyLabel, PropertyWidget } from './styles.jsx';
 
 export default class PropertyRow extends React.Component {
   static propTypes = {
@@ -134,7 +134,7 @@ export default class PropertyRow extends React.Component {
     });
 
     return <PropertyContainer className={className}>
-        {props.icon && <FontAwesomeIcon size="1x" icon={props.icon}/>}
+        {props.icon && <PropertyIcon size="sm" icon={props.icon} fixedWidth />}
         <PropertyLabel htmlFor={this.id} title={title}>
           {props.name.split(/(?=[A-Z])/).join(" ")}
         </PropertyLabel>

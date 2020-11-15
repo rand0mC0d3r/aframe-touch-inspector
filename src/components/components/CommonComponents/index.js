@@ -15,6 +15,11 @@ import Clipboard from 'clipboard';
 import { saveBlob } from '../../../lib/utils';
 import TextField from '@material-ui/core/TextField';
 
+import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
+import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
+import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
+import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+
 import { NameContainer } from './styles.jsx';
 
 function changeId(componentName, value) {
@@ -25,6 +30,25 @@ function changeId(componentName, value) {
   }
 }
 
+const items = [
+  {
+    name: "position",
+    icon: faArrowsAlt,
+  },
+  {
+    name: "rotation",
+    icon: faRedo,
+  },
+  {
+    name: "scale",
+    icon: faExpand,
+  },
+  {
+    name: "visible",
+    icon: faEye,
+  },
+];
+
 export default ({ entity = {} }) => {
   React.useEffect(() => {
     Events.on('entityupdate', detail => {
@@ -32,21 +56,21 @@ export default ({ entity = {} }) => {
         return;
       }
       if (DEFAULT_COMPONENTS.indexOf(detail.component) !== -1) {
-        this.forceUpdate();
+        // this.forceUpdate();
       }
     });
 
     Events.on('refreshsidebarobject3d', () => {
-      this.forceUpdate();
+      // this.forceUpdate();
     });
   }, [])
 
   const renderCommonAttributes = () => {
     const components = entity ? entity.components : {};
-    return ['position', 'rotation', 'scale', 'visible'].map(componentName => {
-      const schema = AFRAME.components[componentName].schema;
-      let data = entity.object3D[componentName];
-      if (componentName === 'rotation') {
+    return items.map(item => {
+      const schema = AFRAME.components[item.name].schema;
+      let data = entity.object3D[item.name];
+      if (item.name === 'rotation') {
         data = {
           x: THREE.Math.radToDeg(entity.object3D.rotation.x),
           y: THREE.Math.radToDeg(entity.object3D.rotation.y),
@@ -55,40 +79,30 @@ export default ({ entity = {} }) => {
       }
       return <PropertyRow
         onChange={updateEntity}
-        key={componentName}
-        name={componentName}
+        key={item.name}
+        name={item.name}
+        icon={item.icon}
         showHelp={true}
         schema={schema}
         data={data}
         isSingle={true}
-        componentname={componentName}
+        componentname={item.name}
         entity={entity}
       />;
     });
   }
 
-  // render() {
-    // const entity = this.props.entity;
-    // if (!entity) {
-    //   return <div />;
-    // }
-
   return <Collapsible id="componentEntityHeader" className="commonComponents">
-    <div className="collapsible-header">
-    </div>
-    <div className="collapsible-content">
-      <NameContainer>
-        <InputWidget
-          onChange={changeId}
-          entity={entity}
-          name="id"
-          placeholder="Entity name..."
-          fullWidth={true}
-          value={entity.id}
-        />
-      </NameContainer>
-      {renderCommonAttributes()}
-    </div>
+    <NameContainer>
+      <InputWidget
+        onChange={changeId}
+        entity={entity}
+        name="id"
+        placeholder="Entity name..."
+        fullWidth={true}
+        value={entity.id}
+      />
+    </NameContainer>
+    {renderCommonAttributes()}
   </Collapsible>;
-  // }
 }

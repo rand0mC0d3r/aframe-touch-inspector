@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export const PropertyIcon = styled(FontAwesomeIcon)`
+    color: #747474;
+    margin-right: 10px;
+`;
 
 export const PropertyContainer = styled.div`
     padding: 5px 0px;
