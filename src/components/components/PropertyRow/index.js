@@ -15,12 +15,15 @@ import Vec3Widget from '../../widgets/Vec3Widget';
 import Vec2Widget from '../../widgets/Vec2Widget';
 import { updateEntity } from '../../../lib/entity';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { PropertyContainer, PropertyLabel, PropertyWidget } from './styles.jsx';
 
 export default class PropertyRow extends React.Component {
   static propTypes = {
     componentname: PropTypes.string.isRequired,
     id: PropTypes.string,
+    icon: PropTypes.any,
     name: PropTypes.string.isRequired,
     schema: PropTypes.object.isRequired
   };
@@ -131,7 +134,8 @@ export default class PropertyRow extends React.Component {
     });
 
     return <PropertyContainer className={className}>
-        <PropertyLabel htmlFor={this.id} className="text" title={title}>
+        {props.icon && <FontAwesomeIcon size="1x" icon={props.icon}/>}
+        <PropertyLabel htmlFor={this.id} title={title}>
           {props.name.split(/(?=[A-Z])/).join(" ")}
         </PropertyLabel>
         <PropertyWidget>

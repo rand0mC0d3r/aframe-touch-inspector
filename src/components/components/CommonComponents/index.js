@@ -17,7 +17,6 @@ import TextField from '@material-ui/core/TextField';
 
 import { NameContainer } from './styles.jsx';
 
-// @todo Take this out and use updateEntity?
 function changeId(componentName, value) {
   var entity = AFRAME.INSPECTOR.selectedEntity;
   if (entity.id !== value) {
@@ -26,14 +25,10 @@ function changeId(componentName, value) {
   }
 }
 
-export default class CommonComponents extends React.Component {
-  static propTypes = {
-    entity: PropTypes.object
-  };
-
-  componentDidMount() {
+export default ({ entity = {} }) => {
+  React.useEffect(() => {
     Events.on('entityupdate', detail => {
-      if (detail.entity !== this.props.entity) {
+      if (detail.entity !== entity) {
         return;
       }
       if (DEFAULT_COMPONENTS.indexOf(detail.component) !== -1) {
@@ -44,23 +39,13 @@ export default class CommonComponents extends React.Component {
     Events.on('refreshsidebarobject3d', () => {
       this.forceUpdate();
     });
+  }, [])
 
-    var clipboard = new Clipboard('[data-action="copy-entity-to-clipboard"]', {
-      text: trigger => {
-        return getEntityClipboardRepresentation(this.props.entity);
-      }
-    });
-    clipboard.on('error', e => {
-      // @todo Show the error on the UI
-    });
-  }
-
-  renderCommonAttributes() {
-    const entity = this.props.entity;
+  const renderCommonAttributes = () => {
     const components = entity ? entity.components : {};
     return ['position', 'rotation', 'scale', 'visible'].map(componentName => {
       const schema = AFRAME.components[componentName].schema;
-      var data = entity.object3D[componentName];
+      let data = entity.object3D[componentName];
       if (componentName === 'rotation') {
         data = {
           x: THREE.Math.radToDeg(entity.object3D.rotation.x),
@@ -68,44 +53,42 @@ export default class CommonComponents extends React.Component {
           z: THREE.Math.radToDeg(entity.object3D.rotation.z)
         };
       }
-      return (
-        <PropertyRow
-          onChange={updateEntity}
-          key={componentName}
-          name={componentName}
-          showHelp={true}
-          schema={schema}
-          data={data}
-          isSingle={true}
-          componentname={componentName}
-          entity={entity}
-        />
-      );
+      return <PropertyRow
+        onChange={updateEntity}
+        key={componentName}
+        name={componentName}
+        showHelp={true}
+        schema={schema}
+        data={data}
+        isSingle={true}
+        componentname={componentName}
+        entity={entity}
+      />;
     });
   }
 
-  render() {
-    const entity = this.props.entity;
-    if (!entity) {
-      return <div />;
-    }
+  // render() {
+    // const entity = this.props.entity;
+    // if (!entity) {
+    //   return <div />;
+    // }
 
-    return <Collapsible id="componentEntityHeader" className="commonComponents">
-        <div className="collapsible-header">
-        </div>
-        <div className="collapsible-content">
-          <NameContainer>
-            <InputWidget
-              onChange={changeId}
-              entity={entity}
-              name="id"
-              placeholder="Entity name..."
-              fullWidth={true}
-              value={entity.id}
-            />
-          </NameContainer>
-          {this.renderCommonAttributes()}
-        </div>
-      </Collapsible>;
-  }
+  return <Collapsible id="componentEntityHeader" className="commonComponents">
+    <div className="collapsible-header">
+    </div>
+    <div className="collapsible-content">
+      <NameContainer>
+        <InputWidget
+          onChange={changeId}
+          entity={entity}
+          name="id"
+          placeholder="Entity name..."
+          fullWidth={true}
+          value={entity.id}
+        />
+      </NameContainer>
+      {renderCommonAttributes()}
+    </div>
+  </Collapsible>;
+  // }
 }
