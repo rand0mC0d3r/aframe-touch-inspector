@@ -84,26 +84,13 @@ export default class CommonComponents extends React.Component {
     });
   }
 
-  exportToGLTF() {
-    const entity = this.props.entity;
-    AFRAME.INSPECTOR.exporters.gltf.parse(
-      entity.object3D,
-      function(buffer) {
-        const blob = new Blob([buffer], { type: 'application/octet-stream' });
-        saveBlob(blob, (entity.id || 'entity') + '.glb');
-      },
-      { binary: true }
-    );
-  }
-
   render() {
     const entity = this.props.entity;
     if (!entity) {
       return <div />;
     }
 
-    return (
-      <Collapsible id="componentEntityHeader" className="commonComponents">
+    return <Collapsible id="componentEntityHeader" className="commonComponents">
         <div className="collapsible-header">
         </div>
         <div className="collapsible-content">
@@ -117,13 +104,8 @@ export default class CommonComponents extends React.Component {
               value={entity.id}
             />
           </NameContainer>
-          {/* <div className="propertyRow">
-            <label className="text">class</label>
-            <span>{entity.getAttribute('class')}</span>
-          </div> */}
           {this.renderCommonAttributes()}
         </div>
-      </Collapsible>
-    );
+      </Collapsible>;
   }
 }

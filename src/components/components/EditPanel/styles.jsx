@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
     width: 380px;
-    height: 250px;
+    height: 270px;
 
     overflow: hidden;
 
