@@ -130,15 +130,13 @@ export default class PropertyRow extends React.Component {
           (props.entity.getDOMAttribute(props.componentname) || {})
     });
 
-    return (
-      <PropertyContainer className={className}>
+    return <PropertyContainer className={className}>
         <PropertyLabel htmlFor={this.id} className="text" title={title}>
           {props.name.split(/(?=[A-Z])/).join(" ")}
         </PropertyLabel>
         <PropertyWidget>
         {this.getWidget(props.schema.type)}
         </PropertyWidget>
-      </PropertyContainer>
-    );
+      </PropertyContainer>;
   }
 }

@@ -30,6 +30,7 @@ import {
   HeaderLabel,
   HeaderContainer,
   BottomBar,
+  SearchContainer,
  } from './styles.jsx';
 
 export default class SceneGraph extends React.Component {
@@ -311,6 +312,7 @@ export default class SceneGraph extends React.Component {
           <HeaderLabel>Layers</HeaderLabel>
           <HeaderIcon icon={faLayerGroup} />
         </HeaderContainer> */}
+          <SearchContainer>
             <SearchField
               fullWidth
               size="small"
@@ -328,6 +330,7 @@ export default class SceneGraph extends React.Component {
                 ),
               }}
             />
+          </SearchContainer>
         <EntitiesList
           className="outliner"
           tabIndex="0"

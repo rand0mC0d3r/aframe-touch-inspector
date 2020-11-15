@@ -37,8 +37,14 @@ export const HeaderLabel = styled.div`
     letter-spacing: 2px;
 `;
 
-export const SearchField = styled(TextField)`
+export const SearchContainer = styled.div`
+    margin-top: 5px;
+    margin-bottom: 5px;
     align-self: stretch;
+`;
+
+export const SearchField = styled(TextField)`
+
 `;
 
 export const HeaderIcon = styled(FontAwesomeIcon)`

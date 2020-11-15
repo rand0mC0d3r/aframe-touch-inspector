@@ -5,33 +5,33 @@ import { saveBlob, saveString } from '../../lib/utils';
 
 const LOCALSTORAGE_MOCAP_UI = 'aframeinspectormocapuienabled';
 
-function filterHelpers(scene, visible) {
-  scene.traverse(o => {
-    if (o.userData.source === 'INSPECTOR') {
-      o.visible = visible;
-    }
-  });
-}
+// function filterHelpers(scene, visible) {
+//   scene.traverse(o => {
+//     if (o.userData.source === 'INSPECTOR') {
+//       o.visible = visible;
+//     }
+//   });
+// }
 
-function getSceneName(scene) {
-  return scene.id || slugify(window.location.host + window.location.pathname);
-}
+// function getSceneName(scene) {
+//   return scene.id || slugify(window.location.host + window.location.pathname);
+// }
 
 /**
  * Slugify the string removing non-word chars and spaces
  * @param  {string} text String to slugify
  * @return {string}      Slugified string
  */
-function slugify(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w\-]+/g, '-') // Replace all non-word chars with -
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
-}
+// function slugify(text) {
+//   return text
+//     .toString()
+//     .toLowerCase()
+//     .replace(/\s+/g, '-') // Replace spaces with -
+//     .replace(/[^\w\-]+/g, '-') // Replace all non-word chars with -
+//     .replace(/\-\-+/g, '-') // Replace multiple - with single -
+//     .replace(/^-+/, '') // Trim - from start of text
+//     .replace(/-+$/, ''); // Trim - from end of text
+// }
 
 /**
  * Tools and actions.
@@ -45,21 +45,21 @@ export default class Toolbar extends React.Component {
     };
   }
 
-  exportSceneToGLTF() {
-    ga('send', 'event', 'SceneGraph', 'exportGLTF');
-    const sceneName = getSceneName(AFRAME.scenes[0]);
-    const scene = AFRAME.scenes[0].object3D;
-    filterHelpers(scene, false);
-    AFRAME.INSPECTOR.exporters.gltf.parse(
-      scene,
-      function(buffer) {
-        filterHelpers(scene, true);
-        const blob = new Blob([buffer], { type: 'application/octet-stream' });
-        saveBlob(blob, sceneName + '.glb');
-      },
-      { binary: true }
-    );
-  }
+  // exportSceneToGLTF() {
+  //   ga('send', 'event', 'SceneGraph', 'exportGLTF');
+  //   const sceneName = getSceneName(AFRAME.scenes[0]);
+  //   const scene = AFRAME.scenes[0].object3D;
+  //   filterHelpers(scene, false);
+  //   AFRAME.INSPECTOR.exporters.gltf.parse(
+  //     scene,
+  //     function(buffer) {
+  //       filterHelpers(scene, true);
+  //       const blob = new Blob([buffer], { type: 'application/octet-stream' });
+  //       saveBlob(blob, sceneName + '.glb');
+  //     },
+  //     { binary: true }
+  //   );
+  // }
 
   addEntity() {
     Events.emit('entitycreate', { element: 'a-entity', components: {} });

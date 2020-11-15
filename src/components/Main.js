@@ -21,7 +21,6 @@ const useReactPath = () => {
     setPath(winPath);
   };
   React.useEffect(() => {
-    console.log('run effect')
     window.addEventListener("popstate", listenToPopstate);
     return () => {
       window.removeEventListener("popstate", listenToPopstate);
@@ -38,18 +37,6 @@ export default () => {
   const [ visibleScenegraph, setVisibleScenegraph ] = React.useState(true);
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
   const path = useReactPath();
-
-  // React.useEffect(() => {
-  //     console.log("updated URL")
-  // }, [path])
-
-  // React.useEffect(() => {
-  //   console.log('path updated')
-  //   const gDriveDocument = window.location.pathname.replace('/designer/','');
-  //   if(gDriveDocument.length > 10) {
-  //     setAccent(borderColor(gDriveDocument));
-  //   }
-  // }, [window.location])
 
   React.useEffect(() => {
     Events.on('togglesidebar', event => {

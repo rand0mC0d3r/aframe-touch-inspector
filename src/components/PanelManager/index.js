@@ -1,12 +1,16 @@
 import React from 'react';
-import Scenegraph from './../Scenegraph';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
+import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
+
+import Scenegraph from './../Scenegraph';
 import PanelHeader from '../atoms/PanelHeader';
 import EditPanel from '../components/EditPanel';
-import ToggleInspectorButton from '../atoms/ToggleInspectorButton';
+import ExportGltfButton from '../atoms/ExportGltfButton';
 import DeselectEntity from '../atoms/DeselectEntity';
-import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
+
+import Events from '../../lib/Events.js';
 
 import {
   TabIcon,
@@ -56,6 +60,13 @@ export default ({
     }
   };
 
+  React.useEffect(() => {
+    Events.on('objectfocus', object => {
+      setValue(1);
+    });
+  }, [])
+
+
   return <PanelWrapper {...{accent}}>
     {value !== false ? (
       <React.Fragment>
@@ -101,9 +112,9 @@ export default ({
           icon={<TabIcon size="1x" icon={panel.icon}/>}
         />)}
       </TabsContainer>
-       {/* <MenuContainer>
-         <ToggleInspectorButton />
-      </MenuContainer> */}
+       <MenuContainer>
+         <ExportGltfButton />
+      </MenuContainer>
     </PanelBar>
   </PanelWrapper>;
 };
