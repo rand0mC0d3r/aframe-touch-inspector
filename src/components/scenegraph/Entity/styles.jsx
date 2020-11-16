@@ -14,11 +14,36 @@ export const Container = styled.div`
     }
 `;
 
+export const ChildrenContainer = styled.div`
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    padding: 1px 5px;
+    margin-right: 5px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+`;
+
+export const ChildrenLabel = styled.span`
+    font-size: 10px;
+`;
+
 export const VisibleIcon = styled(FontAwesomeIcon)`
     margin-right: 10px;
     margin-left: 3px;
+    opacity: 0.5;
+`;
+
+export const ChildrenIcon = styled(FontAwesomeIcon)`
+    margin-right: 3px;
+    opacity: 0.5;
 `;
 
 export const ExpandIcon = styled(FontAwesomeIcon)`
-    margin-right: 10px;
+    margin-right: 5px;
+    opacity: 0.5;
 `;

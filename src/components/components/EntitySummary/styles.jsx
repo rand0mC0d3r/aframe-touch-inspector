@@ -77,6 +77,7 @@ export const EntityNameLabel = styled.div`
     color: #777;
     text-decoration: capitalize;
     font-size: 12px;
+    margin-left: 5px;
 `;
 
 

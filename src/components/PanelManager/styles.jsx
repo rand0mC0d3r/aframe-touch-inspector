@@ -30,6 +30,13 @@ export const MenuContainer = styled.div`
     margin: 0px 0px 5px 0px;
     align-self: center;
     padding-top: 5px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 `;
 
 export const TabItem = styled(Tab)`
@@ -139,6 +146,7 @@ export const TabListItem = styled.div`
     `};
 
     padding: 10px;
+    padding-bottom: 0px;
     backdrop-filter: blur(25px);
 
     display: flex;

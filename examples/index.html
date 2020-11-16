@@ -24,9 +24,10 @@
 
       <a-entity id="blueBox" mixin="blueBox" position="0 8 0" geometry="" material=""></a-entity>
 
-      <a-entity id="shortOrangeBox" mixin="short orange box" position="-5 2 0" scale="" material="" geometry=""></a-entity>
-
-      <a-entity id="shortYellowBox" mixin="short yellow box" position="5 2 0" scale="" material="" geometry=""></a-entity>
+      <a-entity>
+        <a-entity id="shortOrangeBox" mixin="short orange box" position="-5 2 0" scale="" material="" geometry=""></a-entity>
+        <a-entity id="shortYellowBoxTest" mixin="short yellow box" position="5 2 0" scale="" material="" geometry=""></a-entity>
+      </a-entity>
 
       <a-entity id="redBox" geometry="primitive: box" material="color:#f00" position="-4 1 0" animation="property: object3D.rotation.y; to: 360; loop: true; easing: linear; dur: 9600"></a-entity>
 
@@ -36,9 +37,9 @@
 
       <a-box id="box" position="0 2 1.435" height="2" color="#FFC65D" material="" geometry="" light="color: #ffffff; intensity: 0.93; type: ambient"></a-box>
 
-      <a-entity class="boxClass" geometry="primitive: box" material="src: #crateImg" position="3 4 0"></a-entity>
+      <a-entity id="boxClass" geometry="primitive: box" material="src: #crateImg" position="3 4 0"></a-entity>
 
-      <a-entity class="boxClass" geometry="primitive: box" material="color: #0f0" position="4 2 4"></a-entity>
+      <a-entity id="boxClaszz" geometry="primitive: box" material="color: #0f0" position="4 2 4"></a-entity>
 
       <a-entity id="floor" geometry="primitive: box; height: .2; depth: 24; width: 24" material="src: #floorImg; color: #fafafa; metalness: .1; repeat: 50 20; roughness: 1"></a-entity>
 

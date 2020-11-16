@@ -8,6 +8,7 @@ import Scenegraph from './../Scenegraph';
 import PanelHeader from '../atoms/PanelHeader';
 import EditPanel from '../components/EditPanel';
 import ExportGltfButton from '../atoms/ExportGltfButton';
+import FullScreenButton from '../atoms/FullScreenButton';
 import DeselectEntity from '../atoms/DeselectEntity';
 
 import Events from '../../lib/Events.js';
@@ -124,6 +125,7 @@ export default ({
       </TabsContainer>
        <MenuContainer>
          <ExportGltfButton />
+         <FullScreenButton />
       </MenuContainer>
     </PanelBar>
   </PanelWrapper>;

@@ -3,19 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TextField from '@material-ui/core/TextField';
 
 export const Container = styled.div`
-    // position: absolute;
-    // left: 10px;
     pointer-events: all;
 
-    align-items: center;
+    align-items: stretch;
     display: flex;
     flex-direction: column;
     pointer-events: all;
-    // padding: 10px;
     font-size: 14px;
     justify-content: space-between;
     margin: 0 auto;
     width: 380px;
+`;
+
+export const ActionBar = styled.div`
+    box-shadow: 0px -8px 14px -16px #000;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const StartActionBar = styled.div`
+`;
+
+export const EndActionBar = styled.div`
 `;
 
 export const HeaderContainer = styled.div`

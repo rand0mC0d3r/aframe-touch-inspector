@@ -5,8 +5,8 @@ import debounce from 'lodash.debounce';
 import { removeEntity, cloneEntity } from '../../lib/entity';
 import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
-import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons/faTrashAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -27,6 +27,9 @@ import {
   HeaderLabel,
   HeaderContainer,
   BottomBar,
+  ActionBar,
+  StartActionBar,
+  EndActionBar,
   SearchContainer,
  } from './styles.jsx';
 
@@ -43,7 +46,7 @@ export default ({
 
   const [ entities, setEntities ] = React.useState([]);
   const [ internalEntity, setInternalEntity ] = React.useState(entity);
-  const [ expandedElements, setExpandedElements ] = React.useState( new WeakMap([[scene, true]]) );
+  const [ expandedElements, setExpandedElements ] = React.useState([]);
   const [ filter, setFilter ] = React.useState('');
   const [ filteredEntities, setFilteredEntities ] = React.useState([]);
 
@@ -52,6 +55,8 @@ export default ({
     Events.on('entityidchange', rebuildEntityOptions);
     Events.on('entitycreated', rebuildEntityOptions);
     Events.on('entityclone', rebuildEntityOptions);
+
+    setExpandedElements(new WeakMap([[scene, true]]))
   }, [])
 
   React.useEffect(() => {
@@ -196,8 +201,8 @@ export default ({
 
   const previousExpandedIndexTo = i => {
     for (let prevIter = i - 1; prevIter >= 0; prevIter--) {
-      const prevEl = this.state.entities[prevIter].entity;
-      if (this.isVisibleInSceneGraph(prevEl)) {
+      const prevEl = entities[prevIter].entity;
+      if (isVisibleInSceneGraph(prevEl)) {
         return prevIter;
       }
     }
@@ -207,11 +212,11 @@ export default ({
   const nextExpandedIndexTo = i => {
     for (
       let nextIter = i + 1;
-      nextIter < this.state.entities.length;
+      nextIter < entities.length;
       nextIter++
     ) {
-      const nextEl = this.state.entities[nextIter].entity;
-      if (this.isVisibleInSceneGraph(nextEl)) {
+      const nextEl = entities[nextIter].entity;
+      if (isVisibleInSceneGraph(nextEl)) {
         return nextIter;
       }
     }
@@ -255,16 +260,6 @@ export default ({
     });
   };
 
-  // render() {
-    // // To hide the SceneGraph we have to hide its parent too (#left-sidebar).
-    // if (!this.props.visibleScenegraph) {
-    //   return null;
-    // }
-
-    // const clearFilter = this.state.filter ? (
-    //   <a onClick={this.clearFilter} className="button fa fa-times" />
-    // ) : null;
-
   return <Container>
     <SearchContainer>
       <SearchField
@@ -293,35 +288,38 @@ export default ({
     >
       {renderEntities()}
     </EntitiesList>
-    <div>
-      <IconButton
-        onClick={rebuildEntityOptions}
-        title="Rebuild Index"
-      >
-        <FontAwesomeIcon size="xs" icon={faRedo} />
-      </IconButton>
-      <AddEntity />
-      <RenderPayload />
 
-      {entity && <React.Fragment>
-      <IconButton
-        onClick={() => cloneEntity(entity)}
-        title="Clone Entity"
-      >
-        <FontAwesomeIcon size="xs" icon={faClone}/>
-      </IconButton>
-
-      <IconButton
-        onClick={event => {
-              event.stopPropagation();
-              removeEntity(entity);
-        }}
-        title="Remove entity"
-      >
-        <FontAwesomeIcon size="xs" icon={faTrash} />
+    <ActionBar>
+      <StartActionBar>
+        {/* <AddEntity /> */}
+        {entity && <React.Fragment>
+        <IconButton
+          onClick={() => cloneEntity(entity)}
+          title="Clone Entity"
+        >
+          <FontAwesomeIcon size="xs" icon={faCopy}/>
         </IconButton>
-      </React.Fragment>}
-    </div>
+
+        <IconButton
+          onClick={event => {
+                event.stopPropagation();
+                removeEntity(entity);
+          }}
+          title="Remove entity"
+        >
+          <FontAwesomeIcon size="xs" icon={faTrashAlt} />
+          </IconButton>
+        </React.Fragment>}
+      </StartActionBar>
+      <EndActionBar>
+        <IconButton
+          onClick={rebuildEntityOptions}
+          title="Rebuild Index"
+        >
+          <FontAwesomeIcon size="xs" icon={faRedo} />
+        </IconButton>
+      </EndActionBar>
+    </ActionBar>
   </Container>;
   // }
 }

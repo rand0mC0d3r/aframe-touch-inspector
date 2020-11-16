@@ -68,9 +68,7 @@ export default ({ entity = {} }) => {
     {entity && <React.Fragment>
       <EntityMetaContainer>
         <EntityTagLabel>{entity.tagName.toLowerCase()}</EntityTagLabel>
-        {entityName && (
-          <EntityNameLabel>#{entityName}</EntityNameLabel>
-        )}
+        {entityName && <EntityNameLabel>#{entityName}</EntityNameLabel>}
       </EntityMetaContainer>
 
       <ComponentsListContainer>
