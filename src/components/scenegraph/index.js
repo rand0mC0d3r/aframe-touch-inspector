@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { removeEntity, cloneEntity } from '../../lib/entity';
+import { IconButton, InputAdornment } from '@material-ui/core';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons/faTrashAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { IconButton } from '@material-ui/core';
+
 
 import Emoji from './../atoms/Emoji';
 

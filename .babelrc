@@ -1,4 +1,7 @@
 {
-  "plugins": ["transform-class-properties", "babel-plugin-styled-components"],
+  "plugins": [
+    "transform-class-properties",
+    "babel-plugin-styled-components"
+  ],
   "presets": ["es2015", "react"]
 }

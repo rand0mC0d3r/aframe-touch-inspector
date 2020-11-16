@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Dialog from '@material-ui/core/Dialog';
+import { Dialog } from '@material-ui/core';
 
 export const StyledDialog = styled(Dialog)`
     & .inspector-MuiDialog-paper {

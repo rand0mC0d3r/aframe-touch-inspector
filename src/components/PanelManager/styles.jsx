@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
+import { Tab, Tabs } from '@material-ui/core';
 
 export const EmptySection = styled.div`
     flex: 1 1 auto;

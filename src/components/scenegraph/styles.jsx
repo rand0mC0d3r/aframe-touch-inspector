@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import TextField from '@material-ui/core/TextField';
+import { TextField } from '@material-ui/core';
 
 export const Container = styled.div`
     pointer-events: all;
