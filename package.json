@@ -1,7 +1,7 @@
 {
-  "name": "3dmixer-inspector",
+  "name": "aframe-touch-inspector",
   "version": "1.0.1",
-  "description": "A clone of a visual inspector tool inspired by A-Frame-Inspector for AFrame",
+  "description": "A touch of a visual inspector tool inspired by A-Frame-Inspector for A-Frame",
   "main": "dist/aframe-inspector.min.js",
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
