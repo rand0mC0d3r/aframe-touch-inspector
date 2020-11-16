@@ -43,13 +43,13 @@ export const TabIcon = styled(FontAwesomeIcon)`
 export const TabsContainer = styled(Tabs)`
     width: 100%;
     position: relative;
-    pointer-events: all;
+    // pointer-events: all;
 `;
 
 export const PanelBar = styled.div`
     max-height: 95vh;
 
-    pointer-events: all;
+    // pointer-events: all;
     display: flex;
     flex: 0 0 56px;
     flex-direction: column;
@@ -65,7 +65,7 @@ export const PanelBar = styled.div`
 `;
 
 export const PanelWrapper = styled.div`
-    pointer-events: none;
+    // pointer-events: none;
     z-index: 2;
     cursor: default;
 
@@ -78,7 +78,7 @@ export const PanelWrapper = styled.div`
 `;
 
 export const TabsListWrapper = styled.div`
-    pointer-events: none;
+    // pointer-events: none;
     user-select: none;
     position: relative;
     display: block;
@@ -94,7 +94,7 @@ export const ResizeWrapper = styled.div`
     position: relative;
     width: 100%;
     flex: 0 1 auto;
-    pointer-events: all;
+    // pointer-events: all;
     overflow: hidden auto;
     border-top: 1px solid #AAA;
 `;
@@ -110,7 +110,7 @@ export const WhiteLayer = styled.div`
 `;
 
 export const TabListItem = styled.div`
-    pointer-events: all;
+    // pointer-events: all;
     padding: 10px;
     // background-color: var(--background-paper);
     backdrop-filter: blur(25px);

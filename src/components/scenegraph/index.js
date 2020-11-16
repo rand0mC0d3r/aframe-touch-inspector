@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars, react/no-danger */
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';

@@ -36,6 +36,7 @@ export default ({
 }) => {
   const noPanelIndex = 0;
   const [ value, setValue ] = React.useState(noPanelIndex);
+  const [ transparency, setTransparency ] = React.useState(false);
 
   const panels = [
     {
@@ -51,8 +52,14 @@ export default ({
   ];
 
   const handleChange = (event, newValue) => {
+    console.log('dddd')
     setValue(value === newValue ? false : newValue);
+    if(newValue === 1) {
+      setTransparency(false);
+    }
   };
+
+
 
   const closePanels = () => {
     if(value === 1) {
@@ -67,13 +74,14 @@ export default ({
 
     Events.on('entityupdate', object => {
       setValue(1);
+      setTransparency(true);
     });
   }, [])
 
   return <PanelWrapper {...{accent}}>
     {value !== false ? (
       <React.Fragment>
-        <ResizeWrapper>
+        <ResizeWrapper transparency={transparency ? '1' : '0'}>
           <ResizeContainer>
               <TabsListWrapper>
                 {panels
@@ -81,6 +89,7 @@ export default ({
                   .map((panel, i) => <React.Fragment key={i}>
                     <WhiteLayer />
                     <TabListItem
+                      transparency={transparency ? '1' : '0'}
                       key={i}
                       role="tabpanel"
                       id={`vertical-tabpanel-${i}`}
@@ -96,7 +105,7 @@ export default ({
         </ResizeWrapper>
       </React.Fragment>
     ) : null}
-    <PanelBar>
+    <PanelBar  onMouseEnter={() => setTransparency(false)}>
       <UpperMenuContainer>
         <DeselectEntity {...{entity, closePanels}} />
       </UpperMenuContainer>

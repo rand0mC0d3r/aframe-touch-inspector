@@ -5,12 +5,10 @@ import Button from '@material-ui/core/Button';
 
 export const StyledSelect = styled(Select)`
     width: 60px;
-    pointer-events: all;
 `;
 
 export const StyledButton = styled(Button)`
     width: 60px;
-    pointer-events: all;
 `;
 
 export const StyledMenuItem = styled.div`

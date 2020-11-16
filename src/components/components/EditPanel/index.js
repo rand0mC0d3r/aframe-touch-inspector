@@ -22,13 +22,6 @@ export default ({ entity = null }) => {
   const [ visible, setVisible ] = React.useState(true);
   const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
 
-  // React.useEffect(() => {
-  //   Events.on('componentremove', event => forceUpdate());
-  //   Events.on('componentadd', event => forceUpdate());
-  //   Events.on('raycastermouseenter', el => setHoveredEntity(el));
-  //   Events.on('raycastermouseleave', el => setHoveredEntity(el));
-  // }, [])
-
   const handleToggle = () => {
     setOpen(!open);
   };
@@ -42,13 +35,8 @@ export default ({ entity = null }) => {
   };
 
   React.useEffect(() => {
-    console.log('visiblity')
-    console.log(entity);
-    // if(entity) {
-      setVisible(!!entity);
-    // }
+    setVisible(!!entity);
   }, [entity])
-
 
   return <Wrapper>
     {entity ? <React.Fragment>

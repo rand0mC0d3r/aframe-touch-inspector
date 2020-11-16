@@ -71,7 +71,6 @@ export const PanelBar = styled.div`
 `;
 
 export const PanelWrapper = styled.div`
-    pointer-events: none;
     z-index: 2;
     cursor: default;
     position:absolute;
@@ -93,7 +92,6 @@ export const PanelWrapper = styled.div`
 `;
 
 export const TabsListWrapper = styled.div`
-    pointer-events: none;
     user-select: none;
     position: relative;
     display: block;
@@ -108,8 +106,19 @@ export const ResizeContainer = styled.div`
 export const ResizeWrapper = styled.div`
     position: relative;
     margin: 0px 10px;
-    pointer-events: all;
     margin-bottom: 0px;
+
+    ${props => props.transparency === '1' ? `
+        pointer-events: none;
+        filter: blur(7px);
+        opacity: 0.1;
+    ` : `
+        pointer-events: all;
+        filter: blur(0px);
+        opacity: 1;
+    `};
+
+
 `;
 
 export const WhiteLayer = styled.div`
@@ -123,11 +132,14 @@ export const WhiteLayer = styled.div`
 `;
 
 export const TabListItem = styled.div`
-    pointer-events: all;
+    ${props => props.transparency === '1' ? `
+        pointer-events: none;
+    ` : `
+        pointer-events: all;
+    `};
+
     padding: 10px;
-    // background-color: var(--background-paper);
     backdrop-filter: blur(25px);
-    // box-shadow: 0px 0px 10px 19px #000;
 
     display: flex;
     flex-direction: column;
