@@ -9,21 +9,6 @@ import {
 
 THREE.ImageUtils.crossOrigin = '';
 
-const useReactPath = () => {
-  const [path, setPath] = React.useState(window.location.pathname);
-  const listenToPopstate = () => {
-    const winPath = window.location.pathname;
-    setPath(winPath);
-  };
-  React.useEffect(() => {
-    window.addEventListener('popstate', listenToPopstate);
-    return () => {
-      window.removeEventListener('popstate', listenToPopstate);
-    };
-  }, []);
-  return path;
-};
-
 export default () => {
   const [ entity, setEntity ] = React.useState(null);
   const [ accent, setAccent ] = React.useState(null);
@@ -55,7 +40,7 @@ export default () => {
       setEntity(entity);
     });
 
-    Events.on('entitydeselect', entity => {
+    Events.on('entitydeselect', () => {
       setEntity(null);
     });
 
