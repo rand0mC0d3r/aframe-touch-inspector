@@ -60,7 +60,9 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     disableHostCheck: true,
-    port: 3333
+    port: 3333,
+    quiet: true,
+    clientLogLevel: 'silent'
   },
   devtool: 'source-map',
   entry: entry,

@@ -82,7 +82,6 @@ export default ({
         if (onChange) {
           onChange(entity);
         }
-        console.log("emit event")
         Events.emit('entityselect', entity, true);
         found = true;
       }
@@ -96,7 +95,6 @@ export default ({
   };
 
   const rebuildEntityOptions = () => {
-    console.log("reindexing")
     let entities = [{ depth: 0, entity: scene }];
 
     function treeIterate(element, depth) {

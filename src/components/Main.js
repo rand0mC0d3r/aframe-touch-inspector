@@ -66,7 +66,6 @@ export default () => {
     });
 
     Events.on('inspectortoggle', enabled => {
-      console.log('inspectortoggle', enabled)
       setInspectorEnabled(enabled);
     });
   }, []);

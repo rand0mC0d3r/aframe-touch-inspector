@@ -1,45 +1,49 @@
-# A-Frame Inspector
+Based on A-Frame Inspector (https://github.com/aframevr/aframe-inspector)
+# Custom-Inspector (Touch-Friendly)
 
-[![build status][travis-image]][travis-url]
+Previous documentation can be found here: [A-Frame Inspector](https://github.com/aframevr/aframe-inspector/blob/master/README.md)
 
 A visual inspector tool for [A-Frame](https://aframe.io) scenes. Just hit
 `<ctrl> + <alt> + i` on any A-Frame scene to open up the Inspector.
 
-- [Documentation / Guide](https://aframe.io/docs/master/introduction/visual-inspector-and-dev-tools.html)
-- [Example](https://aframe.io/aframe-inspector/examples/)
-
-Also check out:
-
-- [A-Frame Watcher](https://github.com/supermedium/aframe-watcher) - Companion server to sync changes to HTML files.
 
 ![Inspector Preview](https://user-images.githubusercontent.com/674727/50159991-fa540c80-028c-11e9-87f1-72c54e08d808.png)
 
-## Using the Inspector
+## Changed feature set
 
-### Keyboard Shortcut
+- Installed **Material-UI**
+- Installed **Styled-Components**
+- Added a full-screen toggle
+- Added **font-awesome** to the build-chain (removed as injection)
+- Made the elements able to deselect
+- De-constructed the menu to be more tablet friendly
+- Added visual effects to allow moving over surfaces
+- Added guidance cursors for predictable actions
+- Refactored the component adding to be a modal
+- Refactored checkboxes as switches
+- Added iconography to component properties
+- Added component specific documentation links to A-Frame relevant page
+- Added iconography to component descriptors and enhanced preview mechanic
 
-A-Frame comes with a **keyboard shortcut** to inject the inspector. Just open
-up any A-Frame scene (running at least A-Frame v0.3.0) and press **`<ctrl> +
-<alt> + i`** to inject the inspector, just like you would use a DOM inspector:
+**Removals:**
+- For now removed the camera/perspective switcher
 
-### Specifying Inspector Build
+**Practical:**
+- Refactored example to feature more groups and consistent naming
+- Removed environment library usage as it's model is not stable but generative
+- Disabled WebPack WDS logging from socket in DevTools
 
-This is done with the `inspector` component. By default, this is set on the
-scene already. If we want, we can specify a specific build of the Inspector to
-inject by passing a URL. For debugging:
+**Technical:**
+- Refactored most components to functional files
+- Refactored components to use the atomic-design pattern
+- Consolidated lifecycle Event listener removal
+- Updated toolchain
+- Added scripts for webpack bundle explorer
 
-```html
-<a-scene inspector="url: http://localhost:3333/dist/aframe-inspector.js">
-  <!-- Scene... -->
-</a-scene>
-```
+**ToDo:**
+- Make selection bounding box toggle-able
+- Refactor 3 way transform toolbar to be similar to MsPaint in Windows10
 
-To use the master branch of the Inspector:
-
-```html
-<a-scene inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
-</a-scene>
-```
 
 ## Local Development
 

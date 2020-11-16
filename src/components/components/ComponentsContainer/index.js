@@ -42,7 +42,6 @@ export default ({ entity = {} }) => {
   const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
 
   const refresh = () => {
-    console.log('refresh')
     this.forceUpdate();
   };
 

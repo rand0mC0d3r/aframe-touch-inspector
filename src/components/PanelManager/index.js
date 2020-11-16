@@ -53,7 +53,6 @@ export default ({
   ];
 
   const handleChange = (event, newValue) => {
-    console.log('dddd')
     setValue(value === newValue ? false : newValue);
     if(newValue === 1) {
       setTransparency(false);

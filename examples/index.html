@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
   </head>
   <body>
-    <a-scene debug="true" stats="true">
+    <a-scene debug="true" stats="true" loading-screen={`enabled: false`}>
       <a-assets>
         <a-mixin id="blue" material="color: #4CC3D9"></a-mixin>
         <a-mixin id="blueBox" geometry="primitive: box; depth: 2; height: 5; width: 1" material="color: #4CC3D9"></a-mixin>

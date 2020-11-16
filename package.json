@@ -1,7 +1,7 @@
 {
-  "name": "aframe-inspector",
+  "name": "3dmixer-inspector",
   "version": "1.0.0",
-  "description": "A visual inspector tool for A-Frame.",
+  "description": "A clone of a visual inspector tool inspired by A-Frame-Inspector for AFrame",
   "main": "dist/aframe-inspector.min.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --colors",
@@ -14,7 +14,7 @@
     "explorer": " source-map-explorer ./dist/*.js",
     "stats": " source-map-explorer ./dist/*.js --json"
   },
-  "repository": "aframevr/aframe-inspector",
+  "repository": "rand0mC0d3r/3dmixer-inspector",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
