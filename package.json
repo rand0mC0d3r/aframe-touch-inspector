@@ -1,9 +1,11 @@
 {
   "name": "3dmixer-inspector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A clone of a visual inspector tool inspired by A-Frame-Inspector for AFrame",
   "main": "dist/aframe-inspector.min.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "postinstall": "npm dedupe",
     "build": "cross-env NODE_ENV=production webpack --progress --colors",
     "dist": "npm run dist:max && npm run dist:min",
     "copy": "npm run dist:max && npm run dist:min",
@@ -25,7 +27,6 @@
     "autoprefixer": "^9.8.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^6.1.0",
-    "babel-jest": "^16.0.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-preset-es2015": "^6.16.0",
@@ -33,33 +34,35 @@
     "classnames": "^2.2.5",
     "clipboard": "^1.5.12",
     "cross-env": "^5.2.1",
-    "css-loader": "^0.23.1",
-    "gm": "^1.23.0",
+    "css-loader": "^1.0.0",
     "invariant": "^2.2.2",
     "jss": "^10.4.0",
     "jss-preset-default": "^10.4.0",
     "lodash.debounce": "^4.0.6",
     "object-assign": "^4.1.0",
-    "postcss-loader": "^3.0.0",
     "project-name-generator": "^2.1.9",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-file-reader-input": "^1.1.4",
     "react-jss": "10.4.0",
     "react-select": "^2.4.4",
-    "react-test-renderer": "^17.0.1",
     "shx": "^0.1.2",
-    "style-loader": "^0.13.1",
-    "styled-components": "^5.2.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.43.0",
-    "webpack-dev-server": "^3.11.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.11.1",
+    "minimist": "^1.2.3",
+    "npm-force-resolutions": "0.0.3",
     "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
     "source-map-explorer": "^2.5.0",
-    "webpack-cli": "^3.3.11"
+    "style-loader": "^0.13.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "serialize-javascript": "^5.0.1"
   }
 }
