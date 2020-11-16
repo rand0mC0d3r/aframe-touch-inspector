@@ -43,7 +43,7 @@ export default ({
     {
       title: 'Layers',
       icon: faLayerGroup,
-      component: <Scenegraph {...{scene, entity, visibleScenegraph}}/>,
+      component: <Scenegraph {...{scene, accent, entity, visibleScenegraph}}/>,
     },
     {
       title: 'Settings',

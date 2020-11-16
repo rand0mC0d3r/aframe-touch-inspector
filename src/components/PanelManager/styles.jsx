@@ -46,7 +46,7 @@ export const TabItem = styled(Tab)`
     padding: 10px 0px !important;
 
     &.inspector-MuiTab-textColorPrimary.Mui-selected {
-        color: ${props => props.accent ? props.accent : '#747474'};
+        ${props => props.accent && `color: ${props.accent}`};
     }
 `;
 
@@ -92,7 +92,7 @@ export const PanelWrapper = styled.div`
     align-items: flex-end;
 
     & .inspector-PrivateTabIndicator-root-5 {
-        background-color: ${props => props.accent ? props.accent : '#747474'};
+        ${props => props.accent && `background-color: ${props.accent}`};
         width: 3px;
         border-radius: 5px 0px 0px 5px;
     }

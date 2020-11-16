@@ -39,6 +39,7 @@ export default ({
     onChange = () => {},
     scene = {},
     entity = {},
+    accent,
     visibleScenegraph = false,
 }) => {
   const [ index, setIndex ] = React.useState(-1);
@@ -250,6 +251,7 @@ export default ({
         <Entity
           {...entityOption}
           key={idx}
+          accent={accent}
           isFiltering={!!filter}
           isExpanded={isExpanded(entityOption.entity)}
           isSelected={entity === entityOption.entity}

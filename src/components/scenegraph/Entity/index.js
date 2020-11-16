@@ -29,6 +29,7 @@ export default ({
   depth = 0,
   entity = {},
   isExpanded = false,
+  accent,
   isFiltering = false,
   isSelected = false,
   selectEntity = () => {},
@@ -47,7 +48,7 @@ export default ({
   const tagName = entity.tagName.toLowerCase();
   const pad = '&nbsp;&nbsp;&nbsp;&nbsp;'.repeat(depth);
 
-  return <Container active={isSelected} onClick={onClick}>
+  return <Container active={isSelected} onClick={onClick} accent={accent}>
     <VisibleIcon
       title="Toggle entity visibility"
       onClick={toggleVisibility}

@@ -3,14 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Container = styled.div`
     padding: 5px 0px;
-    background-color: ${props => props.active ? '#bbb' : "transparent"};
+    border-radius: 5px 0px 0px 5px;
+    border-left: 3px solid ${props => props.active ? '#3f51b5' : "transparent"};
+    background-color: ${props => props.active ? '#cfcfcf' : "transparent"};
     cursor: pointer;
     display: flex;
     align-content: center;
     align-items: center;
 
     &:hover {
-        background-color: #aaa;
+        background-color: #bbb;
     }
 `;
 
