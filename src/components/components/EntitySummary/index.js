@@ -1,23 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import ComponentsContainer from './../ComponentsContainer';
-import ComponentIcon from './../../atoms/ComponentIcon';
-
-import Events from '../../../lib/Events';
-import { printEntity } from '../../../lib/entity';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
-
-import { IconButton } from '@material-ui/core';
-import Popover from '@material-ui/core/Popover';
 
 import {
-  Container,
-  Wrapper,
-  Chip,
-  ContainerWrapper,
-  ComponentsListContainer,
-  EntityContainer,
   EntityMetaContainer,
   EntityTagLabel,
   EntityNameLabel,
@@ -30,13 +13,12 @@ export default ({
   const [ components, setComponents ] = React.useState([]);
   const [ geometryName, setGeometryName ] = React.useState('');
   const [ entityName, setEntityName ] = React.useState('');
-  let type = 'id';
 
   const getGeometryName = () => {
     if(entity.components && Object.keys(entity.components).includes('geometry')) {
-        setGeometryName(entity.components.geometry.data.primitive);
+      setGeometryName(entity.components.geometry.data.primitive);
     }
-  }
+  };
 
   const getEntityName = () => {
     let result = entity.id;
@@ -46,7 +28,7 @@ export default ({
       result = entity.getAttribute('mixin').split(' ')[0];
     }
     setEntityName(result);
-  }
+  };
 
   React.useEffect(() => {
     let list = [];
@@ -56,16 +38,16 @@ export default ({
           list.push({
             value: component,
             occurence: 1,
-          })
+          });
         } else {
           list = [...list, list.filter(l => l.value === component).map(l => l.occurence++)];
         }
-      })
+      });
       setComponents(list);
       getGeometryName();
       getEntityName();
     }
-  }, [entity])
+  }, [entity]);
 
   return <React.Fragment>
     {entity && <EntityMetaContainer {...{onDoubleClick}}>
@@ -73,4 +55,4 @@ export default ({
       {entityName && <EntityNameLabel>#{entityName}</EntityNameLabel>}
     </EntityMetaContainer>}
   </React.Fragment>;
-}
+};

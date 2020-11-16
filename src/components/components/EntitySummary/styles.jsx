@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-// export const Container = styled.div`
-//     padding: 15px;
-//     overflow-x: hidden;
-//     overflow-y: auto;
-// `;
-
 export const Wrapper = styled.div`
     width: 500px;
     position: relative;

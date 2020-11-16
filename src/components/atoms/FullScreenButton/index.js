@@ -1,24 +1,22 @@
 import React from 'react';
-import Events from '../../../lib/Events';
-import { saveBlob } from '../../../lib/utils';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons/faExpandArrowsAlt';
 import { IconButton } from '@material-ui/core';
 
 export default () => {
-   const [ fullScreen, setFullScreen ] = React.useState(false);
+  const [ fullScreen, setFullScreen ] = React.useState(false);
 
-   const toggleFullScreen = () => {
-      if(fullScreen) {
-         document.exitFullscreen();
-      } else {
-         document.body.requestFullscreen();
-      }
-      setFullScreen(!fullScreen);
-   }
+  const toggleFullScreen = () => {
+    if(fullScreen) {
+      document.exitFullscreen();
+    } else {
+      document.body.requestFullscreen();
+    }
+    setFullScreen(!fullScreen);
+  };
 
   return <IconButton onClick={toggleFullScreen} title="Toggle full-screen" >
-      <FontAwesomeIcon icon={faExpandArrowsAlt} size="sm" />
-   </IconButton>;
+    <FontAwesomeIcon icon={faExpandArrowsAlt} size="sm" />
+  </IconButton>;
 };

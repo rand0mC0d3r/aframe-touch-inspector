@@ -5,34 +5,16 @@ import CommonComponents from '../CommonComponents';
 import DEFAULT_COMPONENTS from '../DefaultComponents';
 import ComponentIcon from './../../atoms/ComponentIcon';
 
-import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
-import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
-import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
-import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
-import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
-import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera';
-import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 
 import {
-  Container,
   TabIcon,
   TabItem,
   TabsContainer,
-  PanelBar,
   PanelWrapper,
   ResizeContainer,
-  MenuContainer,
   TabsBar,
-  WhiteLayer,
   ResizeWrapper,
-  TabsListWrapper,
-  TabListItem
 } from './styles.jsx';
 
 export default ({ entity = {} }) => {
@@ -40,11 +22,6 @@ export default ({ entity = {} }) => {
   const [ value, setValue ] = React.useState(noPanelIndex);
   const components = entity ? entity.components : {};
   const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
-
-  const refresh = () => {
-    this.forceUpdate();
-  };
-
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -88,9 +65,9 @@ export default ({ entity = {} }) => {
               entity={entity}
               key={`${key}_${i}`}
               name={key}
-          />)}
+            />)}
         </ResizeContainer>
       </ResizeWrapper>
     </React.Fragment> : null}
   </PanelWrapper>;
-}
+};

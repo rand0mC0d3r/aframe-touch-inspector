@@ -1,5 +1,4 @@
 import React from 'react';
-// import Events from '../../../lib/Events';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode } from '@fortawesome/free-solid-svg-icons/faCode';
@@ -16,12 +15,12 @@ export default () => {
           elements.push(htmlSection);
         }
       }
-    })
+    });
 
-    window.postMessage(elements, "*");
-  }
+    window.postMessage(elements, '*');
+  };
 
-  return <IconButton onClick={renderPayload} title={`Add new Entity`} >
-      <FontAwesomeIcon icon={faCode} size="sm" />
-   </IconButton>;
+  return <IconButton onClick={renderPayload} title={'Add new Entity'} >
+    <FontAwesomeIcon icon={faCode} size="sm" />
+  </IconButton>;
 };

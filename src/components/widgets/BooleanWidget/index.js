@@ -19,4 +19,4 @@ export default ({
     onChange={_onChange}
     color="primary"
   />;
-}
+};

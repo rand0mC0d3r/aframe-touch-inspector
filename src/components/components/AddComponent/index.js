@@ -1,34 +1,22 @@
 import React from 'react';
 import Events from '../../../lib/Events';
 
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Button from '@material-ui/core/Button';
-
 import DialogBottom from './../../atoms/DialogBottom';
 import Dialog from './../../atoms/Dialog';
 
 import ComponentIcon from './../../atoms/ComponentIcon';
 
 import {
-  StyledSelect,
   StyledButton,
   Container,
   StyledMenuItem
 } from './styles.jsx';
 
-var DELIMITER = ' ';
-
 export default ({
   entity = {},
 }) => {
   const [ options, setOptions ] = React.useState([]);
-  const [ selection, setSelection ] = React.useState('');
-
   const [open, setOpen] = React.useState(false);
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,14 +27,11 @@ export default ({
   };
 
   const handleChange = (object) => {
-    setSelection(object);
     addComponent(object);
   };
 
   const addComponent = value => {
     let componentName = value.value;
-    var packageName;
-    var selectedOption = options.filter(option => option.value === componentName)[0];
     if (AFRAME.components[componentName].multiple) {
       const id = prompt(
         `Provide an ID for this component (e.g., 'foo' for ${componentName}__foo).`
@@ -70,22 +55,11 @@ export default ({
       return a.label === b.label ? 0 : a.label < b.label ? -1 : 1;
     })];
     setOptions(cummulatedOptions);
-  }
-
-  const renderOption = option => {
-    var bullet = (
-      <span title="Component already loaded in the scene">&#9679;</span>
-    );
-    return (
-      <strong className="option">
-        {option.label} {option.origin === 'loaded' ? bullet : ''}
-      </strong>
-    );
-  }
+  };
 
   React.useEffect(() => {
     getComponentsOptions();
-  }, [])
+  }, []);
 
   return <div>
     {options && <React.Fragment>
@@ -98,31 +72,15 @@ export default ({
         actions={<DialogBottom {...{handleClose}} />}
       >
         <Container>
-        {/* <FormControl variant="outlined"> */}
-          {/* <StyledSelect
-            id="addComponent"
-            onChange={handleChange}
-            value={selection}
-          > */}
-            {options.map((option, i) => <StyledMenuItem
-              onClick={() => handleChange(option)}
-              key={i}
-              value={option}
-              >
-                <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
-            </StyledMenuItem>)}
-          {/* </StyledSelect> */}
-        {/* </FormControl> */}
+          {options.map((option, i) => <StyledMenuItem
+            onClick={() => handleChange(option)}
+            key={i}
+            value={option}
+          >
+            <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
+          </StyledMenuItem>)}
         </Container>
       </Dialog>
     </React.Fragment>}
   </div>;
-}
-
-function isComponentInstanced(entity, componentName) {
-  for (var component in entity.components) {
-    if (component.substr(0, component.indexOf('__')) === componentName) {
-      return true;
-    }
-  }
-}
+};

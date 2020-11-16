@@ -78,7 +78,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader'
       },
-        {
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },

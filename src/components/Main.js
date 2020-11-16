@@ -1,16 +1,11 @@
 import React from 'react';
-import TransformToolbar from './viewport/TransformToolbar';
 import Viewport from './viewport';
 import Events from '../lib/Events';
-import SceneGraph from './Scenegraph';
-import ComponentsSidebar from './components/Sidebar';
 import PanelManager from './PanelManager';
 
-import borderColor from '../utils/borderColor';
 import {
-  DetectionContainer,
   InspectorContainer
- } from './styles.jsx';
+} from './styles.jsx';
 
 THREE.ImageUtils.crossOrigin = '';
 
@@ -21,9 +16,9 @@ const useReactPath = () => {
     setPath(winPath);
   };
   React.useEffect(() => {
-    window.addEventListener("popstate", listenToPopstate);
+    window.addEventListener('popstate', listenToPopstate);
     return () => {
-      window.removeEventListener("popstate", listenToPopstate);
+      window.removeEventListener('popstate', listenToPopstate);
     };
   }, []);
   return path;
@@ -36,7 +31,6 @@ export default () => {
   const [ inspectorEnabled, setInspectorEnabled ] = React.useState(true);
   const [ visibleScenegraph, setVisibleScenegraph ] = React.useState(true);
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
-  const path = useReactPath();
 
   React.useEffect(() => {
     Events.on('togglesidebar', event => {
@@ -45,11 +39,11 @@ export default () => {
           setVisibleAttributes(false);
           setVisibleScenegraph(false);
         } else {
-          setVisibleAttributes(true)
+          setVisibleAttributes(true);
           setVisibleScenegraph(true);
         }
       } else if (event.which === 'attributes') {
-        setVisibleAttributes(!visibleAttributes)
+        setVisibleAttributes(!visibleAttributes);
       } else if (event.which === 'scenegraph') {
         setVisibleScenegraph(!visibleScenegraph);
       }
@@ -76,4 +70,4 @@ export default () => {
       <Viewport {...{entity, accent }} />
     </InspectorContainer>}
   </React.Fragment>;
-}
+};

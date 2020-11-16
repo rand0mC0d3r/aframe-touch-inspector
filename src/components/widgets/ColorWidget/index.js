@@ -74,20 +74,20 @@ export default class ColorWidget extends React.Component {
 
   render() {
     return <ColorContainer>
-        <ColorPreview
-          type="color"
-          className="color"
-          value={this.state.pickerValue}
-          title={this.state.value}
-          onChange={this.onChange}
-        />
-        <InputField
-          type="text"
-          className="color_value"
-          value={this.state.value}
-          onKeyUp={this.onKeyUp}
-          onChange={this.onChangeText}
-        />
-      </ColorContainer>;
+      <ColorPreview
+        type="color"
+        className="color"
+        value={this.state.pickerValue}
+        title={this.state.value}
+        onChange={this.onChange}
+      />
+      <InputField
+        type="text"
+        className="color_value"
+        value={this.state.value}
+        onKeyUp={this.onKeyUp}
+        onChange={this.onChangeText}
+      />
+    </ColorContainer>;
   }
 }

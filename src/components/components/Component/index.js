@@ -1,8 +1,6 @@
-/* global AFRAME */
 import React from 'react';
 import PropTypes from 'prop-types';
 import PropertyRow from './../PropertyRow';
-import Collapsible from '../../Collapsible';
 import Clipboard from 'clipboard';
 import { getComponentClipboardRepresentation } from '../../../lib/entity';
 import Events from '../../../lib/Events';
@@ -25,7 +23,7 @@ const isSingleProperty = AFRAME.schema.isSingleProperty;
 
 const documentation = [
   {
-    key: "geometry",
+    key: 'geometry',
     links: [
       {
         title: 'A-Frame Geometry',
@@ -34,7 +32,7 @@ const documentation = [
     ]
   },
   {
-    key: "animation",
+    key: 'animation',
     links: [
       {
         title: 'A-Frame Animation',
@@ -43,7 +41,7 @@ const documentation = [
     ]
   },
   {
-    key: "material",
+    key: 'material',
     links: [
       {
         title: 'A-Frame Material',
@@ -52,7 +50,7 @@ const documentation = [
     ]
   },
   {
-    key: "light",
+    key: 'light',
     links: [
       {
         title: 'A-Frame Material',
@@ -60,7 +58,7 @@ const documentation = [
       }
     ]
   }
-]
+];
 /**
  * Single component.
  */
@@ -179,44 +177,34 @@ export default class Component extends React.Component {
     }
 
     return <React.Fragment>
-        <div className="componentHeader collapsible-header">
-          <TitleContainer>
-            <ComponentTitle title={subComponentName || componentName}>
-              <span>{subComponentName || componentName}</span>
-            </ComponentTitle>
-            <DocumentationContainer>
-              {documentation.filter(d => d.key === this.props.name).map((d, i) => <React.Fragment key={i}>
-                <DocuLabel>DOCS</DocuLabel>
-                {d.links.map((link, i) => <React.Fragment key={i}>
-                  <a href={link.url} target="_blank" title={link.title}>
-                    <DocuIcon size="sm" icon={faExternalLinkAlt}/>
-                  </a>
-                </React.Fragment>)}
+      <div className="componentHeader collapsible-header">
+        <TitleContainer>
+          <ComponentTitle title={subComponentName || componentName}>
+            <span>{subComponentName || componentName}</span>
+          </ComponentTitle>
+          <DocumentationContainer>
+            {documentation.filter(d => d.key === this.props.name).map((d, i) => <React.Fragment key={i}>
+              <DocuLabel>DOCS</DocuLabel>
+              {d.links.map((link, i) => <React.Fragment key={i}>
+                <a href={link.url} target="_blank" title={link.title}>
+                  <DocuIcon size="sm" icon={faExternalLinkAlt}/>
+                </a>
               </React.Fragment>)}
-            </DocumentationContainer>
-            <ButtonsContainer>
-              <IconButton
-                onClick={this.removeComponent}
-                title="Remove component"
-              >
-                <FontAwesomeIcon size="xs" icon={faTrash}/>
-              </IconButton>
-            </ButtonsContainer>
-          </TitleContainer>
-          {/* <div className="componentHeaderActions">
-            <a
-              title="Copy to clipboard"
-              data-action="copy-component-to-clipboard"
-              data-component={subComponentName || componentName}
-              className="button fa fa-clipboard"
-              href="#"
-            /> */}
-
-          {/* </div> */}
-        </div>
-        <div className="collapsible-content">
-          {this.renderPropertyRows()}
-        </div>
-      </React.Fragment>;
+            </React.Fragment>)}
+          </DocumentationContainer>
+          <ButtonsContainer>
+            <IconButton
+              onClick={this.removeComponent}
+              title="Remove component"
+            >
+              <FontAwesomeIcon size="xs" icon={faTrash}/>
+            </IconButton>
+          </ButtonsContainer>
+        </TitleContainer>
+      </div>
+      <div className="collapsible-content">
+        {this.renderPropertyRows()}
+      </div>
+    </React.Fragment>;
   }
 }

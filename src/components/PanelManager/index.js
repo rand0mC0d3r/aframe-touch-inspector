@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 
@@ -74,31 +73,31 @@ export default ({
       setValue(1);
       setTransparency(true);
     });
-  }, [])
+  }, []);
 
   return <PanelWrapper {...{accent}}>
     {value !== false ? (
       <React.Fragment>
         <ResizeWrapper transparency={transparency ? '1' : '0'}>
           <ResizeContainer>
-              <TabsListWrapper>
-                {panels
-                  .filter((panel, i) => i === value)
-                  .map((panel, i) => <React.Fragment key={i}>
-                    <WhiteLayer />
-                    <TabListItem
-                      transparency={transparency ? '1' : '0'}
-                      key={i}
-                      role="tabpanel"
-                      id={`vertical-tabpanel-${i}`}
-                    >
-                      <PanelHeader
-                        icon={panel.icon}
-                        title={panel.title}/>
-                      {panel.component}
-                    </TabListItem>
-                  </React.Fragment>)}
-              </TabsListWrapper>
+            <TabsListWrapper>
+              {panels
+                .filter((panel, i) => i === value)
+                .map((panel, i) => <React.Fragment key={i}>
+                  <WhiteLayer />
+                  <TabListItem
+                    transparency={transparency ? '1' : '0'}
+                    key={i}
+                    role="tabpanel"
+                    id={`vertical-tabpanel-${i}`}
+                  >
+                    <PanelHeader
+                      icon={panel.icon}
+                      title={panel.title}/>
+                    {panel.component}
+                  </TabListItem>
+                </React.Fragment>)}
+            </TabsListWrapper>
           </ResizeContainer>
         </ResizeWrapper>
       </React.Fragment>
@@ -122,9 +121,9 @@ export default ({
           icon={<TabIcon size="1x" icon={panel.icon}/>}
         />)}
       </TabsContainer>
-       <MenuContainer>
-         <ExportGltfButton />
-         <FullScreenButton />
+      <MenuContainer>
+        <ExportGltfButton />
+        <FullScreenButton />
       </MenuContainer>
     </PanelBar>
   </PanelWrapper>;

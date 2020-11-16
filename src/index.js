@@ -8,13 +8,12 @@ import Viewport from  './lib/viewport';
 import AssetsLoader from './lib/assetsLoader';
 import Shortcuts from './lib/shortcuts';
 
-import { create } from 'jss';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 
 import { createEntity } from './lib/entity';
 import { GLTFExporter } from '../vendor/GLTFExporter'; // eslint-disable-line no-unused-vars
 
-import './index.css'
+import './index.css';
 
 function Inspector () {
   this.assetsLoader = new AssetsLoader();
@@ -46,11 +45,11 @@ function Inspector () {
   doInit();
 }
 
-  const generateClassName = createGenerateClassName({
-    productionPrefix: 'inspector',
-    seed: 'inspector',
-    // disableGlobal: true
-  });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'inspector',
+  seed: 'inspector',
+  // disableGlobal: true
+});
 
 Inspector.prototype = {
   init: function () {

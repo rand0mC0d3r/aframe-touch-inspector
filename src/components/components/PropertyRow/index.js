@@ -15,8 +15,6 @@ import Vec3Widget from '../../widgets/Vec3Widget';
 import Vec2Widget from '../../widgets/Vec2Widget';
 import { updateEntity } from '../../../lib/entity';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { PropertyContainer, PropertyIcon, PropertyLabel, PropertyWidget } from './styles.jsx';
 
 export default class PropertyRow extends React.Component {
@@ -87,32 +85,32 @@ export default class PropertyRow extends React.Component {
     }
 
     switch (type) {
-      case 'number': {
-        return <NumberWidget {...widgetProps} {...numberWidgetProps} />;
-      }
-      case 'int': {
-        return (
-          <NumberWidget {...widgetProps} {...numberWidgetProps} precision={0} />
-        );
-      }
-      case 'vec2': {
-        return <Vec2Widget {...widgetProps} />;
-      }
-      case 'vec3': {
-        return <Vec3Widget {...widgetProps} />;
-      }
-      case 'vec4': {
-        return <Vec4Widget {...widgetProps} />;
-      }
-      case 'color': {
-        return <ColorWidget {...widgetProps} />;
-      }
-      case 'boolean': {
-        return <BooleanWidget {...widgetProps} />;
-      }
-      default: {
-        return <InputWidget {...widgetProps} />;
-      }
+    case 'number': {
+      return <NumberWidget {...widgetProps} {...numberWidgetProps} />;
+    }
+    case 'int': {
+      return (
+        <NumberWidget {...widgetProps} {...numberWidgetProps} precision={0} />
+      );
+    }
+    case 'vec2': {
+      return <Vec2Widget {...widgetProps} />;
+    }
+    case 'vec3': {
+      return <Vec3Widget {...widgetProps} />;
+    }
+    case 'vec4': {
+      return <Vec4Widget {...widgetProps} />;
+    }
+    case 'color': {
+      return <ColorWidget {...widgetProps} />;
+    }
+    case 'boolean': {
+      return <BooleanWidget {...widgetProps} />;
+    }
+    default: {
+      return <InputWidget {...widgetProps} />;
+    }
     }
   }
 
@@ -134,13 +132,13 @@ export default class PropertyRow extends React.Component {
     });
 
     return <PropertyContainer className={className}>
-        {props.icon && <PropertyIcon size="sm" icon={props.icon} fixedWidth />}
-        <PropertyLabel htmlFor={this.id} title={title}>
-          {props.name.split(/(?=[A-Z])/).join(" ")}
-        </PropertyLabel>
-        <PropertyWidget>
+      {props.icon && <PropertyIcon size="sm" icon={props.icon} fixedWidth />}
+      <PropertyLabel htmlFor={this.id} title={title}>
+        {props.name.split(/(?=[A-Z])/).join(' ')}
+      </PropertyLabel>
+      <PropertyWidget>
         {this.getWidget(props.schema.type)}
-        </PropertyWidget>
-      </PropertyContainer>;
+      </PropertyWidget>
+    </PropertyContainer>;
   }
 }

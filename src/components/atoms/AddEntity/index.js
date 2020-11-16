@@ -10,9 +10,9 @@ import { generate } from 'project-name-generator';
 export default () => {
   const addEntity = () => {
     Events.emit('entitycreate', { element: 'a-entity', components: {id: generate({ words: 3 }).dashed} });
-  }
+  };
 
-  return <IconButton onClick={addEntity} title={`Add new Entity`} >
-      <FontAwesomeIcon icon={faPlus} size="sm" />
-   </IconButton>;
+  return <IconButton onClick={addEntity} title={'Add new Entity'} >
+    <FontAwesomeIcon icon={faPlus} size="sm" />
+  </IconButton>;
 };

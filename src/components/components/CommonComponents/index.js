@@ -1,19 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { InputWidget } from '../../widgets';
-import DEFAULT_COMPONENTS from './../DefaultComponents';
 import PropertyRow from './../PropertyRow';
 import Collapsible from '../../Collapsible';
-import Mixins from './../Mixins';
 import {
   updateEntity,
-  getEntityClipboardRepresentation,
-  printEntity
 } from '../../../lib/entity';
 import Events from '../../../lib/Events';
-import Clipboard from 'clipboard';
-import { saveBlob } from '../../../lib/utils';
-import TextField from '@material-ui/core/TextField';
 
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
@@ -32,26 +24,25 @@ function changeId(componentName, value) {
 
 const items = [
   {
-    name: "position",
+    name: 'position',
     icon: faArrowsAlt,
   },
   {
-    name: "rotation",
+    name: 'rotation',
     icon: faRedo,
   },
   {
-    name: "scale",
+    name: 'scale',
     icon: faExpand,
   },
   {
-    name: "visible",
+    name: 'visible',
     icon: faEye,
   },
 ];
 
 export default ({ entity = {} }) => {
-   const renderCommonAttributes = () => {
-    const components = entity ? entity.components : {};
+  const renderCommonAttributes = () => {
     return items.map(item => {
       const schema = AFRAME.components[item.name].schema;
       let data = entity.object3D[item.name];
@@ -75,7 +66,7 @@ export default ({ entity = {} }) => {
         entity={entity}
       />;
     });
-  }
+  };
 
   return <Collapsible id="componentEntityHeader" className="commonComponents">
     <NameContainer>
@@ -90,4 +81,4 @@ export default ({ entity = {} }) => {
     </NameContainer>
     {renderCommonAttributes()}
   </Collapsible>;
-}
+};

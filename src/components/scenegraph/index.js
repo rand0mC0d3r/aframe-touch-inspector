@@ -1,46 +1,35 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
-import debounce from 'lodash.debounce';
 import { removeEntity, cloneEntity } from '../../lib/entity';
-import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons/faTrashAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
-import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { IconButton } from '@material-ui/core';
 
 import Emoji from './../atoms/Emoji';
-import AddEntity from './../atoms/AddEntity';
-import RenderPayload from './../atoms/RenderPayload';
 
 import Entity from './Entity';
 const Events = require('../../lib/Events.js');
 
 import {
   Container,
-  HeaderIcon,
   SearchField,
   EntitiesList,
-  HeaderLabel,
-  HeaderContainer,
-  BottomBar,
   ActionBar,
   StartActionBar,
   EndActionBar,
   SearchContainer,
- } from './styles.jsx';
+} from './styles.jsx';
 
 
 export default ({
-    id = '',
-    onChange = () => {},
-    scene = {},
-    entity = {},
-    accent,
-    visibleScenegraph = false,
+  id = '',
+  onChange = () => {},
+  scene = {},
+  entity = {},
+  accent,
+  visibleScenegraph = false,
 }) => {
   const [ index, setIndex ] = React.useState(-1);
   const [ selectedIndex, setSelectedIndex ] = React.useState(-1);
@@ -57,18 +46,18 @@ export default ({
     Events.on('entitycreated', rebuildEntityOptions);
     Events.on('entityclone', rebuildEntityOptions);
 
-    setExpandedElements(new WeakMap([[scene, true]]))
+    setExpandedElements(new WeakMap([[scene, true]]));
 
     return () => {
       Events.removeListener('entityidchange', rebuildEntityOptions);
       Events.removeListener('entitycreated', rebuildEntityOptions);
       Events.removeListener('entityclone', rebuildEntityOptions);
-    }
-  }, [])
+    };
+  }, []);
 
   React.useEffect(() => {
     selectEntity(entity);
-  }, [entity])
+  }, [entity]);
 
   const selectEntity = entity => {
     let found = false;
@@ -134,13 +123,13 @@ export default ({
 
   const onKeyDown = event => {
     switch (event.keyCode) {
-      case 37: // left
-      case 38: // up
-      case 39: // right
-      case 40: // down
-        event.preventDefault();
-        event.stopPropagation();
-        break;
+    case 37: // left
+    case 38: // up
+    case 39: // right
+    case 40: // down
+      event.preventDefault();
+      event.stopPropagation();
+      break;
     }
   };
 
@@ -148,22 +137,22 @@ export default ({
     if (entity === null) { return; }
 
     switch (event.keyCode) {
-      case 37: // left
-        if (isExpanded(entity)) {
-          toggleExpandedCollapsed(entity);
-        }
-        break;
-      case 38: // up
-        selectIndex(previousExpandedIndexTo(selectedIndex));
-        break;
-      case 39: // right
-        if (!isExpanded(entity)) {
-          toggleExpandedCollapsed(entity);
-        }
-        break;
-      case 40: // down
-        selectIndex(nextExpandedIndexTo(selectedIndex));
-        break;
+    case 37: // left
+      if (isExpanded(entity)) {
+        toggleExpandedCollapsed(entity);
+      }
+      break;
+    case 38: // up
+      selectIndex(previousExpandedIndexTo(selectedIndex));
+      break;
+    case 39: // right
+      if (!isExpanded(entity)) {
+        toggleExpandedCollapsed(entity);
+      }
+      break;
+    case 40: // down
+      selectIndex(nextExpandedIndexTo(selectedIndex));
+      break;
     }
   };
 
@@ -175,7 +164,7 @@ export default ({
     return currentEntities.filter(entityOption => {
       return filterEntity(entityOption.entity, _filter || filter);
     });
-  }
+  };
 
   const isVisibleInSceneGraph = element => {
     let curr = element.parentNode;
@@ -237,11 +226,11 @@ export default ({
   };
 
   const updateFilteredEntities = (filter) => {
-    setFilteredEntities(getFilteredEntities(filter))
-  }
+    setFilteredEntities(getFilteredEntities(filter));
+  };
 
   const clearFilter = () => {
-    setFilter('')
+    setFilter('');
     setFilteredEntities('');
   };
 
@@ -301,21 +290,21 @@ export default ({
       <StartActionBar>
         {/* <AddEntity /> */}
         {entity && <React.Fragment>
-        <IconButton
-          onClick={() => cloneEntity(entity)}
-          title="Clone Entity"
-        >
-          <FontAwesomeIcon size="xs" icon={faCopy}/>
-        </IconButton>
+          <IconButton
+            onClick={() => cloneEntity(entity)}
+            title="Clone Entity"
+          >
+            <FontAwesomeIcon size="xs" icon={faCopy}/>
+          </IconButton>
 
-        <IconButton
-          onClick={event => {
-                event.stopPropagation();
-                removeEntity(entity);
-          }}
-          title="Remove entity"
-        >
-          <FontAwesomeIcon size="xs" icon={faTrashAlt} />
+          <IconButton
+            onClick={event => {
+              event.stopPropagation();
+              removeEntity(entity);
+            }}
+            title="Remove entity"
+          >
+            <FontAwesomeIcon size="xs" icon={faTrashAlt} />
           </IconButton>
         </React.Fragment>}
       </StartActionBar>
@@ -330,7 +319,7 @@ export default ({
     </ActionBar>
   </Container>;
   // }
-}
+};
 
 const filterEntity = (entity, filter) => {
   if (!filter) {
@@ -347,4 +336,4 @@ const filterEntity = (entity, filter) => {
   }
 
   return false;
-}
+};

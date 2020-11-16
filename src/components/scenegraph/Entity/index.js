@@ -1,19 +1,13 @@
 import React from 'react';
 
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
-
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons/faCaretRight';
-
 import { faTh } from '@fortawesome/free-solid-svg-icons/faTh';
-
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons/faPlusSquare';
 import { faMinusSquare } from '@fortawesome/free-regular-svg-icons/faMinusSquare';
 
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 
 import EntitySummary from './../../components/EntitySummary';
-import { printEntity, removeEntity, cloneEntity } from '../../../lib/entity';
 import Events from '../../../lib/Events';
 
 import {
@@ -35,7 +29,6 @@ export default ({
   selectEntity = () => {},
   toggleExpandedCollapsed = () => {},
 }) => {
-  const [ state, setState ] = React.useState({});
   const onClick = () => selectEntity(entity);
   const onDoubleClick = () => Events.emit('objectfocus', entity.object3D);
   const toggleVisibility = () => {
@@ -55,8 +48,8 @@ export default ({
       icon={(tagName === 'a-scene' ?
         entity.object3D.visible :
         entity.getAttribute('visible')) ?
-          faEye :
-          faEyeSlash}
+        faEye :
+        faEyeSlash}
     />
     <span
       className="entityChildPadding"
@@ -75,4 +68,4 @@ export default ({
     </React.Fragment>}
     <EntitySummary {...{entity, onDoubleClick}} />
   </Container>;
-}
+};

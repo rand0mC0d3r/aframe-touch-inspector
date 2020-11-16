@@ -1,5 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons/faArrowsAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';

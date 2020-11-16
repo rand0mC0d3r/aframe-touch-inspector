@@ -8,7 +8,6 @@ import { faDrawPolygon } from '@fortawesome/free-solid-svg-icons/faDrawPolygon';
 import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
 import { faGhost } from '@fortawesome/free-solid-svg-icons/faGhost';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 import { faKeyboard } from '@fortawesome/free-solid-svg-icons/faKeyboard';
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons/faLightbulb';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons/faMobileAlt';
@@ -16,15 +15,12 @@ import { faPaintRoller } from '@fortawesome/free-solid-svg-icons/faPaintRoller';
 import { faPuzzlePiece } from '@fortawesome/free-solid-svg-icons/faPuzzlePiece';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
-import { faSlidersH } from '@fortawesome/free-solid-svg-icons/faSlidersH';
 import { faSmog } from '@fortawesome/free-solid-svg-icons/faSmog';
 import { faBlind } from '@fortawesome/free-solid-svg-icons/faBlind';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons/faUserSecret';
 import { faVrCardboard } from '@fortawesome/free-solid-svg-icons/faVrCardboard';
 import { faBinoculars } from '@fortawesome/free-solid-svg-icons/faBinoculars';
 import { faMountain } from '@fortawesome/free-solid-svg-icons/faMountain';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { EntityIcon } from './styles.jsx';
 
@@ -56,16 +52,16 @@ const items = {
 
 export default ({
   componentName,
-  size = "sm",
+  size = 'sm',
   returnNull = false
 }) => <React.Fragment>
   {items[componentName] ?
-  <EntityIcon
-    title={componentName}
-    size={size}
-    fixedWidth
-    icon={items[componentName]}/> :
-  (<React.Fragment>
-    {!returnNull && <div title={componentName}>{componentName.substr(0,1).toUpperCase()}</div>}
-  </React.Fragment>)}
+    <EntityIcon
+      title={componentName}
+      size={size}
+      fixedWidth
+      icon={items[componentName]}/> :
+    (<React.Fragment>
+      {!returnNull && <div title={componentName}>{componentName.substr(0,1).toUpperCase()}</div>}
+    </React.Fragment>)}
 </React.Fragment>;

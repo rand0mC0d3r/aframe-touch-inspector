@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
 export const StyledSelect = styled(Select)`

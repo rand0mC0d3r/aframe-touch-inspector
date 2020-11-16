@@ -9,7 +9,7 @@ export default ({
   fullWidth,
   padded = 1,
   onClose = () => {},
-  maxWidth = "md"
+  maxWidth = 'md'
 }) => <StyledDialog {...{open, padded, maxWidth, fullWidth, onClose}}>
   <Container>
     {children}

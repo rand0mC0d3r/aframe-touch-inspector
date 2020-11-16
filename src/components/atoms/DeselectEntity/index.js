@@ -16,21 +16,18 @@ export default ({
     Events.emit('entitydeselect');
     closePanels();
     setIsSelected(false);
-  }
+  };
 
   React.useEffect(() => {
     if(entity) {
       setIsSelected(true);
     }
-  }, [entity])
+  }, [entity]);
 
-return <IconButton
+  return <IconButton
     disabled={!isSelected}
-    onClick={deselectEntity} title={`Deselect Entity`}
+    onClick={deselectEntity} title={'Deselect Entity'}
   >
-    {isSelected ?
-      <FontAwesomeIcon icon={faHandPointer} size="sm" /> :
-      <FontAwesomeIcon icon={faMousePointer} size="sm" />
-    }
+    <FontAwesomeIcon icon={isSelected ? faHandPointer : faMousePointer} size="sm" />
   </IconButton>;
 };
