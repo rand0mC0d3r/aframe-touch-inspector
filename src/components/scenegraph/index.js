@@ -18,8 +18,6 @@ import AddEntity from './../atoms/AddEntity';
 import RenderPayload from './../atoms/RenderPayload';
 
 import Entity from './Entity';
-// import EntityList from './EntityList';
-import Toolbar from './Toolbar';
 const Events = require('../../lib/Events.js');
 
 import {
