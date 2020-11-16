@@ -1,7 +1,6 @@
 const childProcess = require('child_process');
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Add HMR for development environments only.
 var entry = ['./src/index.js'];
