@@ -4,7 +4,7 @@ import Viewport from './viewport';
 import Events from '../lib/Events';
 import SceneGraph from './Scenegraph';
 import ComponentsSidebar from './components/Sidebar';
-import PanelManger from './PanelManager';
+import PanelManager from './PanelManager';
 
 import borderColor from '../utils/borderColor';
 import {
@@ -73,7 +73,7 @@ export default () => {
 
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>
-      <PanelManger {...{scene, accent, entity, visibleScenegraph, visibleAttributes}} />
+      <PanelManager {...{scene, accent, entity, visibleScenegraph, visibleAttributes}} />
       <Viewport {...{entity, accent }} />
     </InspectorContainer>}
   </React.Fragment>;

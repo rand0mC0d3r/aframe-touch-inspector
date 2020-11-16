@@ -59,8 +59,6 @@ export default ({
     }
   };
 
-
-
   const closePanels = () => {
     if(value === 1) {
       setValue(false);

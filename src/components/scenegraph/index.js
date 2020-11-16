@@ -30,67 +30,45 @@ import {
   SearchContainer,
  } from './styles.jsx';
 
-export default class SceneGraph extends React.Component {
-  static propTypes = {
-    id: PropTypes.string,
-    onChange: PropTypes.func,
-    scene: PropTypes.object,
-    entity: PropTypes.object,
-    visibleScenegraph: PropTypes.bool
-  };
 
-  static defaultProps = {
-    entity: '',
-    index: -1,
-    id: 'left-sidebar'
-  };
+export default ({
+    id = '',
+    onChange = () => {},
+    scene = {},
+    entity = {},
+    visibleScenegraph = false,
+}) => {
+  const [ index, setIndex ] = React.useState(-1);
+  const [ selectedIndex, setSelectedIndex ] = React.useState(-1);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      entities: [],
-      expandedElements: new WeakMap([[props.scene, true]]),
-      filter: '',
-      filteredEntities: [],
-      selectedIndex: -1
-    };
+  const [ entities, setEntities ] = React.useState([]);
+  const [ internalEntity, setInternalEntity ] = React.useState(entity);
+  const [ expandedElements, setExpandedElements ] = React.useState( new WeakMap([[scene, true]]) );
+  const [ filter, setFilter ] = React.useState('');
+  const [ filteredEntities, setFilteredEntities ] = React.useState([]);
 
-    this.rebuildEntityOptions = debounce(
-      this.rebuildEntityOptions.bind(this),
-      100
-    );
-    this.updateFilteredEntities = debounce(
-      this.updateFilteredEntities.bind(this),
-      250
-    );
-  }
+  React.useEffect(() => {
+    rebuildEntityOptions();
+    Events.on('entityidchange', rebuildEntityOptions);
+    Events.on('entitycreated', rebuildEntityOptions);
+    Events.on('entityclone', rebuildEntityOptions);
+  }, [])
 
-  componentDidMount() {
-    this.rebuildEntityOptions();
-    Events.on('entityidchange', this.rebuildEntityOptions);
-    Events.on('entitycreated', this.rebuildEntityOptions);
-    Events.on('entityclone', this.rebuildEntityOptions);
-  }
+  React.useEffect(() => {
+    selectEntity(entity);
+  }, [entity])
 
-  /**
-   * Selected entity updated from somewhere else in the app.
-   */
-  componentDidUpdate(prevProps) {
-    if (prevProps.entity !== this.props.entity) {
-      this.selectEntity(this.props.entity);
-    }
-  }
-
-  selectEntity = entity => {
+  const selectEntity = entity => {
     let found = false;
-    for (let i = 0; i < this.state.filteredEntities.length; i++) {
-      const entityOption = this.state.filteredEntities[i];
+    for (let i = 0; i < filteredEntities.length; i++) {
+      const entityOption = filteredEntities[i];
       if (entityOption.entity === entity) {
-        this.setState({ entity: entity, selectedIndex: i });
+        setInternalEntity(entity);
+        setSelectedIndex(i);
         // Make sure selected value is visible in scenegraph
-        this.expandToRoot(entity);
-        if (this.props.onChange) {
-          this.props.onChange(entity);
+        expandToRoot(entity);
+        if (onChange) {
+          onChange(entity);
         }
         Events.emit('entityselect', entity, true);
         found = true;
@@ -98,29 +76,24 @@ export default class SceneGraph extends React.Component {
     }
 
     if (!found) {
-      this.setState({ entity: null, selectedIndex: -1 });
+      setInternalEntity(null);
+      setSelectedIndex(-1);
+      // this.setState({ entity: null, selectedIndex: -1 });
     }
   };
 
-  rebuildEntityOptions = () => {
-    console.log("Re-processing entries")
-    const entities = [{ depth: 0, entity: this.props.scene }];
+  const rebuildEntityOptions = () => {
+    let entities = [{ depth: 0, entity: scene }];
 
     function treeIterate(element, depth) {
-      if (!element) {
-        return;
-      }
+      if (!element) { return; }
       depth += 1;
 
       for (let i = 0; i < element.children.length; i++) {
         let entity = element.children[i];
 
-        if (
-          entity.dataset.isInspector ||
-          !entity.isEntity ||
-          entity.isInspector ||
-          'aframeInspector' in entity.dataset
-        ) {
+        if (entity.dataset.isInspector || !entity.isEntity ||
+            entity.isInspector || 'aframeInspector' in entity.dataset) {
           continue;
         }
 
@@ -129,27 +102,25 @@ export default class SceneGraph extends React.Component {
         treeIterate(entity, depth);
       }
     }
-    treeIterate(this.props.scene, 0);
+    treeIterate(scene, 0);
 
-    this.setState({
-      entities: entities,
-      filteredEntities: this.getFilteredEntities(this.state.filter, entities)
-    });
+    setEntities(entities);
+    setFilteredEntities(getFilteredEntities(filter, entities));
   };
 
-  selectIndex = index => {
-    if (index >= 0 && index < this.state.entities.length) {
-      this.selectEntity(this.state.entities[index].entity);
+  const selectIndex = index => {
+    if (index >= 0 && index < entities.length) {
+      selectEntity(entities[index].entity);
     }
   };
 
-  onFilterKeyUp = event => {
+  const onFilterKeyUp = event => {
     if (event.keyCode === 27) {
-      this.clearFilter();
+      clearFilter();
     }
   };
 
-  onKeyDown = event => {
+  const onKeyDown = event => {
     switch (event.keyCode) {
       case 37: // left
       case 38: // up
@@ -161,50 +132,46 @@ export default class SceneGraph extends React.Component {
     }
   };
 
-  onKeyUp = event => {
-    if (this.props.entity === null) {
-      return;
-    }
+  const onKeyUp = event => {
+    if (entity === null) { return; }
 
     switch (event.keyCode) {
       case 37: // left
-        if (this.isExpanded(this.props.entity)) {
-          this.toggleExpandedCollapsed(this.props.entity);
+        if (isExpanded(entity)) {
+          toggleExpandedCollapsed(entity);
         }
         break;
       case 38: // up
-        this.selectIndex(
-          this.previousExpandedIndexTo(this.state.selectedIndex)
-        );
+        selectIndex(previousExpandedIndexTo(selectedIndex));
         break;
       case 39: // right
-        if (!this.isExpanded(this.props.entity)) {
-          this.toggleExpandedCollapsed(this.props.entity);
+        if (!isExpanded(entity)) {
+          toggleExpandedCollapsed(entity);
         }
         break;
       case 40: // down
-        this.selectIndex(this.nextExpandedIndexTo(this.state.selectedIndex));
+        selectIndex(nextExpandedIndexTo(selectedIndex));
         break;
     }
   };
 
-  getFilteredEntities(filter, entities) {
-    entities = entities || this.state.entities;
-    if (!filter) {
-      return entities;
+  const getFilteredEntities = (_filter, _entities) => {
+    const currentEntities = _entities || entities;
+    if (!_filter) {
+      return currentEntities;
     }
-    return entities.filter(entityOption => {
-      return filterEntity(entityOption.entity, filter || this.state.filter);
+    return currentEntities.filter(entityOption => {
+      return filterEntity(entityOption.entity, _filter || filter);
     });
   }
 
-  isVisibleInSceneGraph = x => {
-    let curr = x.parentNode;
+  const isVisibleInSceneGraph = element => {
+    let curr = element.parentNode;
     if (!curr) {
       return false;
     }
     while (curr !== undefined && curr.isEntity) {
-      if (!this.isExpanded(curr)) {
+      if (!isExpanded(curr)) {
         return false;
       }
       curr = curr.parentNode;
@@ -212,25 +179,22 @@ export default class SceneGraph extends React.Component {
     return true;
   };
 
-  isExpanded = x => this.state.expandedElements.get(x) === true;
+  const isExpanded = element => expandedElements.get(element) === true;
 
-  toggleExpandedCollapsed = x => {
-    this.setState({
-      expandedElements: this.state.expandedElements.set(x, !this.isExpanded(x))
-    });
+  const toggleExpandedCollapsed = element => {
+    setExpandedElements(expandedElements.set(element, !isExpanded(element)));
   };
 
-  expandToRoot = x => {
-    // Expand element all the way to the scene element
-    let curr = x.parentNode;
+  const expandToRoot = element => {
+    let curr = element.parentNode;
     while (curr !== undefined && curr.isEntity) {
-      this.state.expandedElements.set(curr, true);
+      expandedElements.set(curr, true);
       curr = curr.parentNode;
     }
-    this.setState({ expandedElements: this.state.expandedElements });
+    setExpandedElements(expandedElements);
   };
 
-  previousExpandedIndexTo = i => {
+  const previousExpandedIndexTo = i => {
     for (let prevIter = i - 1; prevIter >= 0; prevIter--) {
       const prevEl = this.state.entities[prevIter].entity;
       if (this.isVisibleInSceneGraph(prevEl)) {
@@ -240,7 +204,7 @@ export default class SceneGraph extends React.Component {
     return -1;
   };
 
-  nextExpandedIndexTo = i => {
+  const nextExpandedIndexTo = i => {
     for (
       let nextIter = i + 1;
       nextIter < this.state.entities.length;
@@ -254,29 +218,26 @@ export default class SceneGraph extends React.Component {
     return -1;
   };
 
-  onChangeFilter = evt => {
+  const onChangeFilter = evt => {
     const filter = evt.target.value;
-    this.setState({ filter: filter });
-    this.updateFilteredEntities(filter);
+    setFilter(filter);
+    updateFilteredEntities(filter);
   };
 
-  updateFilteredEntities(filter) {
-    this.setState({
-      filteredEntities: this.getFilteredEntities(filter)
-    });
+  const updateFilteredEntities = (filter) => {
+    setFilteredEntities(getFilteredEntities(filter))
   }
 
-  clearFilter = () => {
-    this.setState({ filter: '' });
-    this.updateFilteredEntities('');
+  const clearFilter = () => {
+    setFilter('')
+    setFilteredEntities('');
   };
 
-  renderEntities = () => {
-    console.log('re-dender')
-    return this.state.filteredEntities.map((entityOption, idx) => {
+  const renderEntities = () => {
+    return filteredEntities.map((entityOption, idx) => {
       if (
-        !this.isVisibleInSceneGraph(entityOption.entity) &&
-        !this.state.filter
+        !isVisibleInSceneGraph(entityOption.entity) &&
+        !filter
       ) {
         return null;
       }
@@ -284,101 +245,92 @@ export default class SceneGraph extends React.Component {
         <Entity
           {...entityOption}
           key={idx}
-          isFiltering={!!this.state.filter}
-          isExpanded={this.isExpanded(entityOption.entity)}
-          isSelected={this.props.entity === entityOption.entity}
-          selectEntity={this.selectEntity}
-          toggleExpandedCollapsed={this.toggleExpandedCollapsed}
+          isFiltering={!!filter}
+          isExpanded={isExpanded(entityOption.entity)}
+          isSelected={entity === entityOption.entity}
+          selectEntity={selectEntity}
+          toggleExpandedCollapsed={toggleExpandedCollapsed}
         />
       );
     });
   };
 
-  render() {
-    // To hide the SceneGraph we have to hide its parent too (#left-sidebar).
-    if (!this.props.visibleScenegraph) {
-      return null;
-    }
+  // render() {
+    // // To hide the SceneGraph we have to hide its parent too (#left-sidebar).
+    // if (!this.props.visibleScenegraph) {
+    //   return null;
+    // }
 
-    const clearFilter = this.state.filter ? (
-      <a onClick={this.clearFilter} className="button fa fa-times" />
-    ) : null;
+    // const clearFilter = this.state.filter ? (
+    //   <a onClick={this.clearFilter} className="button fa fa-times" />
+    // ) : null;
 
-    return <Container>
-        {/* <HeaderContainer>
-          <HeaderLabel>Layers</HeaderLabel>
-          <HeaderIcon icon={faLayerGroup} />
-        </HeaderContainer> */}
-          <SearchContainer>
-            <SearchField
-              fullWidth
-              size="small"
-              label="Search..."
-              variant="outlined"
-              id="filter"
-              onChange={this.onChangeFilter}
-              onKeyUp={this.onFilterKeyUp}
-              value={this.state.filter}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Emoji symbol="🔍" label="Search" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </SearchContainer>
-        <EntitiesList
-          className="outliner"
-          tabIndex="0"
-          onKeyDown={this.onKeyDown}
-          onKeyUp={this.onKeyUp}
-        >
-          {this.renderEntities()}
-        </EntitiesList>
-        <div>
-          <IconButton
-            onClick={this.rebuildEntityOptions}
-            title="Rebuild Index"
-          >
-            <FontAwesomeIcon size="xs" icon={faRedo} />
-          </IconButton>
-          <AddEntity />
-          <RenderPayload />
+  return <Container>
+    <SearchContainer>
+      <SearchField
+        fullWidth
+        size="small"
+        label="Search..."
+        variant="outlined"
+        id="filter"
+        onChange={onChangeFilter}
+        onKeyUp={onFilterKeyUp}
+        value={filter}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Emoji symbol="🔍" label="Search" />
+            </InputAdornment>
+          ),
+        }}
+      />
+    </SearchContainer>
+    <EntitiesList
+      className="outliner"
+      tabIndex="0"
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+    >
+      {renderEntities()}
+    </EntitiesList>
+    <div>
+      <IconButton
+        onClick={rebuildEntityOptions}
+        title="Rebuild Index"
+      >
+        <FontAwesomeIcon size="xs" icon={faRedo} />
+      </IconButton>
+      <AddEntity />
+      <RenderPayload />
 
+      {entity && <React.Fragment>
+      <IconButton
+        onClick={() => cloneEntity(entity)}
+        title="Clone Entity"
+      >
+        <FontAwesomeIcon size="xs" icon={faClone}/>
+      </IconButton>
 
-
-
-          {this.props.entity && <React.Fragment>
-          <IconButton
-            onClick={() => cloneEntity(this.props.entity)}
-            title="Clone Entity"
-          >
-            <FontAwesomeIcon size="xs" icon={faClone}/>
-          </IconButton>
-
-          <IconButton
-            onClick={event => {
-                  event.stopPropagation();
-                  removeEntity(this.props.entity);
-            }}
-            title="Remove entity"
-          >
-            <FontAwesomeIcon size="xs" icon={faTrash} />
-            </IconButton>
-          </React.Fragment>}
-
-        </div>
-      </Container>;
-  }
+      <IconButton
+        onClick={event => {
+              event.stopPropagation();
+              removeEntity(entity);
+        }}
+        title="Remove entity"
+      >
+        <FontAwesomeIcon size="xs" icon={faTrash} />
+        </IconButton>
+      </React.Fragment>}
+    </div>
+  </Container>;
+  // }
 }
 
-function filterEntity(entity, filter) {
+const filterEntity = (entity, filter) => {
   if (!filter) {
     return true;
   }
 
-  // Check if the ID, tagName, class, selector includes the filter.
   if (
     entity.id.toUpperCase().indexOf(filter.toUpperCase()) !== -1 ||
     entity.tagName.toUpperCase().indexOf(filter.toUpperCase()) !== -1 ||
