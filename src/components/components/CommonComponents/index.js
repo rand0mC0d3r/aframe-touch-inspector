@@ -50,22 +50,7 @@ const items = [
 ];
 
 export default ({ entity = {} }) => {
-  React.useEffect(() => {
-    Events.on('entityupdate', detail => {
-      if (detail.entity !== entity) {
-        return;
-      }
-      if (DEFAULT_COMPONENTS.indexOf(detail.component) !== -1) {
-        // this.forceUpdate();
-      }
-    });
-
-    Events.on('refreshsidebarobject3d', () => {
-      // this.forceUpdate();
-    });
-  }, [])
-
-  const renderCommonAttributes = () => {
+   const renderCommonAttributes = () => {
     const components = entity ? entity.components : {};
     return items.map(item => {
       const schema = AFRAME.components[item.name].schema;

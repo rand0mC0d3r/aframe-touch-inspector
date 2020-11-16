@@ -58,6 +58,12 @@ export default ({
     Events.on('entityclone', rebuildEntityOptions);
 
     setExpandedElements(new WeakMap([[scene, true]]))
+
+    return () => {
+      Events.removeListener('entityidchange', rebuildEntityOptions);
+      Events.removeListener('entitycreated', rebuildEntityOptions);
+      Events.removeListener('entityclone', rebuildEntityOptions);
+    }
   }, [])
 
   React.useEffect(() => {
@@ -76,6 +82,7 @@ export default ({
         if (onChange) {
           onChange(entity);
         }
+        console.log("emit event")
         Events.emit('entityselect', entity, true);
         found = true;
       }
@@ -89,6 +96,7 @@ export default ({
   };
 
   const rebuildEntityOptions = () => {
+    console.log("reindexing")
     let entities = [{ depth: 0, entity: scene }];
 
     function treeIterate(element, depth) {
