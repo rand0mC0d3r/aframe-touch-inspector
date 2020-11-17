@@ -16,9 +16,7 @@ export default ({
   };
 
   return <FormControl>
-    <InputLabel id="none-selected">none</InputLabel>
     <StyledSelect
-      labelId="none-selected"
       value={value}
       onChange={_onChange}
     >
