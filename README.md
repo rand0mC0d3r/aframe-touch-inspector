@@ -40,13 +40,17 @@ The foundation, event sending and mechanics along with processing and exporting 
 - Refactored example to feature more groups and consistent naming
 - Removed environment library usage as it's model is not stable but generative
 - Disabled WebPack WDS logging from socket in DevTools
+- Removed Package-Name-Generator due to entire lodash dependency. Replaced with random string generator
 
 **📐 Technical:**
 - Refactored most components to functional files
 - Refactored components to use the atomic-design pattern
 - Consolidated lifecycle Event listener removal
+- Enabled parallel (4 core) building WebPack specifically for Terser
 - Updated toolchain
-- Added scripts for webpack bundle explorer
+- Added scripts for webpack bundle explorer (**deprecated**)
+- Added BundleAnalyzerPlugin for better analysis
+
 
 **💡 ToDo:**
 - Make selection bounding box toggle-able

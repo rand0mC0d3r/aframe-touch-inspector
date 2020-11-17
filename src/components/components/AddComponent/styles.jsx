@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import { Select, Button } from '@material-ui/core';
-
-export const StyledSelect = styled(Select)`
-    width: 60px;
-`;
+import { Button } from '@material-ui/core';
 
 export const StyledButton = styled(Button)`
     width: 60px;
