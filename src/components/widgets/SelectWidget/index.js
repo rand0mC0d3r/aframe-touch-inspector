@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import { StyledSelect } from './styles.jsx';
@@ -17,9 +16,10 @@ export default ({
 
   return <FormControl>
     <StyledSelect
-      value={value}
+      value={value || ''}
       onChange={_onChange}
     >
+      <MenuItem value={value}>{value}</MenuItem>)
       {options.map((option, i) => (
         <MenuItem key={i} value={option}>{option}</MenuItem>)
       )}
