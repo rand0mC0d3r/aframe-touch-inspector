@@ -45,7 +45,9 @@ let minimize = false;
 if (process.env.MINIFY === 'true') {
   minimize = true;
 
-  plugins.push(new BundleAnalyzerPlugin());
+  plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static'
+  }));
 }
 
 // dist/
