@@ -343,10 +343,10 @@ THREE.EditorControls = function (_object, domElement) {
       touches[0].set(event.touches[0].pageX, event.touches[0].pageY, 0);
       touches[1].set(event.touches[0].pageX, event.touches[0].pageY, 0);
       scope.rotate(
-          touches[0]
-            .sub(getClosest(touches[0], prevTouches))
-            .multiplyScalar(-scope.rotationSpeed)
-        );
+        touches[0]
+          .sub(getClosest(touches[0], prevTouches))
+          .multiplyScalar(-scope.rotationSpeed)
+      );
       break;
 
     case 2:
@@ -357,11 +357,11 @@ THREE.EditorControls = function (_object, domElement) {
       prevDistance = distance;
 
       var offset0 = touches[0]
-          .clone()
-          .sub(getClosest(touches[0], prevTouches));
+        .clone()
+        .sub(getClosest(touches[0], prevTouches));
       var offset1 = touches[1]
-          .clone()
-          .sub(getClosest(touches[1], prevTouches));
+        .clone()
+        .sub(getClosest(touches[1], prevTouches));
       offset0.x = -offset0.x;
       offset1.x = -offset1.x;
 

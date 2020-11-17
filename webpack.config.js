@@ -1,13 +1,14 @@
 const childProcess = require('child_process');
 const path = require('path');
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Add HMR for development environments only.
 var entry = ['./src/index.js'];
 if (process.env.NODE_ENV === 'dev') {
   entry = [
     'webpack-dev-server/client?http://localhost:3333'
-    // 'webpack/hot/only-dev-server'
   ].concat(entry);
 }
 
@@ -37,6 +38,7 @@ var plugins = [
     COMMIT_HASH: JSON.stringify(commitHash)
   }),
   new webpack.EnvironmentPlugin(['NODE_ENV'])
+  // new BundleAnalyzerPlugin()
 ];
 
 let minimize = false;
@@ -63,9 +65,13 @@ module.exports = {
     quiet: true,
     clientLogLevel: 'silent'
   },
+  performance: {
+    hints: 'warning'
+  },
   devtool: 'source-map',
   entry: entry,
   output: {
+    pathinfo: false,
     path: path.join(__dirname, outPath),
     filename: filename,
     publicPath: '/dist/'
@@ -74,8 +80,9 @@ module.exports = {
     rules: [
       {
         test: /\.js?$/,
+        include: path.resolve(__dirname, 'src'),
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
+        loader: 'babel-loader?cacheDirectory',
       },
       {
         test: /\.css$/i,
@@ -85,7 +92,16 @@ module.exports = {
   },
   plugins: plugins,
   optimization: {
-    minimize
+    minimize,
+    minimizer: [new TerserPlugin({
+      parallel: 4,
+      extractComments: false,
+      terserOptions: {
+        ie8: false,
+        safari10: false,
+        mangle: true,
+      }
+    })]
   },
   resolve: {
     modules: [path.join(__dirname, 'node_modules')]

@@ -1,5 +1,5 @@
-const Events = require('./Events');
-const debounce = require('lodash.debounce');
+import Events from './Events';
+import debounce from 'lodash.debounce';
 
 function initRaycaster (inspector) {
   // Use cursor="rayOrigin: mouse".
