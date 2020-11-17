@@ -12,8 +12,8 @@ The foundation, event sending and mechanics along with processing and exporting 
 ---
 
 ### 👀 Preview
-![Inspector Preview](https://raw.githubusercontent.com/rand0mC0d3r/aframe-touch-inspector/main/images/configuration.png)
-![Inspector Preview](https://github.com/rand0mC0d3r/aframe-touch-inspector/blob/main/images/scenegraph.png?raw=true)
+![Inspector Preview](/images/configuration.png)
+![Inspector Preview](/images/scenegraph.png)
 
 ---
 
@@ -82,4 +82,4 @@ npm run explorer
 
 **NOTE-WIP**: package size is double+ than before, but the refactoring is mid-flight and there are duplicate dependencies
 
-![Explorer stats](https://github.com/rand0mC0d3r/aframe-touch-inspector/blob/main/images/explorer.png?raw=true)
+![Explorer stats](/images/explorer.png)

@@ -65,11 +65,11 @@ export default ({
   };
 
   React.useEffect(() => {
-    Events.on('objectfocus', object => {
+    Events.on('objectfocus', () => {
       setValue(1);
     });
 
-    Events.on('entityupdate', object => {
+    Events.on('entityupdate', () => {
       setValue(1);
       setTransparency(true);
     });

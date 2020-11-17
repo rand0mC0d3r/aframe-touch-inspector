@@ -49,6 +49,14 @@ export default () => {
     });
   }, []);
 
+  React.useEffect(() => {
+    window.addEventListener('message', (event) => {
+      if(event.data.type === 'borderColor') {
+        setAccent(event.data.value);
+      }
+    }, false);
+  }, []);
+
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>
       <PanelManager {...{scene, accent, entity, visibleScenegraph, visibleAttributes}} />

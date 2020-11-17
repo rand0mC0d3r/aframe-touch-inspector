@@ -20,7 +20,7 @@ export default () => {
     window.postMessage(elements, '*');
   };
 
-  return <IconButton onClick={renderPayload} title={'Add new Entity'} >
+  return <IconButton onClick={renderPayload} title={'Render Payload'} >
     <FontAwesomeIcon icon={faCode} size="sm" />
   </IconButton>;
 };

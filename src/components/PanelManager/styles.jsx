@@ -38,17 +38,6 @@ export const MenuContainer = styled.div`
     align-items: center;
 `;
 
-export const TabItem = styled(Tab)`
-    min-width: 100% !important;
-    max-width: 100% !important;
-    font-size: 20px !important;
-    padding: 10px 0px !important;
-
-    &.inspector-MuiTab-textColorPrimary.Mui-selected {
-        ${props => props.accent && `color: ${props.accent}`};
-    }
-`;
-
 export const TabIcon = styled(FontAwesomeIcon)`
     padding: 10px 0px !important;
 `;
@@ -74,6 +63,17 @@ export const PanelBar = styled.div`
     box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;
 
     background-color: var(--background-paper);
+`;
+
+export const TabItem = styled(Tab)`
+    min-width: 100% !important;
+    max-width: 100% !important;
+    font-size: 20px !important;
+    padding: 10px 0px !important;
+
+    &.inspector-MuiTab-textColorPrimary.Mui-selected {
+        ${props => props.accent && `color: ${props.accent}`};
+    }
 `;
 
 export const PanelWrapper = styled.div`
@@ -118,13 +118,13 @@ export const ResizeWrapper = styled.div`
         pointer-events: none;
         filter: blur(7px);
         opacity: 0.1;
+        backdrop-filter: blur(0px);
     ` : `
         pointer-events: all;
         filter: blur(0px);
         opacity: 1;
+        backdrop-filter: blur(25px);
     `};
-
-
 `;
 
 export const WhiteLayer = styled.div`
@@ -146,7 +146,6 @@ export const TabListItem = styled.div`
 
     padding: 10px;
     padding-bottom: 0px;
-    backdrop-filter: blur(25px);
 
     display: flex;
     flex-direction: column;

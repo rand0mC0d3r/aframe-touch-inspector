@@ -36734,6 +36734,14 @@ exports.default = function () {
     });
   }, []);
 
+  _react2.default.useEffect(function () {
+    window.addEventListener('message', function (event) {
+      if (event.data.type === 'borderColor') {
+        setAccent(event.data.value);
+      }
+    }, false);
+  }, []);
+
   return _react2.default.createElement(
     _react2.default.Fragment,
     null,
@@ -38953,11 +38961,11 @@ exports.default = function (_ref) {
   };
 
   _react2.default.useEffect(function () {
-    _Events2.default.on('objectfocus', function (object) {
+    _Events2.default.on('objectfocus', function () {
       setValue(1);
     });
 
-    _Events2.default.on('entityupdate', function (object) {
+    _Events2.default.on('entityupdate', function () {
       setValue(1);
       setTransparency(true);
     });
@@ -42243,10 +42251,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToolboxSection", function() { return ToolboxSection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpperMenuContainer", function() { return UpperMenuContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuContainer", function() { return MenuContainer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabItem", function() { return TabItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabIcon", function() { return TabIcon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsContainer", function() { return TabsContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelBar", function() { return PanelBar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabItem", function() { return TabItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelWrapper", function() { return PanelWrapper; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsListWrapper", function() { return TabsListWrapper; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResizeContainer", function() { return ResizeContainer; });
@@ -42255,8 +42263,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabListItem", function() { return TabListItem; });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(243);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(245);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(245);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(243);
 
 
 
@@ -42297,22 +42305,11 @@ const MenuContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default 
     align-items: center;
 `;
 
-const TabItem = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])`
-    min-width: 100% !important;
-    max-width: 100% !important;
-    font-size: 20px !important;
-    padding: 10px 0px !important;
-
-    &.inspector-MuiTab-textColorPrimary.Mui-selected {
-        ${props => props.accent && `color: ${props.accent}`};
-    }
-`;
-
 const TabIcon = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"])`
     padding: 10px 0px !important;
 `;
 
-const TabsContainer = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])`
+const TabsContainer = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])`
     width: 100%;
     position: relative;
 `;
@@ -42333,6 +42330,17 @@ const PanelBar = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a
     box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;
 
     background-color: var(--background-paper);
+`;
+
+const TabItem = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])`
+    min-width: 100% !important;
+    max-width: 100% !important;
+    font-size: 20px !important;
+    padding: 10px 0px !important;
+
+    &.inspector-MuiTab-textColorPrimary.Mui-selected {
+        ${props => props.accent && `color: ${props.accent}`};
+    }
 `;
 
 const PanelWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].div`
@@ -42377,13 +42385,13 @@ const ResizeWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default 
         pointer-events: none;
         filter: blur(7px);
         opacity: 0.1;
+        backdrop-filter: blur(0px);
     ` : `
         pointer-events: all;
         filter: blur(0px);
         opacity: 1;
+        backdrop-filter: blur(25px);
     `};
-
-
 `;
 
 const WhiteLayer = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].div`
@@ -42405,7 +42413,6 @@ const TabListItem = styled_components__WEBPACK_IMPORTED_MODULE_0__[/* default */
 
     padding: 10px;
     padding-bottom: 0px;
-    backdrop-filter: blur(25px);
 
     display: flex;
     flex-direction: column;
