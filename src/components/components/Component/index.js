@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PropertyRow from './../PropertyRow';
-import Clipboard from 'clipboard';
-import { getComponentClipboardRepresentation } from '../../../lib/entity';
 import Events from '../../../lib/Events';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
@@ -79,25 +77,6 @@ export default class Component extends React.Component {
   }
 
   componentDidMount() {
-    var clipboard = new Clipboard(
-      '[data-action="copy-component-to-clipboard"]',
-      {
-        text: trigger => {
-          var componentName = trigger
-            .getAttribute('data-component')
-            .toLowerCase();
-          return getComponentClipboardRepresentation(
-            this.state.entity,
-            componentName
-          );
-        }
-      }
-    );
-    clipboard.on('error', e => {
-      // @todo Show the error in the UI
-      console.error(e);
-    });
-
     Events.on('entityupdate', detail => {
       if (detail.entity !== this.props.entity) {
         return;

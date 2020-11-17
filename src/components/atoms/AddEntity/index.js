@@ -5,11 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { IconButton } from '@material-ui/core';
 
-import { generate } from 'project-name-generator';
-
 export default () => {
   const addEntity = () => {
-    Events.emit('entitycreate', { element: 'a-entity', components: {id: generate({ words: 3 }).dashed} });
+    Events.emit('entitycreate', { element: 'a-entity', components: {id: `entity-${Math.random().toString(36).substr(2, 5)}`} });
   };
 
   return <IconButton onClick={addEntity} title={'Add new Entity'} >

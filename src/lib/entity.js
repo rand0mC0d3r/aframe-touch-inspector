@@ -149,11 +149,6 @@ export function cloneSelectedEntity () {
   }
 }
 
-/**
- * Return the clipboard representation to be used to copy to the clipboard
- * @param  {Element} entity Entity to copy to clipboard
- * @return {string}        Entity clipboard representation
- */
 export function getEntityClipboardRepresentation (entity) {
   var clone = prepareForSerialization(entity);
   return clone.outerHTML;

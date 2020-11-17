@@ -37,8 +37,8 @@ var plugins = [
     BUILD_TIMESTAMP: JSON.stringify(getBuildTimestamp()),
     COMMIT_HASH: JSON.stringify(commitHash)
   }),
-  new webpack.EnvironmentPlugin(['NODE_ENV'])
-  // new BundleAnalyzerPlugin()
+  new webpack.EnvironmentPlugin(['NODE_ENV']),
+  new BundleAnalyzerPlugin()
 ];
 
 let minimize = false;
