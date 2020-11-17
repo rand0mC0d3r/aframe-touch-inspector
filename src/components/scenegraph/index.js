@@ -8,11 +8,9 @@ import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons/faTrashAlt';
 import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 
-
 import Emoji from './../atoms/Emoji';
-
 import Entity from './Entity';
-const Events = require('../../lib/Events.js');
+import Events from '../../lib/Events';
 
 import {
   Container,

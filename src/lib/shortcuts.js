@@ -1,5 +1,5 @@
-/* globals AFRAME */
-var Events = require('./Events');
+import Events from './Events';
+
 import {
   removeSelectedEntity,
   cloneSelectedEntity,

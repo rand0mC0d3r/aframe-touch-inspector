@@ -5,7 +5,7 @@ import EditorControls from './EditorControls.js';
 import { initRaycaster } from './raycaster';
 
 import { getNumber } from './utils';
-const Events = require('./Events');
+import Events from './Events';
 
 /**
  * Transform controls stuff mostly.

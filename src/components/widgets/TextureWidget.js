@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-var Events = require('../../lib/Events.js');
+import Events from '../../lib/Events';
 
 function getUrlFromId(assetId) {
   return (
@@ -24,13 +23,13 @@ function GetFilename(url) {
 function insertNewAsset(type, id, src) {
   var element = null;
   switch (type) {
-    case 'img':
-      {
-        element = document.createElement('img');
-        element.id = id;
-        element.src = src;
-      }
-      break;
+  case 'img':
+    {
+      element = document.createElement('img');
+      element.id = id;
+      element.src = src;
+    }
+    break;
   }
   if (element) {
     document.getElementsByTagName('a-assets')[0].appendChild(element);
@@ -40,7 +39,7 @@ function insertNewAsset(type, id, src) {
 function insertOrGetImageAsset(src) {
   var id = GetFilename(src);
   // Search for already loaded asset by src
-  var element = document.querySelector("a-assets > img[src='" + src + "']");
+  var element = document.querySelector('a-assets > img[src=\'' + src + '\']');
 
   if (element) {
     id = element.id;

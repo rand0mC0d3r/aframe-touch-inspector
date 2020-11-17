@@ -1,6 +1,5 @@
 import React from 'react';
-var Events = require('../lib/Events.js');
-
+import Events from '../lib/Events';
 import { equal } from '../lib/utils.js';
 
 /**
@@ -548,7 +547,7 @@ export function printEntity (entity, onDoubleClick) {
 
   let geometryName = '';
   if(entity.components && Object.keys(entity.components).includes('geometry')) {
-      geometryName = entity.components.geometry.data.primitive;
+    geometryName = entity.components.geometry.data.primitive;
   }
 
 
@@ -564,7 +563,7 @@ export function printEntity (entity, onDoubleClick) {
   }
 
   return (
-  <span className="entityPrint" onDoubleClick={onDoubleClick}>
+    <span className="entityPrint" onDoubleClick={onDoubleClick}>
       <span className="entityTagName">
         {'<' + entity.tagName.toLowerCase()}
       </span>

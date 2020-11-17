@@ -1,4 +1,4 @@
-const Events = require('./Events');
+import Events from './Events';
 
 const updates = {};
 
