@@ -17,7 +17,10 @@
     "start": "cross-env NODE_ENV=dev webpack-dev-server --progress --colors -d --host 0.0.0.0",
     "explorer": "source-map-explorer ./dist/*.js",
     "unused": "npm-check ./",
-    "stats": " source-map-explorer ./dist/*.js --json"
+    "stats": " source-map-explorer ./dist/*.js --json",
+    "prerelease": "npm run dist && git add . && git commit -m \"updated version\"",
+    "release": "npm version minor && git push",
+    "postrelease": "npm publish"
   },
   "repository": "rand0mC0d3r/aframe-touch-inspector",
   "license": "MIT",
