@@ -1,7 +1,6 @@
 import React from 'react';
 import { InputWidget } from '../../widgets';
 import PropertyRow from './../PropertyRow';
-import Collapsible from '../../Collapsible';
 import {
   updateEntity,
 } from '../../../lib/entity';
@@ -68,7 +67,7 @@ export default ({ entity = {} }) => {
     });
   };
 
-  return <Collapsible id="componentEntityHeader" className="commonComponents">
+  return <React.Fragment>
     <NameContainer>
       <InputWidget
         onChange={changeId}
@@ -80,5 +79,5 @@ export default ({ entity = {} }) => {
       />
     </NameContainer>
     {renderCommonAttributes()}
-  </Collapsible>;
+  </React.Fragment>;
 };

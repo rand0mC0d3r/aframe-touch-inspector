@@ -18,7 +18,6 @@ import {
 } from './styles.jsx';
 
 const isSingleProperty = AFRAME.schema.isSingleProperty;
-
 const documentation = [
   {
     key: 'geometry',

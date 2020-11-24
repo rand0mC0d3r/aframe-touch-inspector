@@ -12,7 +12,7 @@ export default ({
 
   React.useEffect(() => {
     if (internalValue !== value) setInternalValue(value);
-  }, [value]);
+  }, [ value ]);
 
   return <InputField
     {...{ fullWidth, placeholder }}

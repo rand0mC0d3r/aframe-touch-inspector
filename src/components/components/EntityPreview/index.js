@@ -1,5 +1,4 @@
 import React from 'react';
-import Events from '../../../lib/Events';
 
 import ComponentIcon from './../../atoms/ComponentIcon';
 
@@ -43,14 +42,14 @@ export default ({ entity = {} }) => {
             occurence: 1,
           });
         } else {
-          list = [...list, list.filter(l => l.value === component).map(l => l.occurence++)];
+          list = [ ...list, list.filter(l => l.value === component).map(l => l.occurence++) ];
         }
       });
       setComponents(list);
       getGeometryName();
       getEntityName();
     }
-  }, [entity]);
+  }, [ entity ]);
 
   return <Container>
     {entity && <React.Fragment>

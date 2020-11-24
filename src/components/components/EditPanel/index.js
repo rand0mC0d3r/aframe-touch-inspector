@@ -12,7 +12,7 @@ export default ({ entity = null }) => {
 
   React.useEffect(() => {
     setVisible(!!entity);
-  }, [entity]);
+  }, [ entity ]);
 
   return <Wrapper>
     {entity ? <React.Fragment>

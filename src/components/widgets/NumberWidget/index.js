@@ -38,7 +38,7 @@ export default class NumberWidget extends React.Component {
   componentDidMount() {
     this.distance = 0;
     this.onMouseDownValue = 0;
-    this.prevPointer = [0, 0];
+    this.prevPointer = [ 0, 0 ];
 
     this.setValue(this.props.value);
     this.onBlur();
@@ -46,7 +46,7 @@ export default class NumberWidget extends React.Component {
 
   onMouseMove = event => {
     const currentValue = parseFloat(this.state.value);
-    const pointer = [event.clientX, event.clientY];
+    const pointer = [ event.clientX, event.clientY ];
     const delta =
       pointer[0] - this.prevPointer[0] - (pointer[1] - this.prevPointer[1]);
     this.distance += delta;
@@ -61,19 +61,19 @@ export default class NumberWidget extends React.Component {
     if (currentValue !== value) {
       this.setValue(value);
     }
-    this.prevPointer = [event.clientX, event.clientY];
+    this.prevPointer = [ event.clientX, event.clientY ];
   };
 
   onMouseDown = event => {
     event.preventDefault();
     this.distance = 0;
     this.onMouseDownValue = this.state.value;
-    this.prevPointer = [event.clientX, event.clientY];
+    this.prevPointer = [ event.clientX, event.clientY ];
     document.addEventListener('mousemove', this.onMouseMove, false);
     document.addEventListener('mouseup', this.onMouseUp, false);
   };
 
-  onMouseUp = event => {
+  onMouseUp = () => {
     document.removeEventListener('mousemove', this.onMouseMove, false);
     document.removeEventListener('mouseup', this.onMouseUp, false);
 

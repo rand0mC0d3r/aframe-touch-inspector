@@ -21,7 +21,8 @@ export default ({ entity = {} }) => {
   const noPanelIndex = 0;
   const [ value, setValue ] = React.useState(noPanelIndex);
   const components = entity ? entity.components : {};
-  const definedComponents = Object.keys(components).filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
+  const definedComponents = Object.keys(components)
+    .filter(key => DEFAULT_COMPONENTS.indexOf(key) === -1);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -19,10 +19,8 @@ export default ({
       value={value || ''}
       onChange={_onChange}
     >
-      <MenuItem value={value}>{value}</MenuItem>)
-      {options.map((option, i) => (
-        <MenuItem key={i} value={option}>{option}</MenuItem>)
-      )}
+      <MenuItem value={value}>{value}</MenuItem>
+      {options.map((option, i) => <MenuItem key={i} value={option}>{option}</MenuItem>)}
     </StyledSelect>
   </FormControl>;
 };

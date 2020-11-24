@@ -31,7 +31,7 @@ export default class PropertyRow extends React.Component {
     this.id = props.componentname + ':' + props.name;
 
     if (
-      ['position', 'rotation', 'scale'].indexOf(this.props.componentname) !== -1
+      [ 'position', 'rotation', 'scale' ].indexOf(this.props.componentname) !== -1
     ) {
       Events.on(
         'entitytransformed',
@@ -68,7 +68,7 @@ export default class PropertyRow extends React.Component {
           propertyName += '.' + props.name;
         }
 
-        updateEntity.apply(this, [props.entity, propertyName, value]);
+        updateEntity.apply(this, [ props.entity, propertyName, value ]);
       },
       value: value
     };

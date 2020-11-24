@@ -40,14 +40,15 @@ export default ({
             occurence: 1,
           });
         } else {
-          list = [...list, list.filter(l => l.value === component).map(l => l.occurence++)];
+          list = [ ...list, list.filter(l => l.value === component)
+            .map(l => l.occurence++) ];
         }
       });
       setComponents(list);
       getGeometryName();
       getEntityName();
     }
-  }, [entity]);
+  }, [ entity ]);
 
   return <React.Fragment>
     {entity && <EntityMetaContainer {...{onDoubleClick}}>

@@ -1,1 +1,1 @@
-export default ['visible', 'position', 'scale', 'rotation'];
+export default [ 'visible', 'position', 'scale', 'rotation' ];

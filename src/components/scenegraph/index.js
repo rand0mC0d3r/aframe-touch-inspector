@@ -46,7 +46,7 @@ export default ({
     Events.on('entitycreated', rebuildEntityOptions);
     Events.on('entityclone', rebuildEntityOptions);
 
-    setExpandedElements(new WeakMap([[scene, true]]));
+    setExpandedElements(new WeakMap([ [ scene, true ] ]));
 
     return () => {
       Events.removeListener('entityidchange', rebuildEntityOptions);
@@ -57,7 +57,7 @@ export default ({
 
   React.useEffect(() => {
     selectEntity(entity);
-  }, [entity]);
+  }, [ entity ]);
 
   const selectEntity = entity => {
     let found = false;
@@ -84,7 +84,7 @@ export default ({
   };
 
   const rebuildEntityOptions = () => {
-    let entities = [{ depth: 0, entity: scene }];
+    let entities = [ { depth: 0, entity: scene } ];
 
     function treeIterate(element, depth) {
       if (!element) { return; }
