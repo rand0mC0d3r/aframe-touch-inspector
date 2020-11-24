@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    width: 337px;
+    width: 330px;
     position: relative;
     align-self: stretch;
 

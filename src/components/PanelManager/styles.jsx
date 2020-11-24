@@ -104,7 +104,7 @@ export const TabsListWrapper = styled.div`
 `;
 
 export const ResizeContainer = styled.div`
-    box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;
+    box-shadow: 0px 0px 12px -10px #000, 0px 0px 12px -10px #000, 0px 0px 12px -8px #000;
     overflow: hidden auto;
     border-radius: 8px;
 `;
@@ -124,6 +124,7 @@ export const ResizeWrapper = styled.div`
         filter: blur(0px);
         opacity: 1;
         backdrop-filter: blur(25px);
+        border-radius: 8px;
     `};
 `;
 
