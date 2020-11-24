@@ -1,17 +1,19 @@
-# A-Frame-Touch-Inspector (WIP)
+# A-Frame-Touch-Inspector (Experimental)
 ![](https://badgen.net/bundlephobia/min/aframe-touch-inspector) ![](https://badgen.net/bundlephobia/minzip/aframe-touch-inspector)
 
  Based on A-Frame Inspector ([Original project](https://github.com/aframevr/aframe-inspector))
 
 ---
-### 🪀 Demo (Client side)
+### 🪀 Screenshots & Preview Demo
 
-<p>
-  <img width="300" src="/images/configuration.png" alt="Configuration menu" />
-  <img width="300" src="/images/scenegraph.png" alt="Scene-graph" />
-</p>
+*Configuration*
+<img width="300" src="/images/configuration.png" alt="Configuration menu" />
 
-**[Preview Touch Interface](https://rand0mc0d3r.github.io/aframe-touch-inspector/examples/)**
+*Scenegraph*
+<img width="300" src="/images/scenegraph.png" alt="Scene-graph" />
+
+---
+### **[👀 Preview Touch Interface](https://rand0mc0d3r.github.io/aframe-touch-inspector/examples/)**
 
 ---
 
