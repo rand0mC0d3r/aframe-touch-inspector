@@ -1,4 +1,6 @@
 import React from 'react';
+import Events from '../../../lib/Events';
+
 import ComponentIcon from './../../atoms/ComponentIcon';
 
 import {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ViewportBar = styled.div`
-    align-items: center;
+    align-items: stretch;
     display: flex;
     pointer-events: all;
     font-size: 14px;
@@ -22,6 +22,15 @@ export const Container = styled.div`
     position: absolute;
     bottom: 10px;
     right: 75px;
+`;
+
+export const SidebarWrapper = styled.div`
+    border-left: 1px solid #999;
+    padding-left: 10px;
+    margin-left: 5px;
+
+    align-items: center;
+    display: flex;
 `;
 
 export const ToolsBar = styled.div`

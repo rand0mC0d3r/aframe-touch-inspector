@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar';
 import {
   Container,
   ToolsBar,
+  SidebarWrapper,
   ViewportBar
 } from './styles.jsx';
 
@@ -17,6 +18,8 @@ export default ({ entity = {}, accent }) => <Container>
   </ToolsBar>
   <ViewportBar {...{accent}}>
     <AddEntity />
-    <Sidebar {...{entity}}/>
+    <SidebarWrapper>
+      <Sidebar {...{entity}}/>
+    </SidebarWrapper>
   </ViewportBar>
 </Container>;

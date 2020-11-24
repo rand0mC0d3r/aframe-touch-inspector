@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     width: 500px;
     position: relative;
-    // margin-right: 25px;
     align-self: stretch;
 
     display: flex;
@@ -22,7 +21,6 @@ export const ContainerWrapper = styled.div`
 
     position: absolute;
     bottom: 50px;
-    // padding: 15px;
 
     background-color: rgba(253, 253, 253, 0.69);
     backdrop-filter: blur(25px);
@@ -53,6 +51,7 @@ export const ComponentsListContainer = styled.div`
     display: flex;
     flex: 1 0 auto;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
 `;
 
 export const EntityMetaContainer = styled.div`
@@ -74,11 +73,6 @@ export const EntityNameLabel = styled.div`
     font-size: 12px;
 `;
 
-
 export const Chip = styled.div`
-    display: inline-block;
-    // border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 3px;
-    margin: 0px 3px;
+    flex: 0 0 20px;
 `;

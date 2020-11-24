@@ -54,7 +54,7 @@ export default () => {
   };
 
   return <React.Fragment>
-    {items.map(item => <IconButton onClick={item.function} title={item.title}>
+    {items.map((item, i) => <IconButton key={i} onClick={item.function} title={item.title}>
       <FontAwesomeIcon icon={item.icon} size="sm"  title={item.title} />
     </IconButton>)}
   </React.Fragment>;
