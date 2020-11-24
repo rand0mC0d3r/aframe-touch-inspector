@@ -1,6 +1,6 @@
 {
   "name": "aframe-touch-inspector",
-  "version": "1.0.1",
+  "version": "1.0.1.1",
   "description": "A touch of a visual inspector tool inspired by A-Frame-Inspector for A-Frame",
   "main": "dist/aframe-inspector.min.js",
   "scripts": {
