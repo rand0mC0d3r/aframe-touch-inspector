@@ -34,7 +34,7 @@ export default ({
   visibleScenegraph = false,
   visibleAttributes = false
 }) => {
-  const noPanelIndex = 0;
+  const noPanelIndex = false;
   const [ value, setValue ] = React.useState(noPanelIndex);
   const [ transparency, setTransparency ] = React.useState(false);
 
@@ -69,9 +69,11 @@ export default ({
       setValue(1);
     });
 
-    Events.on('entityupdate', () => {
-      setValue(1);
-      setTransparency(true);
+    Events.on('entityupdate', event => {
+      if(!event.form) {
+        setValue(1);
+        setTransparency(true);
+      }
     });
   }, []);
 

@@ -77,11 +77,13 @@ function Viewport (inspector) {
       component = 'scale';
       value = `${object.scale.x} ${object.scale.y} ${object.scale.z}`;
     }
+
     Events.emit('entityupdate', {
       component: component,
       entity: transformControls.object.el,
       property: '',
-      value: value
+      value: value,
+      form: false,
     });
 
     Events.emit('entitytransformed', transformControls.object.el);

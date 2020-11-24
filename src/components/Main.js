@@ -2,6 +2,7 @@ import React from 'react';
 import Viewport from './viewport';
 import Events from '../lib/Events';
 import PanelManager from './PanelManager';
+import CameraManager from './CameraManager';
 
 import {
   InspectorContainer
@@ -12,7 +13,6 @@ THREE.ImageUtils.crossOrigin = '';
 export default () => {
   const [ entity, setEntity ] = React.useState(null);
   const [ accent, setAccent ] = React.useState(null);
-  const [ scene, setScene ] = React.useState(AFRAME.scenes[0]);
   const [ inspectorEnabled, setInspectorEnabled ] = React.useState(true);
   const [ visibleScenegraph, setVisibleScenegraph ] = React.useState(true);
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
@@ -59,7 +59,8 @@ export default () => {
 
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>
-      <PanelManager {...{scene, accent, entity, visibleScenegraph, visibleAttributes}} />
+      <CameraManager />
+      <PanelManager {...{scene: AFRAME.scenes[0], accent, entity, visibleScenegraph, visibleAttributes}} />
       <Viewport {...{entity, accent }} />
     </InspectorContainer>}
   </React.Fragment>;

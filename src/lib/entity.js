@@ -40,7 +40,8 @@ export function updateEntity (entity, propertyName, value) {
     component: splitName ? splitName[0] : propertyName,
     entity: entity,
     property: splitName ? splitName[1] : '',
-    value: value
+    value: value,
+    form: true,
   });
 }
 

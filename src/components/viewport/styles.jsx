@@ -34,8 +34,8 @@ export const ToolsBar = styled.div`
 
     padding: 3px 6px;
 
-    background-color: rgba(253,253,253,0.5);
+    background-color: rgba(255,255,255,0.69);
     border-radius: 8px;
     backdrop-filter: blur(25px);
-    box-shadow: 0px 0px 10px -9px #000, 0px 0px 10px -9px #000, 0px 0px 10px -9px #000;
+    box-shadow: 0px 0px 12px -10px #000, 0px 0px 12px -10px #000, 0px 0px 12px -8px #000;
 `;
