@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   InputField,
@@ -7,87 +6,51 @@ import {
   ColorPreview
 } from './styles.jsx';
 
-export default class ColorWidget extends React.Component {
-  static propTypes = {
-    componentname: PropTypes.string.isRequired,
-    entity: PropTypes.object,
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    value: PropTypes.string
+let color = new THREE.Color();
+
+export default ({
+  componentname = '',
+  entity = [],
+  name = '',
+  onChange = () => {},
+  value = '#ffffff'
+}) => {
+  const [ pickerValue, setPickerValue ] = React.useState('#ffffff');
+
+  React.useEffect(() => {
+    setPickerValue(getHexString(value));
+  }, [ value ]);
+
+  const setValue = value => {
+    const pickerValue = getHexString(value);
+    setPickerValue(pickerValue);
+    onChange(name, value);
   };
 
-  static defaultProps = {
-    value: '#ffffff'
+  const getHexString = value => {
+    // debugger;
+    return '#' + color.set(value).getHexString();
   };
 
-  constructor(props) {
-    super(props);
-
-    var value = this.props.value;
-    this.color = new THREE.Color();
-
-    this.state = {
-      value: value,
-      pickerValue: this.getHexString(value)
-    };
-  }
-
-  setValue(value) {
-    var pickerValue = this.getHexString(value);
-
-    this.setState({
-      value: value,
-      pickerValue: pickerValue
-    });
-
-    if (this.props.onChange) {
-      this.props.onChange(this.props.name, value);
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.value !== this.state.value) {
-      this.setState({
-        value: newProps.value,
-        pickerValue: this.getHexString(newProps.value)
-      });
-    }
-  }
-
-  getHexString(value) {
-    return '#' + this.color.set(value).getHexString();
-  }
-
-  onChange = e => {
-    this.setValue(e.target.value);
+  const handleOnChange = e => {
+    setValue(e.target.value);
   };
 
-  onKeyUp = e => {
+  const onKeyUp = e => {
     e.stopPropagation();
-    // if (e.keyCode === 13)
-    this.setValue(e.target.value);
+    setValue(e.target.value);
   };
 
-  onChangeText = e => {
-    this.setState({ value: e.target.value });
-  };
-
-  render() {
-    return <ColorContainer>
-      <ColorPreview
-        type="color"
-        className="color"
-        value={this.state.pickerValue}
-        title={this.state.value}
-        onChange={this.onChange}
-      />
-      <InputField
-        type="text"
-        className="color_value"
-        value={this.state.value}
-        onKeyUp={this.onKeyUp}
-        onChange={this.onChangeText}
-      />
-    </ColorContainer>;
-  }
-}
+  return <ColorContainer>
+    <ColorPreview type="color"
+      value={pickerValue}
+      title={value}
+      onChange={handleOnChange}
+    />
+    <InputField type="text"
+      value={value}
+      onKeyUp={onKeyUp}
+      onChange={handleOnChange}
+    />
+  </ColorContainer>;
+};

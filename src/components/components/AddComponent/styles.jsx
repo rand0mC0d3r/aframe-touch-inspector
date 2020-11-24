@@ -1,14 +1,25 @@
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 
-export const StyledButton = styled(Button)`
-    width: 60px;
+export const StyledButton = styled(IconButton)`
+    width: 40px;
 `;
 
 export const StyledMenuItem = styled.div`
     color: #555 !important;
     font-size: 13px !important;
     text-transform: capitalize;
+`;
+
+export const ButtonWrapper = styled.div`
+    border-right: 1px solid #AAA;
+    padding-right: 0px;
+    margin-right: 10px;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
 `;
 
 export const Container = styled.div`

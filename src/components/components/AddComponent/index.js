@@ -3,13 +3,16 @@ import Events from '../../../lib/Events';
 
 import DialogBottom from './../../atoms/DialogBottom';
 import Dialog from './../../atoms/Dialog';
-
 import ComponentIcon from './../../atoms/ComponentIcon';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
 
 import {
   StyledButton,
   Container,
-  StyledMenuItem
+  StyledMenuItem,
+  ButtonWrapper
 } from './styles.jsx';
 
 export default ({
@@ -61,9 +64,13 @@ export default ({
     getComponentsOptions();
   }, []);
 
-  return <div>
+  return <React.Fragment>
     {options && <React.Fragment>
-      <StyledButton onClick={handleClickOpen}>+</StyledButton>
+      <ButtonWrapper>
+        <StyledButton onClick={handleClickOpen} size="small">
+          <FontAwesomeIcon icon={faPlusCircle} size="sm"/>
+        </StyledButton>
+      </ButtonWrapper>
       <Dialog
         maxWidth="sm"
         fullWidth={true}
@@ -77,10 +84,11 @@ export default ({
             key={i}
             value={option}
           >
-            <ComponentIcon returnNull={true} componentName={option.label}/> {option.label}
+            <ComponentIcon componentName={option.label}/>
+            <div>{option.label}</div>
           </StyledMenuItem>)}
         </Container>
       </Dialog>
     </React.Fragment>}
-  </div>;
+  </React.Fragment>;
 };
