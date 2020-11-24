@@ -85,6 +85,10 @@ The foundation, event sending and mechanics along with processing and exporting 
 - Added for all functional-hook oriented components correct teardowns on Event listeners
 - Added flagging on entity conversion flags to differentiate behavior where relevant
 
+**🐞 Known bugs:**
+- Scenegraph cannot re-expand a collapsed group
+- Visibility of an entity cannot be restored once disabled
+
 **💡 ToDo:**
 - Make selection bounding box toggle-able
 - Refactor 3 way transform toolbar to be similar to MsPaint in Windows10

@@ -30,8 +30,8 @@ export const MenuContainer = styled.div`
 `;
 
 export const TabItem = styled(Tab)`
-    min-width: 50px !important;
-    width: 50px;
+    min-width: 45px !important;
+    width: 45px;
     padding: 0px !important;
 `;
 

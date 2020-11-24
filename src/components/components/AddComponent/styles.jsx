@@ -19,7 +19,6 @@ export const ButtonWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-top: 5px;
-}
 `;
 
 export const Container = styled.div`
