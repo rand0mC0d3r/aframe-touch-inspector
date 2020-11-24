@@ -1,5 +1,36 @@
 # A-Frame-Touch-Inspector (WIP)
-##### Based on A-Frame Inspector (https://github.com/aframevr/aframe-inspector)
+ Based on A-Frame Inspector ([Original project](https://github.com/aframevr/aframe-inspector))
+
+---
+### 🪀 Demo (Client side)
+
+<p>
+  <img width="300" src="/images/configuration.png" alt="Configuration menu">
+  <img width="300" src="/images/scenegraph.png" alt="Scene-graph">
+</p>
+
+**[Preview Touch Interface](https://rand0mc0d3r.github.io/aframe-touch-inspector/examples/)**
+
+---
+
+### Local Installation
+
+```
+// with npm
+npm i aframe-touch-inspector
+
+// with yarn
+yarn add aframe-touch-inspector
+```
+
+### Remote fetching
+
+```
+https://unpkg.com/aframe-touch-inspector@1.0.1/dist/aframe-inspector.min.js
+
+// Somewhere in <head>
+// <script src="https://unpkg.com/aframe-touch-inspector@1.0.1/dist/aframe-inspector.min.js"></script>
+```
 
 ---
 
@@ -8,12 +39,6 @@
 Previous documentation can be found here: [A-Frame Inspector](https://github.com/aframevr/aframe-inspector/blob/master/README.md)
 
 The foundation, event sending and mechanics along with processing and exporting functions were mainly preserved, yet refactored to feature components described as functional entities.
-
----
-
-### 👀 Preview
-![Inspector Preview](/images/configuration.png)
-![Inspector Preview](/images/scenegraph.png)
 
 ---
 
