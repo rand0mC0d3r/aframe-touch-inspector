@@ -4,7 +4,6 @@ import { faRedo } from '@fortawesome/free-solid-svg-icons/faRedo';
 import { faExpand } from '@fortawesome/free-solid-svg-icons/faExpand';
 import { IconButton } from '@material-ui/core';
 
-// import CameraController
 import Events from '../../../lib/Events';
 
 import { TransformationIcon, Container } from './styles.jsx';
@@ -20,15 +19,23 @@ export default ({ accent }) => {
   const [ localSpace, setLocalSpace ] = React.useState(false);
 
   React.useEffect(() => {
-    Events.on('transformmodechange', mode => {
-      setSelectedTransform(mode);
-    });
+    Events.on('transformmodechange', handleOnTransformModeChange);
+    Events.on('transformspacechange', handleTransformSpaceChange);
 
-    Events.on('transformspacechange', () => {
-      Events.emit('transformspacechanged', localSpace ? 'world' : 'local');
-      setLocalSpace(!localSpace);
-    });
+    return () => {
+      Events.removeListener('transformmodechange', handleOnTransformModeChange);
+      Events.removeListener('transformspacechange', handleTransformSpaceChange);
+    };
   }, []);
+
+  const handleTransformSpaceChange = () => {
+    Events.emit('transformspacechanged', localSpace ? 'world' : 'local');
+    setLocalSpace(!localSpace);
+  };
+
+  const handleOnTransformModeChange = (mode) => {
+    setSelectedTransform(mode);
+  };
 
   const changeTransformMode = mode => {
     setSelectedTransform(mode);

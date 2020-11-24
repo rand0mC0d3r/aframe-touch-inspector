@@ -18,44 +18,62 @@ export default () => {
   const [ visibleAttributes, setVisibleAttributes ] = React.useState(true);
 
   React.useEffect(() => {
-    Events.on('togglesidebar', event => {
-      if (event.which === 'all') {
-        if (this.state.visible.scenegraph || this.state.visible.attributes) {
-          setVisibleAttributes(false);
-          setVisibleScenegraph(false);
-        } else {
-          setVisibleAttributes(true);
-          setVisibleScenegraph(true);
-        }
-      } else if (event.which === 'attributes') {
-        setVisibleAttributes(!visibleAttributes);
-      } else if (event.which === 'scenegraph') {
-        setVisibleScenegraph(!visibleScenegraph);
-      }
+    Events.on('togglesidebar', handleToggleSidebar);
+    Events.on('entityselect', handleEntitySelect);
+    Events.on('entitydeselect', handleEntityDeselect);
+    Events.on('inspectortoggle', handleInspectorToggle);
 
-      this.forceUpdate();
-    });
-
-    Events.on('entityselect', entity => {
-      setEntity(entity);
-    });
-
-    Events.on('entitydeselect', () => {
-      setEntity(null);
-    });
-
-    Events.on('inspectortoggle', enabled => {
-      setInspectorEnabled(enabled);
-    });
+    return () => {
+      Events.removeListener('togglesidebar', handleToggleSidebar);
+      Events.removeListener('entityselect', handleEntitySelect);
+      Events.removeListener('entitydeselect', handleEntityDeselect);
+      Events.removeListener('inspectortoggle', handleInspectorToggle);
+    };
   }, []);
+
+  const handleInspectorToggle = enabled => {
+    setInspectorEnabled(enabled);
+  };
+
+  const handleToggleSidebar = event => {
+    if (event.which === 'all') {
+      if (this.state.visible.scenegraph || this.state.visible.attributes) {
+        setVisibleAttributes(false);
+        setVisibleScenegraph(false);
+      } else {
+        setVisibleAttributes(true);
+        setVisibleScenegraph(true);
+      }
+    } else if (event.which === 'attributes') {
+      setVisibleAttributes(!visibleAttributes);
+    } else if (event.which === 'scenegraph') {
+      setVisibleScenegraph(!visibleScenegraph);
+    }
+
+    this.forceUpdate();
+  };
+
+  const handleEntitySelect = (entity) => {
+    setEntity(entity);
+  };
+
+  const handleEntityDeselect = () => {
+    setEntity(null);
+  };
 
   React.useEffect(() => {
-    window.addEventListener('message', (event) => {
-      if(event.data.type === 'borderColor') {
-        setAccent(event.data.value);
-      }
-    }, false);
+    window.addEventListener('message', handleColorAccent, false);
+
+    return () => {
+      window.removeEventListener('message', handleColorAccent);
+    };
   }, []);
+
+  const handleColorAccent = event => {
+    if(event.data.type === 'borderColor') {
+      setAccent(event.data.value);
+    }
+  };
 
   return <React.Fragment>
     {inspectorEnabled && <InspectorContainer>

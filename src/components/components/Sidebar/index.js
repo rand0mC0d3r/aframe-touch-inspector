@@ -12,14 +12,22 @@ export default ({
   const [ hoveredEntity, setHoveredEntity ] = React.useState(null);
 
   React.useEffect(() => {
-    Events.on('raycastermouseenter', el => {
-      setHoveredEntity(el);
-    });
+    Events.on('raycastermouseenter', handleRayCasterMouseEnter);
+    Events.on('raycastermouseleave', handleRaycasterMouseLeave);
 
-    Events.on('raycastermouseleave', el => {
-      setHoveredEntity(el);
-    });
+    return () => {
+      Events.removeListener('raycastermouseenter', handleRayCasterMouseEnter);
+      Events.removeListener('raycastermouseleave', handleRaycasterMouseLeave);
+    };
   }, []);
+
+  const handleRayCasterMouseEnter = el => {
+    setHoveredEntity(el);
+  };
+
+  const handleRaycasterMouseLeave = el => {
+    setHoveredEntity(el);
+  };
 
   return <Wrapper>
     <EntityPreview entity={entity ? entity : hoveredEntity} />
