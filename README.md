@@ -32,6 +32,10 @@ The foundation, event sending and mechanics along with processing and exporting 
 - Added iconography to component properties
 - Added component specific documentation links to A-Frame relevant page
 - Added iconography to component descriptors and enhanced preview mechanic
+- Added default zoom view, and zoom in and out. In a transparent format
+- Updated transparency and borders for better clarity over various contrast tests
+- Refactored components of entities to represent their icons more compact in the preview hover
+- Refactored preview hover nesting and cursor / selection functionality
 
 **🗑️ Removals:**
 - For now removed the camera/perspective switcher
@@ -40,7 +44,7 @@ The foundation, event sending and mechanics along with processing and exporting 
 - Refactored example to feature more groups and consistent naming
 - Removed environment library usage as it's model is not stable but generative
 - Disabled WebPack WDS logging from socket in DevTools
-- Removed Package-Name-Generator due to entire lodash dependency. Replaced with random string generator
+- Removed Package-Name-Generator due to entire lodash dependency. Replaced with random string generator;
 
 **📐 Technical:**
 - Refactored most components to functional files
@@ -50,7 +54,9 @@ The foundation, event sending and mechanics along with processing and exporting 
 - Updated toolchain
 - Added scripts for webpack bundle explorer (**deprecated**)
 - Added BundleAnalyzerPlugin for better analysis
-
+- Converted thread-blocking bundleAnalyzer to non blocking block chain
+- Added for all functional-hook oriented components correct teardowns on Event listeners
+- Added flagging on entity conversion flags to differentiate behavior where relevant
 
 **💡 ToDo:**
 - Make selection bounding box toggle-able
