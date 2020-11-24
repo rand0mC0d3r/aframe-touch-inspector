@@ -16,7 +16,7 @@ export default ({
   entity = {},
 }) => {
   const [ options, setOptions ] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [ open, setOpen ] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -51,9 +51,9 @@ export default ({
       .map(function(value) {
         return { value: value, label: value, origin: 'loaded' };
       });
-    const cummulatedOptions = [...commonOptions, ...options.sort(function(a, b) {
+    const cummulatedOptions = [ ...commonOptions, ...options.sort(function(a, b) {
       return a.label === b.label ? 0 : a.label < b.label ? -1 : 1;
-    })];
+    }) ];
     setOptions(cummulatedOptions);
   };
 
@@ -69,7 +69,7 @@ export default ({
         fullWidth={true}
         open={open}
         onClose={handleClose}
-        actions={<DialogBottom {...{handleClose}} />}
+        actions={<DialogBottom {...{ handleClose }} />}
       >
         <Container>
           {options.map((option, i) => <StyledMenuItem

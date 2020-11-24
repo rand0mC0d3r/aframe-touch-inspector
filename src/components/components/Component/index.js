@@ -165,7 +165,7 @@ export default class Component extends React.Component {
             {documentation.filter(d => d.key === this.props.name).map((d, i) => <React.Fragment key={i}>
               <DocuLabel>DOCS</DocuLabel>
               {d.links.map((link, i) => <React.Fragment key={i}>
-                <a href={link.url} target="_blank" title={link.title}>
+                <a rel="noopener noreferrer" href={link.url} target="_blank" title={link.title}>
                   <DocuIcon size="sm" icon={faExternalLinkAlt}/>
                 </a>
               </React.Fragment>)}

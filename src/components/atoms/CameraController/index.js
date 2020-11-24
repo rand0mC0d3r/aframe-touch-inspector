@@ -1,6 +1,5 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchMinus } from '@fortawesome/free-solid-svg-icons/faSearchMinus';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
@@ -12,23 +11,6 @@ const minLimit = 4.20;
 
 export default () => {
   let sceneCamera = window.AFRAME.scenes[0].camera;
-  const items = [
-    {
-      function: handleZoomIn,
-      title: 'Zoom in',
-      icon: faSearchPlus,
-    },
-    {
-      function: handleZoomReset,
-      title: 'Zoom reset',
-      icon: faSearch,
-    },
-    {
-      function: handleZoomOut,
-      title: 'Zoom out',
-      icon: faSearchMinus,
-    }
-  ];
 
   const lookAtDefault = () => {
     sceneCamera.lookAt(0, 1.6, -1);
@@ -53,8 +35,26 @@ export default () => {
     lookAtDefault();
   };
 
+  const items = [
+    {
+      f: handleZoomIn,
+      title: 'Zoom in',
+      icon: faSearchPlus,
+    },
+    {
+      f: handleZoomReset,
+      title: 'Zoom reset',
+      icon: faSearch,
+    },
+    {
+      f: handleZoomOut,
+      title: 'Zoom out',
+      icon: faSearchMinus,
+    }
+  ];
+
   return <React.Fragment>
-    {items.map((item, i) => <IconButton key={i} onClick={item.function} title={item.title}>
+    {items.map((item, i) => <IconButton key={i} onClick={item.f} title={item.title}>
       <FontAwesomeIcon icon={item.icon} size="sm"  title={item.title} />
     </IconButton>)}
   </React.Fragment>;
