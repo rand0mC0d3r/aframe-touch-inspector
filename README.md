@@ -1,23 +1,35 @@
-# A-Frame-Touch-Inspector (Experimental)
+# A-Frame-Touch-Inspector (💣 Experimental)
 ![](https://badgen.net/bundlephobia/min/aframe-touch-inspector) ![](https://badgen.net/bundlephobia/minzip/aframe-touch-inspector)
 
- Based on A-Frame Inspector ([Original project](https://github.com/aframevr/aframe-inspector))
+Based on A-Frame Inspector ([Original project](https://github.com/aframevr/aframe-inspector))
+
+*👏 Project is detached clone from the original A-Frame Inspector that honors the same engine and lib model, but it has been refactored partly & carefully to ensure backwards compatibility while improving the structure and functionality. It aims to not replace, but offer itself as an alternative to the original dual panel interface, by offering a more Whiteboard tool driven approach based on transparency and decoupled interfaces.*
+
+Please note that to my best abilities i try to keep an eye on the original project issues and reported bugs and to keep fixing it on this project.
+
+**⏰ Current state**: The project is as of now not ready for prime-time and time cannot be allocated as for a 09:00-18:00 job, but it's a dear project and I will keep improving it and one day release the first version.
 
 ---
 ### 🪀 Screenshots & Preview Demo
 
-*Configuration*
-<img width="300" src="/images/configuration.png" alt="Configuration menu" />
+Below is the demo and some screenshots of different menus and panels
 
-*Scenegraph*
-<img width="300" src="/images/scenegraph.png" alt="Scene-graph" />
+### **[👀 DEMO](https://rand0mc0d3r.github.io/aframe-touch-inspector/examples/)**
+
+| Configuration | Scenegraph |
+| -      |  ------ |
+| ![](/images/configuration.png)   | ![](/images/scenegraph.png) |
+
 
 ---
-### **[👀 Preview Touch Interface](https://rand0mc0d3r.github.io/aframe-touch-inspector/examples/)**
 
----
+### 📺 JsFiddle example (native JS + 📡)
 
-### Local Installation
+*NOTE: Mind the console that can be hidden.*
+
+https://jsfiddle.net/s3x4nmhj/
+
+### 💻 Local Installation
 
 ```
 // with npm
@@ -27,7 +39,7 @@ npm i aframe-touch-inspector
 yarn add aframe-touch-inspector
 ```
 
-### Remote fetching
+### 📡 Remote fetching
 
 ```
 https://unpkg.com/aframe-touch-inspector@1.0.1/dist/aframe-inspector.min.js
@@ -43,6 +55,24 @@ https://unpkg.com/aframe-touch-inspector@1.0.1/dist/aframe-inspector.min.js
 Previous documentation can be found here: [A-Frame Inspector](https://github.com/aframevr/aframe-inspector/blob/master/README.md)
 
 The foundation, event sending and mechanics along with processing and exporting functions were mainly preserved, yet refactored to feature components described as functional entities.
+
+
+---
+
+### 🗺️ Usage & Documentation
+
+The inspector, once instantiated adds to the current scene a custom camera over the existing A-Frame camera, and a few controls along with a grid structure.
+
+The UI features in the bottom side, form left to right:
+- 📷 a camera controller with zoom in / reset / out;
+- ♻️ a panel for rotate / translate and scale
+- 👁️ a preview panel that based on the raycaster's target offers an overview of the selected ```a-entity```.
+- 🎚️ a switch to turn off / on the inspector mode (*upon clicking the enhancements are removed or added back*)
+- 2 x 📰 panels for properties
+    - 📑 a listing module that represents the entities
+    - 🎛️ a control box for a selected entity to adjust
+
+For most panels further documentation is not needed as the functionality aims to be self-explanatory and guided. Along various panels, tooltips, documentation links and further explanations are provided on the spot if needed.
 
 ---
 
@@ -97,7 +127,7 @@ The foundation, event sending and mechanics along with processing and exporting 
 
 ---
 
-### Local Development
+### 🧱 Local Development
 
 ```bash
 git clone git@github.com:aframevr/aframe-inspector.git
@@ -113,7 +143,7 @@ Then navigate to __[http://localhost:3333/examples/](http://localhost:3333/examp
 
 ---
 
-### Package evaluation
+### 📦 Package evaluation
 
 ```
 npm run explorer
@@ -122,3 +152,22 @@ npm run explorer
 **NOTE-WIP**: package size is double+ than before, but the refactoring is mid-flight and there are duplicate dependencies
 
 ![Explorer stats](/images/explorer.png)
+
+### 😄 You
+
+**If** you find it useful but buggy, file an issue.
+-- *Would try to honor it in a quick span of time.*
+
+**If** you have ideas, still file a new issue and explain how you envision it.
+-- *Will gladly consider all submissions and if not on the spot try to consier it during refactoring and architecture updates*
+
+**If** you rely on it and i broke it..
+-- *Sorry, please file an issue and help me patch it*
+
+
+
+
+---
+
+Cheers
+# 🤗
